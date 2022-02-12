@@ -114,7 +114,6 @@ position = Vector2( 805, 620 )
 [node name="PreyMob4" parent="." instance=ExtResource( 3 )]
 position = Vector2( 516, 709 )
 
-
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -271,6 +270,5 @@ margin_bottom = 92.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Button3"
-
 
 [connection signal="timeout" from="TickTimer" to="." method="_on_TickTimer_timeout"]

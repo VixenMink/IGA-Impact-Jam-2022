@@ -1,21 +1,16 @@
 extends KinematicBody2D
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 var velocity := Vector2.ZERO
 var curTarget
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
 
-
 func get_input():
 	var input = Vector2.ZERO
-	
 	
 	if Input.is_action_pressed('ui_right'):
 		input.x += 1
@@ -28,13 +23,15 @@ func get_input():
 	
 	return input
 
-func _physics_process(delta):
+
+func _physics_process(_delta):
 	var direction = get_input()
 	if direction: 
 		velocity = lerp(velocity, 128 * direction, .5)
 	else:
 		velocity = lerp(velocity, Vector2.ZERO, .3)
 	velocity = move_and_slide(velocity)
+
 
 func _unhandled_input(_event):
 	if Input.is_action_just_pressed("ui_accept"):

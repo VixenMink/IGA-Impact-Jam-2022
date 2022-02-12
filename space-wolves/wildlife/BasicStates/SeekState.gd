@@ -28,7 +28,6 @@ func _state_logic(delta):
 		selfRef.VELOCITY = steerVelocity
 		selfRef.update_direction()
 		var _retVal = selfRef._apply_momentum(steerVelocity, 16)
-		
 	
 	if (selfRef.path.size() <= 1 and selfRef.global_position.distance_to(moveTarget) < 32) and timer.is_stopped():
 		selfRef.VELOCITY = Vector2.ZERO
