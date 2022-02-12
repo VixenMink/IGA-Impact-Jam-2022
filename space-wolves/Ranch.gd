@@ -30,7 +30,7 @@ func next_level():
 func _on_TickTimer_timeout():
 	var wildlifeArray = get_tree().get_nodes_in_group('wildlife')
 	for wildlife in  wildlifeArray:
-		if wildlife.is_in_group('resource'):
+		if wildlife.is_in_group('Resource'):
 			continue
 		
 		wildlife._take_hunger_damage()
