@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gridOverlay640x640.png-0cf9a89dda79cb920d7776f069793da2.stex"
+path="res://.import/gridOverlay64x64.png-419ca29e06de7702de8f34c84fba69f2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gridOverlay640x640.png"
-dest_files=[ "res://.import/gridOverlay640x640.png-0cf9a89dda79cb920d7776f069793da2.stex" ]
+source_file="res://assets/gridOverlay64x64.png"
+dest_files=[ "res://.import/gridOverlay64x64.png-419ca29e06de7702de8f34c84fba69f2.stex" ]
 
 [params]
 
