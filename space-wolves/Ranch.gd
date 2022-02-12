@@ -34,3 +34,4 @@ func _on_TickTimer_timeout():
 			continue
 		
 		wildlife._take_hunger_damage()
+

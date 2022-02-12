@@ -42,7 +42,7 @@ func _get_transition(_delta, states_map):
 	if !selfRef.can_see_target:
 		return states_map['SeekState']
 	if selfRef.can_see_target and !selfRef.target_in_attack_range and selfRef.path.size() == 0:
-		print('Cant reach target but can shoot them, attacking anyway')
+		#print('Cant reach target but can shoot them, attacking anyway')
 		return states_map['AttackState']
 	
 	return null

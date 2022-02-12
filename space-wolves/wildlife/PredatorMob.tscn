@@ -98,7 +98,11 @@ radius = 32.2498
 radius = 500.0
 
 [node name="PredatorMob" instance=ExtResource( 6 )]
+
 position = Vector2( 0, 0 )
+
+scale = Vector2( 1, 1 )
+
 collision_layer = 8
 collision_mask = 2147483667
 SPEED = 45
