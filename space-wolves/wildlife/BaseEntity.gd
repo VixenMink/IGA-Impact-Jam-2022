@@ -28,6 +28,7 @@ onready var line : Line2D = $Line2D
 onready var collision_shape = $PhysicsBox
 onready var sprite := $Sprite
 onready var stateMachine := $StateMachine
+onready var nameplate := $NamePlate
 
 var origin_pos := Vector2.ZERO
 
@@ -91,6 +92,13 @@ func _physics_process(_delta):
 	if hungry and health == MAX_HEALTH:
 		hungry = true
 
+
+func _ShowYourName():
+	print('i should show myself')
+	nameplate.visible = true
+
+func _hideYourName():
+	nameplate.visible = false
 
 func _draw() -> void:
 	if can_see_target:

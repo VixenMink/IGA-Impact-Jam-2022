@@ -106,7 +106,7 @@ radius = 75.0
 [sub_resource type="CircleShape2D" id=6]
 radius = 500.0
 
-[node name="PreyMob" instance=ExtResource( 6 )]
+[node name="PreyMob" groups=["Prey"] instance=ExtResource( 6 )]
 position = Vector2( 0, 0 )
 scale = Vector2( 1, 1 )
 collision_layer = 16
@@ -178,6 +178,9 @@ nextAttackState = NodePath("../MeleeStrikeState")
 transitionDelay = 0.5
 
 [node name="MeleeStrikeState" parent="StateMachine" index="5" instance=ExtResource( 3 )]
+
+[node name="NamePlate" parent="." index="9"]
+text = "Prey"
 
 [editable path="HurtBox"]
 [editable path="HitboxPivot/HitBox"]

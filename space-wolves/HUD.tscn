@@ -84,12 +84,19 @@ margin_right = 490.0
 margin_bottom = 92.0
 text = "Current Target: Null"
 
-[node name="MiddleBox" type="HBoxContainer" parent="MarginContainer/BaseBox"]
+[node name="MiddleBox" type="CenterContainer" parent="MarginContainer/BaseBox"]
 margin_top = 96.0
 margin_right = 984.0
 margin_bottom = 464.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 4.0
+
+[node name="AlertBox" type="AcceptDialog" parent="MarginContainer/BaseBox/MiddleBox"]
+margin_left = 340.0
+margin_top = 155.0
+margin_right = 644.0
+margin_bottom = 213.0
+dialog_text = "You don't have enough money for this action!"
 
 [node name="BottomGrid" type="GridContainer" parent="MarginContainer/BaseBox"]
 margin_top = 468.0
@@ -98,51 +105,70 @@ margin_bottom = 560.0
 size_flags_vertical = 3
 columns = 3
 
-[node name="Button" type="Button" parent="MarginContainer/BaseBox/BottomGrid"]
+[node name="PredatorSPawn" type="Button" parent="MarginContainer/BaseBox/BottomGrid"]
 margin_right = 325.0
 margin_bottom = 44.0
+focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Button1"
+enabled_focus_mode = 0
+text = "Predator: Spawn"
 
-[node name="Button2" type="Button" parent="MarginContainer/BaseBox/BottomGrid"]
+[node name="PreySpawn" type="Button" parent="MarginContainer/BaseBox/BottomGrid"]
 margin_left = 329.0
 margin_right = 654.0
 margin_bottom = 44.0
+focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Button2"
+enabled_focus_mode = 0
+text = "Prey: Spawn"
 
-[node name="Button3" type="Button" parent="MarginContainer/BaseBox/BottomGrid"]
+[node name="ResourceSpawn" type="Button" parent="MarginContainer/BaseBox/BottomGrid"]
 margin_left = 658.0
 margin_right = 983.0
 margin_bottom = 44.0
+focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Button3"
+enabled_focus_mode = 0
+text = "Resource: Spawn"
 
-[node name="Button4" type="Button" parent="MarginContainer/BaseBox/BottomGrid"]
+[node name="PredatorKill" type="Button" parent="MarginContainer/BaseBox/BottomGrid"]
 margin_top = 48.0
 margin_right = 325.0
 margin_bottom = 92.0
+focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Button3"
+enabled_focus_mode = 0
+text = "Predator: Kill"
 
-[node name="Button5" type="Button" parent="MarginContainer/BaseBox/BottomGrid"]
+[node name="PreyKill" type="Button" parent="MarginContainer/BaseBox/BottomGrid"]
 margin_left = 329.0
 margin_top = 48.0
 margin_right = 654.0
 margin_bottom = 92.0
+focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Button3"
+enabled_focus_mode = 0
+text = "Prey: Kill"
 
-[node name="Button6" type="Button" parent="MarginContainer/BaseBox/BottomGrid"]
+[node name="ResourceKill" type="Button" parent="MarginContainer/BaseBox/BottomGrid"]
 margin_left = 658.0
 margin_top = 48.0
 margin_right = 983.0
 margin_bottom = 92.0
+focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Button3"
+enabled_focus_mode = 0
+text = "Resource: Collect"
+
+[connection signal="pressed" from="MarginContainer/BaseBox/BottomGrid/PredatorSPawn" to="." method="_on_PredatorSPawn_pressed"]
+[connection signal="pressed" from="MarginContainer/BaseBox/BottomGrid/PreySpawn" to="." method="_on_PreySpawn_pressed"]
+[connection signal="pressed" from="MarginContainer/BaseBox/BottomGrid/ResourceSpawn" to="." method="_on_ResourceSpawn_pressed"]
+[connection signal="pressed" from="MarginContainer/BaseBox/BottomGrid/PredatorKill" to="." method="_on_PredatorKill_pressed"]
+[connection signal="pressed" from="MarginContainer/BaseBox/BottomGrid/PreyKill" to="." method="_on_PreyKill_pressed"]
+[connection signal="pressed" from="MarginContainer/BaseBox/BottomGrid/ResourceKill" to="." method="_on_ResourceKill_pressed"]
