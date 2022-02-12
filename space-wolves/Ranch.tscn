@@ -6,8 +6,8 @@
 [ext_resource path="res://assets/resources/BasicTech-TileSet.tres" type="TileSet" id=4]
 [ext_resource path="res://space-wolves/Ranch.gd" type="Script" id=5]
 [ext_resource path="res://space-wolves/Astar.gd" type="Script" id=6]
-[ext_resource path="res://space-wolves/Camera2D.gd" type="Script" id=7]
-[ext_resource path="res://assets/Space_07.jpg" type="Texture" id=8]
+[ext_resource path="res://space-wolves/PlayerShip.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/Nebula Blue.png" type="Texture" id=8]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -48,11 +48,6 @@ step_color = Color( 0.160784, 0.180392, 0.486275, 1 )
 should_display_grid = false
 
 [node name="Grid" type="Node2D" parent="Astar"]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 660, 569 )
-zoom = Vector2( 2, 2 )
-script = ExtResource( 7 )
 
 [node name="ReferenceRect" type="ReferenceRect" parent="."]
 anchor_right = 1.0
@@ -122,10 +117,158 @@ position = Vector2( 516, 709 )
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2( 800, 800 )
+motion_scale = Vector2( 0.4, 0.4 )
+motion_offset = Vector2( 222, 222 )
+motion_mirroring = Vector2( 4096, 4096 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 texture = ExtResource( 8 )
 
+[node name="PlayerShip" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1014, 522 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BaseBox" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1004.0
+margin_bottom = 580.0
+
+[node name="TopBox" type="HBoxContainer" parent="CanvasLayer/MarginContainer/BaseBox"]
+margin_right = 984.0
+margin_bottom = 92.0
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/BaseBox/TopBox"]
+margin_right = 490.0
+margin_bottom = 92.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MarginContainer/BaseBox/TopBox/VBoxContainer"]
+margin_right = 490.0
+margin_bottom = 20.0
+size_flags_vertical = 3
+text = "Cash: $0"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/MarginContainer/BaseBox/TopBox/VBoxContainer"]
+margin_top = 24.0
+margin_right = 490.0
+margin_bottom = 44.0
+size_flags_vertical = 3
+text = "Predator Pop: 5"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="CanvasLayer/MarginContainer/BaseBox/TopBox/VBoxContainer"]
+margin_top = 48.0
+margin_right = 490.0
+margin_bottom = 68.0
+size_flags_vertical = 3
+text = "Prey Pop: 5"
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="CanvasLayer/MarginContainer/BaseBox/TopBox/VBoxContainer"]
+margin_top = 72.0
+margin_right = 490.0
+margin_bottom = 92.0
+size_flags_vertical = 3
+text = "Resource Pop: 5"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/MarginContainer/BaseBox/TopBox"]
+margin_left = 494.0
+margin_right = 984.0
+margin_bottom = 92.0
+size_flags_horizontal = 3
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/MarginContainer/BaseBox/TopBox/VBoxContainer2"]
+margin_right = 490.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MarginContainer/BaseBox/TopBox/VBoxContainer2"]
+margin_top = 18.0
+margin_right = 490.0
+margin_bottom = 88.0
+size_flags_vertical = 3
+text = "Round 1"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/MarginContainer/BaseBox/TopBox/VBoxContainer2"]
+margin_top = 92.0
+margin_right = 490.0
+margin_bottom = 92.0
+text = "Current Target: Null"
+
+[node name="MiddleBox" type="HBoxContainer" parent="CanvasLayer/MarginContainer/BaseBox"]
+margin_top = 96.0
+margin_right = 984.0
+margin_bottom = 464.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="BottomGrid" type="GridContainer" parent="CanvasLayer/MarginContainer/BaseBox"]
+margin_top = 468.0
+margin_right = 984.0
+margin_bottom = 560.0
+size_flags_vertical = 3
+columns = 3
+
+[node name="Button" type="Button" parent="CanvasLayer/MarginContainer/BaseBox/BottomGrid"]
+margin_right = 325.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Button1"
+
+[node name="Button2" type="Button" parent="CanvasLayer/MarginContainer/BaseBox/BottomGrid"]
+margin_left = 329.0
+margin_right = 654.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Button2"
+
+[node name="Button3" type="Button" parent="CanvasLayer/MarginContainer/BaseBox/BottomGrid"]
+margin_left = 658.0
+margin_right = 983.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Button3"
+
+[node name="Button4" type="Button" parent="CanvasLayer/MarginContainer/BaseBox/BottomGrid"]
+margin_top = 48.0
+margin_right = 325.0
+margin_bottom = 92.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Button3"
+
+[node name="Button5" type="Button" parent="CanvasLayer/MarginContainer/BaseBox/BottomGrid"]
+margin_left = 329.0
+margin_top = 48.0
+margin_right = 654.0
+margin_bottom = 92.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Button3"
+
+[node name="Button6" type="Button" parent="CanvasLayer/MarginContainer/BaseBox/BottomGrid"]
+margin_left = 658.0
+margin_top = 48.0
+margin_right = 983.0
+margin_bottom = 92.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Button3"
 
 [connection signal="timeout" from="TickTimer" to="." method="_on_TickTimer_timeout"]
