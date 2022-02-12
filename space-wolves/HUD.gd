@@ -12,7 +12,7 @@ onready var ResourcePop = $MarginContainer/BaseBox/TopBox/VBoxContainer/Resourse
 onready var Progress = $MarginContainer/BaseBox/TopBox/VBoxContainer2/ProgressBar
 onready var Round = $MarginContainer/BaseBox/TopBox/VBoxContainer2/Round
 onready var PredatorSpawn = $MarginContainer/BaseBox/BottomGrid/PredatorSPawn
-onready var PredatorKill = $MarginContainer/BaseBox/BottomGrid/PredatorKIll
+onready var PredatorKill = $MarginContainer/BaseBox/BottomGrid/PredatorKill
 onready var PreySpawn = $MarginContainer/BaseBox/BottomGrid/PreySpawn
 onready var PreyKill = $MarginContainer/BaseBox/BottomGrid/PreyKill
 onready var ResourceSpawn = $MarginContainer/BaseBox/BottomGrid/ResourceSpawn
@@ -37,7 +37,7 @@ func _ready():
 #	$SpawnControl.connect('preySpawnComplete', self, '_on_preySpawnComplete')
 #	$SpawnControl.connect("resourceSpawnComplete", self, '_on_resourceSpawnComplete')
 	Round.text = str('Round: ' , Settings.GameRound)
-	update_hud()
+  update_hud()
 
 
 func update_hud():

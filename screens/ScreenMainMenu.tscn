@@ -7,7 +7,6 @@
 [ext_resource path="res://addons/toolbox_project/scenes/ui/menu/MenuButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://addons/toolbox_project/defaults/screens/ScreenMainMenu.gd" type="Script" id=6]
 
-
 [node name="ScreenMainMenu" instance=ExtResource( 1 )]
 script = ExtResource( 6 )
 
@@ -30,14 +29,14 @@ __meta__ = {
 
 [node name="TextureRect" type="TextureRect" parent="MenuLayer/UIBox/VBoxContainer" index="0"]
 margin_right = 584.0
-margin_bottom = 163.0
+margin_bottom = 196.0
 size_flags_horizontal = 7
 size_flags_vertical = 3
 texture = ExtResource( 4 )
 stretch_mode = 6
 
 [node name="PanelContainer" type="PanelContainer" parent="MenuLayer/UIBox/VBoxContainer" index="1"]
-margin_top = 213.0
+margin_top = 246.0
 margin_right = 584.0
 margin_bottom = 440.0
 
@@ -45,25 +44,25 @@ margin_bottom = 440.0
 margin_left = 24.0
 margin_top = 24.0
 margin_right = 560.0
-margin_bottom = 203.0
+margin_bottom = 170.0
 
 [node name="BtnStart" parent="MenuLayer/UIBox/VBoxContainer/PanelContainer/Menu" index="0" instance=ExtResource( 5 )]
 margin_right = 536.0
-margin_bottom = 49.0
+margin_bottom = 38.0
 text = "Start Game"
 grabs_focus = true
 
 [node name="BtnSettings" parent="MenuLayer/UIBox/VBoxContainer/PanelContainer/Menu" index="1" instance=ExtResource( 5 )]
-margin_top = 65.0
+margin_top = 54.0
 margin_right = 536.0
-margin_bottom = 114.0
+margin_bottom = 92.0
 text = "Settings"
 screen_to_push_in_config = "SCREEN_OPTIONS_MENU"
 
 [node name="BtnQuit" parent="MenuLayer/UIBox/VBoxContainer/PanelContainer/Menu" index="2" instance=ExtResource( 5 )]
-margin_top = 130.0
+margin_top = 108.0
 margin_right = 536.0
-margin_bottom = 179.0
+margin_bottom = 146.0
 text = "Quit Game"
 pushes_screen = false
 screen_to_push_in_config = ""
