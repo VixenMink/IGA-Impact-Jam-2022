@@ -6,11 +6,14 @@ const ControlMenuAction = preload("ControlMenuAction.tscn")
 export(String) var filter_actions:String = "^ui_"
 
 export var pretty_action_names = {
-	"game_left" : "Move Left",
-	"game_right" : "Move Right",
-	"game_up" : "Move Up",
-	"game_down" : "Move Down",
-	"game_interact" : "Scan",
+	"game_left" : "Left",
+	"game_right" : "Right",
+	"game_up" : "Up",
+	"game_down" : "Down",
+	"game_jump" : "Jump",
+	"game_interact" : "Interact",
+	"game_switch_demo" : "Switch Demo",
+	"game_switch_skin" : "Switch Skin",
 	"game_pause" : "Pause"
 }
 
@@ -20,7 +23,10 @@ export var preferred_order = [
 	"game_up",
 	"game_down",
 	"game_jump",
+	"game_interact",
 	"game_pause",
+	"game_switch_demo",
+	"game_switch_skin"
 ]
 
 func _ready():

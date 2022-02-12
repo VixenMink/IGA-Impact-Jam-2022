@@ -16,13 +16,13 @@ func _ready():
 func get_input():
 	var input = Vector2.ZERO
 	
-	if Input.is_action_pressed('game_right'):
+	if Input.is_action_pressed('ui_right'):
 		input.x += 1
-	if Input.is_action_pressed("game_left"):
+	if Input.is_action_pressed('ui_left'):
 		input.x -= 1
-	if Input.is_action_pressed('game_down'):
+	if Input.is_action_pressed('ui_down'):
 		input.y += 1
-	if Input.is_action_pressed('game_up'):
+	if Input.is_action_pressed('ui_up'):
 		input.y -= 1
 	
 	return input
