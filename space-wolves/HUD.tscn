@@ -39,21 +39,21 @@ margin_bottom = 20.0
 size_flags_vertical = 3
 text = "Cash: $0"
 
-[node name="Predator pop" type="RichTextLabel" parent="MarginContainer/BaseBox/TopBox/VBoxContainer"]
+[node name="PredatorPop" type="RichTextLabel" parent="MarginContainer/BaseBox/TopBox/VBoxContainer"]
 margin_top = 24.0
 margin_right = 490.0
 margin_bottom = 44.0
 size_flags_vertical = 3
 text = "Predator Pop: 5"
 
-[node name="Prey pop" type="RichTextLabel" parent="MarginContainer/BaseBox/TopBox/VBoxContainer"]
+[node name="PreyPop" type="RichTextLabel" parent="MarginContainer/BaseBox/TopBox/VBoxContainer"]
 margin_top = 48.0
 margin_right = 490.0
 margin_bottom = 68.0
 size_flags_vertical = 3
 text = "Prey Pop: 5"
 
-[node name="Resourse Pop" type="RichTextLabel" parent="MarginContainer/BaseBox/TopBox/VBoxContainer"]
+[node name="ResoursePop" type="RichTextLabel" parent="MarginContainer/BaseBox/TopBox/VBoxContainer"]
 margin_top = 72.0
 margin_right = 490.0
 margin_bottom = 92.0
