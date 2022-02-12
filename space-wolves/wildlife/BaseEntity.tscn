@@ -9,7 +9,7 @@
 [ext_resource path="res://space-wolves/wildlife/MobLabel.tscn" type="PackedScene" id=9]
 [ext_resource path="res://space-wolves/statemachine/StateMachine.tscn" type="PackedScene" id=10]
 
-[node name="BaseEntity" type="KinematicBody2D"]
+[node name="BaseEntity" type="KinematicBody2D" groups=["wildlife"]]
 light_mask = 0
 position = Vector2( 0, 3 )
 scale = Vector2( 0.992255, 0.974068 )

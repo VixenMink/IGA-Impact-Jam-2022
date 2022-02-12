@@ -14,10 +14,8 @@ func _ready():
 		D.e("Game", ["Signal next_level is already connected"])
 	
 	pathfinding.create_navigation_map($AStarGrid)
-	
-	
-	
 	Settings.curGameState = Settings.GAME_STATES.PLAY
+
 
 func _on_game_started():
 	pass
@@ -27,3 +25,12 @@ func restart_level():
 	
 func next_level():
 	pass
+
+
+func _on_TickTimer_timeout():
+	var wildlifeArray = get_tree().get_nodes_in_group('wildlife')
+	for wildlife in  wildlifeArray:
+		if wildlife.is_in_group('resource'):
+			continue
+		
+		wildlife._take_hunger_damage()
