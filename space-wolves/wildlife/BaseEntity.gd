@@ -53,6 +53,9 @@ func _ready():
 	var _err = damagedtween.connect("curve_tween", self, "_on_DamagedTween_curve_tween")
 	_err = hurtbox.connect("area_entered", self, "_on_hurtbox_entered")
 	
+	randomize()
+	MAX_HEALTH = MAX_HEALTH * rand_range(.75, 1.25)
+	
 	health = MAX_HEALTH
 	origin_pos = get_global_position()
 	hitboxCollider.disabled = true

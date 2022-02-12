@@ -41,9 +41,5 @@ func _process(_delta):
 		else:
 			text = str(translate_state(parentMob.state), ':', targetName)
 	if showHealth:
-		if parentMob.health > 0 and (parentMob.health < parentMob.MAX_HEALTH or parentMob.health == 1):
-			$HP.visible = true
-			$HP.text = str(parentMob.health)
-		else:
-			$HP.visible = false
+		$HP.text = str(round(parentMob.health))
 	
