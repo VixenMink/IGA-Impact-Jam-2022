@@ -1,9 +1,5 @@
 extends KinematicBody2D
 
-
-signal ShowYourName
-
-
 var velocity := Vector2.ZERO
 var curTarget
 
