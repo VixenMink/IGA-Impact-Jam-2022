@@ -22,7 +22,7 @@ func _state_logic(delta):
 		selfRef.path = []
 		var steerVelocity = selfRef.global_position.direction_to(moveTarget)
 		selfRef.VELOCITY = steerVelocity
-		selfRef.update_direction()
+		selfRef.update_facing()
 		
 		var _retVal = selfRef._apply_momentum(selfRef.VELOCITY, selfRef.SPEED/2.0)
 	

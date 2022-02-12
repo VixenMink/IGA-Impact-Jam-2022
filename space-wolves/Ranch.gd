@@ -4,6 +4,7 @@ extends "res://addons/toolbox_project/scenes/level/Level.gd"
 onready var pathfinding := $Astar
 onready var player_id := 1
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if SignalMngr.connect("game_started", self, "_on_game_started") != OK:
@@ -14,6 +15,8 @@ func _ready():
 		D.e("Game", ["Signal next_level is already connected"])
 	
 	pathfinding.create_navigation_map($AStarGrid)
+	
+	
 	Settings.curGameState = Settings.GAME_STATES.PLAY
 
 
