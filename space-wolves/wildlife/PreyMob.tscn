@@ -10,7 +10,7 @@
 [ext_resource path="res://assets/DeerRD500.png" type="Texture" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 6.04683, 6.54472 )
+extents = Vector2( 41.8239, 43.1181 )
 
 [sub_resource type="Animation" id=8]
 length = 0.001
@@ -108,7 +108,9 @@ radius = 500.0
 
 [node name="PreyMob" instance=ExtResource( 6 )]
 position = Vector2( 0, 0 )
+
 scale = Vector2( 1, 1 )
+
 collision_layer = 16
 collision_mask = 2147483683
 SPEED = 35

@@ -9,8 +9,7 @@ export (float) var DECAY_RATE := 1.0
 var state = 'error'
 
 var move_dir = Vector2.ZERO		#where we want to go
-var sprite_dir = "down"			#where we are actually facing. A string for anim
-var facing_dir = Vector2.DOWN	#where we are facing in vector notation
+#var facing_dir = Vector2.LEFT	#where we are facing in vector notation
 
 var health = MAX_HEALTH
 
@@ -119,7 +118,7 @@ func _apply_movement(_delta, _useGravity = false) -> void:
 	line.global_position = Vector2.ZERO
 	
 	navigate()
-	update_direction()
+	update_facing()
 	var _err = move_and_slide(VELOCITY, GRAVITY_DIR, false, 4, PI/4, false)
 	
 	# Code for pushing things
@@ -150,10 +149,10 @@ func _apply_momentum(curVelocity, force) -> bool:
 
 
 func anim_switch(animation, speed = 1):
-	if anim == null or !anim.has_animation(str(animation,'_',sprite_dir)):
+	if anim == null or !anim.has_animation(str(animation)):
 		#print('fail at animation: ', animation,'_',sprite_dir)
 		return
-	var newanim = str(animation,'_',sprite_dir)
+	var newanim = str(animation)
 	
 	if anim.current_animation != newanim:
 		anim.play(newanim, -1, speed)
@@ -217,37 +216,11 @@ func generate_path(destination : Vector2):
 		path = pathFinder.get_new_path(collision_shape.global_position, destination)
 		line.points = path
 
-
-func update_direction():
+func update_facing():
 	if VELOCITY != Vector2.ZERO:
-		#VELOCITY = move_dir * SPEED
-		#print(VELOCITY)
-		if abs(VELOCITY.y) > abs(VELOCITY.x):
-			if VELOCITY.y < 0:
-				sprite_dir = "up"
-				move_dir = Vector2.UP
-				pivot.look_at(targetPos)
-				sprite.look_at(targetPos)
-				facing_dir = Vector2.UP
-			else:
-				sprite_dir = "down"
-				move_dir  = Vector2.DOWN
-				pivot.look_at(targetPos)
-				sprite.look_at(targetPos)
-				facing_dir = Vector2.DOWN
-		else:
-			if VELOCITY.x < 0:
-				sprite_dir = "left"
-				move_dir  = Vector2.LEFT
-				pivot.look_at(targetPos)
-				sprite.look_at(targetPos)
-				facing_dir = Vector2.LEFT
-			else:
-				sprite_dir = "right"
-				move_dir  = Vector2.RIGHT
-				pivot.look_at(targetPos)
-				sprite.look_at(targetPos)
-				facing_dir = Vector2.RIGHT
+		sprite.rotation = global_position.angle_to_point(VELOCITY)
+		pivot.rotation = global_position.angle_to_point(VELOCITY)
+		collision_shape.rotation = global_position.angle_to_point(VELOCITY)
 
 
 func _check_target_line_of_sight() -> bool:
