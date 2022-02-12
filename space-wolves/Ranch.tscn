@@ -9,7 +9,7 @@
 [ext_resource path="res://space-wolves/PlayerShip.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/Nebula Blue.png" type="Texture" id=8]
 [ext_resource path="res://space-wolves/HUD.tscn" type="PackedScene" id=9]
-[ext_resource path="res://space-wolves/wildlife/BaseEntity.gd" type="Script" id=10]
+[ext_resource path="res://space-wolves/wildlife/SpawnControl.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -65,52 +65,45 @@ __meta__ = {
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
 
+[node name="SpawnControl" parent="." instance=ExtResource( 10 )]
+
 [node name="PreyMob" parent="." groups=["enemies"] instance=ExtResource( 3 )]
 position = Vector2( 559, 439 )
-script = ExtResource( 10 )
 
 [node name="ResourceMob" parent="." groups=["enemies"] instance=ExtResource( 1 )]
 position = Vector2( 584, 188 )
-script = ExtResource( 10 )
 MAX_HEALTH = 10.0
 
 [node name="PredatorMob3" parent="." instance=ExtResource( 2 )]
 position = Vector2( 306, 423.846 )
 scale = Vector2( 0.976944, 0.924204 )
-script = ExtResource( 10 )
 
 [node name="ResourceMob2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 318, 740.846 )
 scale = Vector2( 0.976944, 0.924204 )
-script = ExtResource( 10 )
 MAX_HEALTH = 10.0
 
 [node name="ResourceMob3" parent="." instance=ExtResource( 1 )]
 position = Vector2( 457, 583.846 )
 scale = Vector2( 0.976944, 0.924204 )
-script = ExtResource( 10 )
 MAX_HEALTH = 10.0
 
 [node name="ResourceMob4" parent="." instance=ExtResource( 1 )]
 position = Vector2( 123, 736.846 )
 scale = Vector2( 0.976944, 0.924204 )
-script = ExtResource( 10 )
 MAX_HEALTH = 10.0
 
 [node name="ResourceMob5" parent="." instance=ExtResource( 1 )]
 position = Vector2( 518, 89.8464 )
 scale = Vector2( 0.976944, 0.924204 )
-script = ExtResource( 10 )
 MAX_HEALTH = 10.0
 
 [node name="PredatorMob" parent="." groups=["enemies"] instance=ExtResource( 2 )]
 position = Vector2( 171, 317.922 )
 scale = Vector2( 0.98457, 0.948808 )
-script = ExtResource( 10 )
 
 [node name="PredatorMob2" parent="." groups=["enemies"] instance=ExtResource( 2 )]
 position = Vector2( 173, 546 )
-script = ExtResource( 10 )
 
 [node name="TickTimer" type="Timer" parent="."]
 wait_time = 6.0
@@ -118,15 +111,12 @@ autostart = true
 
 [node name="PreyMob2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 678, 303 )
-script = ExtResource( 10 )
 
 [node name="PreyMob3" parent="." instance=ExtResource( 3 )]
 position = Vector2( 805, 620 )
-script = ExtResource( 10 )
 
 [node name="PreyMob4" parent="." instance=ExtResource( 3 )]
 position = Vector2( 516, 709 )
-script = ExtResource( 10 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -142,6 +132,5 @@ texture = ExtResource( 8 )
 position = Vector2( 1014, 522 )
 
 [node name="HUD" parent="." instance=ExtResource( 9 )]
-
 
 [connection signal="timeout" from="TickTimer" to="." method="_on_TickTimer_timeout"]
