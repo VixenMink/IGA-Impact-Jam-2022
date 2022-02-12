@@ -5,11 +5,11 @@
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://space-wolves/utilities/HitBox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://space-wolves/utilities/CurveTween.tscn" type="PackedScene" id=5]
-[ext_resource path="res://space-wolves/assets/resources/standard_curve.tres" type="Curve" id=6]
+[ext_resource path="res://assets/resources/standard_curve.tres" type="Curve" id=6]
 [ext_resource path="res://space-wolves/wildlife/MobLabel.tscn" type="PackedScene" id=9]
 [ext_resource path="res://space-wolves/statemachine/StateMachine.tscn" type="PackedScene" id=10]
 
-[node name="BaseEntity" type="KinematicBody2D" groups=["enemies"]]
+[node name="BaseEntity" type="KinematicBody2D"]
 light_mask = 0
 position = Vector2( 0, 3 )
 scale = Vector2( 0.992255, 0.974068 )

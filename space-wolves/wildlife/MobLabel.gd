@@ -37,7 +37,7 @@ func _process(_delta):
 		if parentMob.target:
 			targetName = parentMob.target.name
 		if parentMob.state is String:
-			text = str(parentMob.state, ':', targetName, ':CS=', bool(parentMob.can_see_target), ':AR=', bool(parentMob.target_in_attack_range))
+			text = str(parentMob.state, ':', targetName, ':CS=', bool(parentMob.can_see_target), ':\nAR=', bool(parentMob.target_in_attack_range), ':\nHungry=', bool(parentMob.hungry))
 		else:
 			text = str(translate_state(parentMob.state), ':', targetName)
 	if showHealth:
