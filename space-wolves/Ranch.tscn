@@ -127,4 +127,5 @@ motion_mirroring = Vector2( 800, 800 )
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 texture = ExtResource( 8 )
 
+
 [connection signal="timeout" from="TickTimer" to="." method="_on_TickTimer_timeout"]
