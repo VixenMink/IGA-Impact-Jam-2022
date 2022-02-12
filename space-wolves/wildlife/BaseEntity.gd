@@ -41,10 +41,11 @@ var target_in_attack_range := false
 var can_see_target := false
 var target_last_known_position : Vector2
 var debug_los_color := Color(1.0, .329, .298)
+var targetPos
 
 var amDead := false
 var invulnerable := false
-var hungry := false
+var hungry := true
 
 signal died
 
@@ -89,7 +90,7 @@ func _physics_process(_delta):
 		hungry = true
 		buildDetectableList()
 	if hungry and health == MAX_HEALTH:
-		hungry = false
+		hungry = true
 
 
 func _draw() -> void:
@@ -98,7 +99,7 @@ func _draw() -> void:
 	elif target and !can_see_target and target_last_known_position:
 		debug_los_color = Color.green
 		
-	var targetPos = (target_last_known_position - global_position)
+	targetPos = (target_last_known_position - global_position)
 	# If you can't see your target, square off its last k nown location
 	if target_last_known_position:
 		draw_line(Vector2(targetPos.x - 5, targetPos.y - 5), targetPos, Color.yellow, 1.5, false)
@@ -146,30 +147,6 @@ func _apply_momentum(curVelocity, force) -> bool:
 		return true
 		
 	return false
-
-
-func spritedir_loop() -> void:
-	match move_dir:
-		Vector2.LEFT:
-			sprite_dir = "left"
-			facing_dir = Vector2.LEFT
-			pivot.rotation_degrees = 90
-			sprite.rotation_degrees = 90
-		Vector2.RIGHT:
-			sprite_dir = "right"
-			facing_dir = Vector2.RIGHT
-			pivot.rotation_degrees = 270
-			sprite.rotation_degrees = 270
-		Vector2.UP:
-			sprite_dir = "up"
-			facing_dir = Vector2.UP
-			pivot.rotation_degrees = 180
-			sprite.rotation_degrees = 180
-		Vector2.DOWN:
-			sprite_dir = "down"
-			facing_dir = Vector2.DOWN
-			pivot.rotation_degrees = 0
-			sprite.rotation_degrees = 0
 
 
 func anim_switch(animation, speed = 1):
@@ -249,27 +226,27 @@ func update_direction():
 			if VELOCITY.y < 0:
 				sprite_dir = "up"
 				move_dir = Vector2.UP
-				pivot.rotation_degrees = 180
-				sprite.rotation_degrees = 180
+				pivot.look_at(targetPos)
+				sprite.look_at(targetPos)
 				facing_dir = Vector2.UP
 			else:
 				sprite_dir = "down"
 				move_dir  = Vector2.DOWN
-				pivot.rotation_degrees = 0
-				sprite.rotation_degrees = 0
+				pivot.look_at(targetPos)
+				sprite.look_at(targetPos)
 				facing_dir = Vector2.DOWN
 		else:
 			if VELOCITY.x < 0:
 				sprite_dir = "left"
 				move_dir  = Vector2.LEFT
-				pivot.rotation_degrees = 90
-				sprite.rotation_degrees = 90
+				pivot.look_at(targetPos)
+				sprite.look_at(targetPos)
 				facing_dir = Vector2.LEFT
 			else:
 				sprite_dir = "right"
 				move_dir  = Vector2.RIGHT
-				pivot.rotation_degrees = 270
-				sprite.rotation_degrees = 270
+				pivot.look_at(targetPos)
+				sprite.look_at(targetPos)
 				facing_dir = Vector2.RIGHT
 
 
