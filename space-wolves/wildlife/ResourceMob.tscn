@@ -1,0 +1,59 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://space-wolves/wildlife/BaseEntity.tscn" type="PackedScene" id=1]
+[ext_resource path="res://space-wolves/wildlife/MovementStates/RandomMoveState.tscn" type="PackedScene" id=2]
+[ext_resource path="res://space-wolves/assets/tilesets/TileMap_SF/Grafika/Point_mouse/point0002.png" type="Texture" id=3]
+[ext_resource path="res://space-wolves/assets/tilesets/TileMap_SF/Grafika/Point_mouse/point0003.png" type="Texture" id=4]
+[ext_resource path="res://space-wolves/assets/tilesets/TileMap_SF/Grafika/Point_mouse/point0001.png" type="Texture" id=5]
+[ext_resource path="res://space-wolves/assets/tilesets/TileMap_SF/Grafika/Point_mouse/point0000.png" type="Texture" id=6]
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 29.2444
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 35.1988, 34.4054 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="ResourceMob" instance=ExtResource( 1 )]
+collision_layer = 32
+collision_mask = 2147483651
+SPEED = 5
+MAX_HEALTH = 10
+
+[node name="Sprite" parent="." index="0"]
+texture = null
+
+[node name="PhysicsBox" parent="." index="1"]
+shape = SubResource( 5 )
+
+[node name="HurtBox" parent="." index="4"]
+collision_layer = 512
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+shape = SubResource( 3 )
+
+[node name="HitBox" parent="HitboxPivot" index="0"]
+DAMAGE = 0
+
+[node name="StateMachine" parent="." index="7"]
+kinematic_body = NodePath("..")
+animation_player = NodePath("../AnimationPlayer")
+start_state = NodePath("RandomMoveState")
+
+[node name="RandomMoveState" parent="StateMachine" index="0" instance=ExtResource( 2 )]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="9"]
+position = Vector2( 1.00781, -5.13311 )
+frames = SubResource( 4 )
+frame = 1
+playing = true
+
+[editable path="HurtBox"]
+[editable path="HitboxPivot/HitBox"]

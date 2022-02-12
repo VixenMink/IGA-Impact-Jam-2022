@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "BaseEntity",
 "language": "GDScript",
-"path": "res://space-wolves/enemies/BaseEntity.gd"
+"path": "res://space-wolves/wildlife/BaseEntity.gd"
 }, {
 "base": "Tween",
 "class": "CurveTween",
@@ -38,151 +38,6 @@ _global_script_classes=[ {
 "class": "EnemyBaseState",
 "language": "GDScript",
 "path": "res://space-wolves/statemachine/EnemyBaseState.gd"
-}, {
-"base": "Reference",
-"class": "GSAIAgentLocation",
-"language": "GDScript",
-"path": "res://addons/com.gdquest.godot-steering-ai-framework/GSAIAgentLocation.gd"
-}, {
-"base": "GSAISteeringBehavior",
-"class": "GSAIArrive",
-"language": "GDScript",
-"path": "res://addons/com.gdquest.godot-steering-ai-framework/Behaviors/GSAIArrive.gd"
-}, {
-"base": "GSAIGroupBehavior",
-"class": "GSAIAvoidCollisions",
-"language": "GDScript",
-"path": "res://addons/com.gdquest.godot-steering-ai-framework/Behaviors/GSAIAvoidCollisions.gd"
-}, {
-"base": "GSAISteeringBehavior",
-"class": "GSAIBlend",
-"language": "GDScript",
-"path": "res://addons/com.gdquest.godot-steering-ai-framework/Behaviors/GSAIBlend.gd"
-}, {
-"base": "GSAIGroupBehavior",
-"class": "GSAICohesion",
-"language": "GDScript",
-"path": "res://addons/com.gdquest.godot-steering-ai-framework/Behaviors/GSAICohesion.gd"
-}, {
-"base": "GSAIPursue",
-"class": "GSAIEvade",
-"language": "GDScript",
-"path": "res://addons/com.gdquest.godot-steering-ai-framework/Behaviors/GSAIEvade.gd"
-}, {
-"base": "GSAIMatchOrientation",
-"class": "GSAIFace",
-"language": "GDScript",
-"path": "res://addons/com.gdquest.godot-steering-ai-framework/Behaviors/GSAIFace.gd"
-}, {
-"base": "GSAISeek",
-"class": "GSAIFlee",
-"language": "GDScript",
-"path": "res://addons/com.gdquest.godot-steering-ai-framework/Behaviors/GSAIFlee.gd"
-}, {
-"base": "GSAIArrive",
-"class": "GSAIFollowPath",
-"language": "GDScript",
-"path": "res://addons/com.gdquest.godot-steering-ai-framework/Behaviors/GSAIFollowPath.gd"
-}, {
-"base": "GSAISteeringBehavior",
-"class": "GSAIGroupBehavior",
-"language": "GDScript",
-"path": "res://addons/com.gdquest.godot-steering-ai-framework/GSAIGroupBehavior.gd"
-}, {
-"base": "GSAIProximity",
-"class": "GSAIInfiniteProximity",
-"language": "GDScript",
-"path": "res://addons/com.gdquest.godot-steering-ai-framework/Proximities/GSAIInfiniteProximity.gd"
-}, {
-"base": "GSAISpecializedAgent",
-"class": "GSAIKinematicBody2DAgent",
-"language": "GDScript",
-"path": "res://addons/com.gdquest.godot-steering-ai-framework/Agents/GSAIKinematicBody2DAgent.gd"
-}, {
-"base": "GSAISpecializedAgent",
-"class": "GSAIKinematicBody3DAgent",
-"language": "GDScript",
-"path": "res://addons/com.gdquest.godot-steering-ai-framework/Agents/GSAIKinematicBody3DAgent.gd"
-}, {
-"base": "GSAIMatchOrientation",
-"class": "GSAILookWhereYouGo",
-"language": "GDScript",
-"path": "res://addons/com.gdquest.godot-steering-ai-framework/Behaviors/GSAILookWhereYouGo.gd"
-}, {
-"base": "GSAISteeringBehavior",
-"class": "GSAIMatchOrientation",
-"language": "GDScript",
-"path": "res://addons/com.gdquest.godot-steering-ai-framework/Behaviors/GSAIMatchOrientation.gd"
-}, {
-"base": "Reference",
-"class": "GSAIPath",
-"language": "GDScript",
-"path": "res://addons/com.gdquest.godot-steering-ai-framework/GSAIPath.gd"
-}, {
-"base": "GSAISteeringBehavior",
-"class": "GSAIPriority",
-"language": "GDScript",
-"path": "res://addons/com.gdquest.godot-steering-ai-framework/Behaviors/GSAIPriority.gd"
-}, {
-"base": "Reference",
-"class": "GSAIProximity",
-"language": "GDScript",
-"path": "res://addons/com.gdquest.godot-steering-ai-framework/Proximities/GSAIProximity.gd"
-}, {
-"base": "GSAISteeringBehavior",
-"class": "GSAIPursue",
-"language": "GDScript",
-"path": "res://addons/com.gdquest.godot-steering-ai-framework/Behaviors/GSAIPursue.gd"
-}, {
-"base": "GSAIProximity",
-"class": "GSAIRadiusProximity",
-"language": "GDScript",
-"path": "res://addons/com.gdquest.godot-steering-ai-framework/Proximities/GSAIRadiusProximity.gd"
-}, {
-"base": "GSAISpecializedAgent",
-"class": "GSAIRigidBody2DAgent",
-"language": "GDScript",
-"path": "res://addons/com.gdquest.godot-steering-ai-framework/Agents/GSAIRigidBody2DAgent.gd"
-}, {
-"base": "GSAISpecializedAgent",
-"class": "GSAIRigidBody3DAgent",
-"language": "GDScript",
-"path": "res://addons/com.gdquest.godot-steering-ai-framework/Agents/GSAIRigidBody3DAgent.gd"
-}, {
-"base": "GSAISteeringBehavior",
-"class": "GSAISeek",
-"language": "GDScript",
-"path": "res://addons/com.gdquest.godot-steering-ai-framework/Behaviors/GSAISeek.gd"
-}, {
-"base": "GSAIGroupBehavior",
-"class": "GSAISeparation",
-"language": "GDScript",
-"path": "res://addons/com.gdquest.godot-steering-ai-framework/Behaviors/GSAISeparation.gd"
-}, {
-"base": "GSAISteeringAgent",
-"class": "GSAISpecializedAgent",
-"language": "GDScript",
-"path": "res://addons/com.gdquest.godot-steering-ai-framework/Agents/GSAISpecializedAgent.gd"
-}, {
-"base": "GSAIAgentLocation",
-"class": "GSAISteeringAgent",
-"language": "GDScript",
-"path": "res://addons/com.gdquest.godot-steering-ai-framework/GSAISteeringAgent.gd"
-}, {
-"base": "Reference",
-"class": "GSAISteeringBehavior",
-"language": "GDScript",
-"path": "res://addons/com.gdquest.godot-steering-ai-framework/GSAISteeringBehavior.gd"
-}, {
-"base": "Reference",
-"class": "GSAITargetAcceleration",
-"language": "GDScript",
-"path": "res://addons/com.gdquest.godot-steering-ai-framework/GSAITargetAcceleration.gd"
-}, {
-"base": "Reference",
-"class": "GSAIUtils",
-"language": "GDScript",
-"path": "res://addons/com.gdquest.godot-steering-ai-framework/GSAIUtils.gd"
 }, {
 "base": "Area2D",
 "class": "HitBox",
@@ -271,35 +126,6 @@ _global_script_class_icons={
 "DiscordRPC": "",
 "DiscordRPCEnum": "",
 "EnemyBaseState": "",
-"GSAIAgentLocation": "",
-"GSAIArrive": "",
-"GSAIAvoidCollisions": "",
-"GSAIBlend": "",
-"GSAICohesion": "",
-"GSAIEvade": "",
-"GSAIFace": "",
-"GSAIFlee": "",
-"GSAIFollowPath": "",
-"GSAIGroupBehavior": "",
-"GSAIInfiniteProximity": "",
-"GSAIKinematicBody2DAgent": "",
-"GSAIKinematicBody3DAgent": "",
-"GSAILookWhereYouGo": "",
-"GSAIMatchOrientation": "",
-"GSAIPath": "",
-"GSAIPriority": "",
-"GSAIProximity": "",
-"GSAIPursue": "",
-"GSAIRadiusProximity": "",
-"GSAIRigidBody2DAgent": "",
-"GSAIRigidBody3DAgent": "",
-"GSAISeek": "",
-"GSAISeparation": "",
-"GSAISpecializedAgent": "",
-"GSAISteeringAgent": "",
-"GSAISteeringBehavior": "",
-"GSAITargetAcceleration": "",
-"GSAIUtils": "",
 "HitBox": "",
 "IPC": "",
 "IPCModule": "",
@@ -340,6 +166,11 @@ SoundMngr="*res://addons/toolbox_project/autoloads/SoundMngr.gd"
 ControlMngr="*res://addons/toolbox_project/autoloads/ControlMngr.gd"
 Settings="*res://singletons/Settings.gd"
 
+[display]
+
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/godot_editor_discord_presence/plugin.cfg", "res://addons/imrp/plugin.cfg", "res://addons/toolbox_project/plugin.cfg" )
@@ -350,10 +181,10 @@ enabled=PoolStringArray( "res://addons/godot_editor_discord_presence/plugin.cfg"
 2d_physics/layer_2="Fixtures"
 2d_physics/layer_4="Predator"
 2d_physics/layer_5="Prey"
-2d_physics/layer_6="People"
+2d_physics/layer_6="Resource"
 2d_physics/layer_8="PredatorHurtBox"
 2d_physics/layer_9="PreyHurtBox"
-2d_physics/layer_10="PeopleHurtBox"
+2d_physics/layer_10="ResourceHurtBox"
 
 [physics]
 
