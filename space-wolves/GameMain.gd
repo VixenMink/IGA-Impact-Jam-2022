@@ -1,6 +1,6 @@
 extends Node2D
 
-const Level = preload("res://game2/BattleIsland.tscn")
+const Level = preload("res://space-wolves/Ranch.tscn")
 var level
 
 # Called when the node enters the scene tree for the first time.

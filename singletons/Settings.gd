@@ -10,8 +10,6 @@ var volume_sound := 0
 var volume_music := 0
 var volume_voice := 0
 
-enum EVENTS {DIALOG, SCENE_CHANGE, ITEM}
-
 enum MENU_STATES {
 	INITIAL,
 	DEFAULT, 

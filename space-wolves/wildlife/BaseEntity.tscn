@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://space-wolves/utilities/HurtBox.tscn" type="PackedScene" id=1]
+[ext_resource path="res://space-wolves/wildlife/BaseEntity.gd" type="Script" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://space-wolves/utilities/HitBox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://space-wolves/utilities/CurveTween.tscn" type="PackedScene" id=5]
+[ext_resource path="res://space-wolves/assets/resources/standard_curve.tres" type="Curve" id=6]
+[ext_resource path="res://space-wolves/wildlife/MobLabel.tscn" type="PackedScene" id=9]
+[ext_resource path="res://space-wolves/statemachine/StateMachine.tscn" type="PackedScene" id=10]
+
+[node name="BaseEntity" type="KinematicBody2D" groups=["enemies"]]
+light_mask = 0
+position = Vector2( 0, 3 )
+scale = Vector2( 0.992255, 0.974068 )
+collision_layer = 0
+collision_mask = 2147483649
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+
+[node name="PhysicsBox" type="CollisionShape2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="DamagedTween" parent="." instance=ExtResource( 5 )]
+curve = ExtResource( 6 )
+
+[node name="HurtBox" parent="." instance=ExtResource( 1 )]
+scale = Vector2( 0.964193, 0.97233 )
+collision_layer = 4
+
+[node name="HitboxPivot" type="Position2D" parent="."]
+
+[node name="HitBox" parent="HitboxPivot" instance=ExtResource( 4 )]
+collision_mask = 2147483662
+
+[node name="AttackRange" type="Area2D" parent="HitboxPivot"]
+collision_layer = 0
+collision_mask = 14
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxPivot/AttackRange"]
+
+[node name="DetectRange" type="Area2D" parent="HitboxPivot"]
+collision_layer = 0
+collision_mask = 14
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxPivot/DetectRange"]
+
+[node name="ProjectilePoint" type="Position2D" parent="HitboxPivot"]
+rotation = 1.5708
+
+[node name="MobLabel" parent="." instance=ExtResource( 9 )]
+margin_left = -19.4375
+margin_top = -49.303
+margin_right = 3.5625
+margin_bottom = -28.303
+
+[node name="StateMachine" parent="." instance=ExtResource( 10 )]
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PoolVector2Array( 10.4479, -93.9228 )
+width = 1.0
+end_cap_mode = 1
+
+[connection signal="body_entered" from="HitboxPivot/AttackRange" to="." method="_on_AttackRange_body_entered"]
+[connection signal="body_exited" from="HitboxPivot/AttackRange" to="." method="_on_AttackRange_body_exited"]
+[connection signal="body_entered" from="HitboxPivot/DetectRange" to="." method="_on_DetectRange_body_entered"]
+[connection signal="body_exited" from="HitboxPivot/DetectRange" to="." method="_on_DetectRange_body_exited"]
+[connection signal="state_changed" from="StateMachine" to="." method="_on_StateMachine_state_changed"]
+
+[editable path="HurtBox"]
+[editable path="HitboxPivot/HitBox"]

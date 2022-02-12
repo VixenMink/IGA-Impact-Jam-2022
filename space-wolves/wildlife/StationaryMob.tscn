@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://space-wolves/wildlife/BaseEntity.tscn" type="PackedScene" id=1]
+[ext_resource path="res://space-wolves/wildlife/MovementStates/DoNothingState.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/shaders/intense_outline.shader" type="Shader" id=3]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 3 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 28.542, 29.8963 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "default"
+loop = true
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 35.1988, 34.4054 )
+
+[node name="StationaryMob" instance=ExtResource( 1 )]
+SPEED = 40
+MAX_HEALTH = 8
+
+[node name="Sprite" parent="." index="0"]
+material = SubResource( 1 )
+
+[node name="PhysicsBox" parent="." index="1"]
+visible = false
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" parent="." index="2"]
+anims/default = SubResource( 3 )
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+visible = false
+shape = SubResource( 5 )
+
+[node name="HitBox" parent="HitboxPivot" index="0"]
+DAMAGE = 0
+
+[node name="CollisionShape2D" parent="HitboxPivot/HitBox" index="0"]
+visible = false
+
+[node name="StateMachine" parent="." index="7"]
+kinematic_body = NodePath("..")
+animation_player = NodePath("../AnimationPlayer")
+start_state = NodePath("DoNothingState")
+
+[node name="DoNothingState" parent="StateMachine" index="0" instance=ExtResource( 2 )]
+
+[editable path="HurtBox"]
+[editable path="HitboxPivot/HitBox"]
