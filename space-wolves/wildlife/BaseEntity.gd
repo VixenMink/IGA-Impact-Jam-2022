@@ -52,7 +52,6 @@ signal died
 
 func _ready():
 	var _err = damagedtween.connect("curve_tween", self, "_on_DamagedTween_curve_tween")
-	self.connect('ShowYourSelf', self, 'iamThis')
 	_err = hurtbox.connect("area_entered", self, "_on_hurtbox_entered")
 	
 	randomize()
@@ -94,8 +93,12 @@ func _physics_process(_delta):
 		hungry = true
 
 
-func iamThis():
+func _ShowYourName():
+	print('i should show myself')
 	nameplate.visible = true
+
+func _hideYourName():
+	nameplate.visible = false
 
 func _draw() -> void:
 	if can_see_target:

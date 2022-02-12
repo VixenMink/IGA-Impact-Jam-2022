@@ -1,9 +1,9 @@
 extends CanvasLayer
 
-signal NotEnoughMoney
 signal spawnPredator
 signal spawnPrey
 signal spawnResource
+signal killMob
 
 onready var Cash = $MarginContainer/BaseBox/TopBox/VBoxContainer/Cash
 onready var PredatorPop = $MarginContainer/BaseBox/TopBox/VBoxContainer/Cash
@@ -17,6 +17,7 @@ onready var PreySpawn = $MarginContainer/BaseBox/BottomGrid/PreySpawn
 onready var PreyKill = $MarginContainer/BaseBox/BottomGrid/PreyKill
 onready var ResourceSpawn = $MarginContainer/BaseBox/BottomGrid/ResourceSpawn
 onready var ResourceKill = $MarginContainer/BaseBox/BottomGrid/ResourceKill
+onready var NotEnoughMoney = $MarginContainer/BaseBox/MiddleBox/AlertBox
 
 var predatorpopValue = Settings.Predator_Pop.size()
 var preypopValue = Settings.Prey_Pop.size()
@@ -31,10 +32,10 @@ func _ready():
 	preypopValue = Settings.Prey_Pop.size()
 	resourcepopValue = Settings.Resource_Pop.size()
 	cashmoney = Settings.Player_Cash
+	Round.text = str('Round: ' , Settings.GameRound)
 
 
 func _process(delta):
-	print('I am printing' , predatorpopValue)
 	update_hud()
 
 func update_hud():
@@ -54,34 +55,40 @@ func _on_PredatorSPawn_pressed():
 	var cost = 1500
 	if cost < cashmoney:
 		predatorpopValue = predatorpopValue + 1
+		cashmoney = cashmoney - cost
 		emit_signal("spawnPredator")
 	else:
-		emit_signal("NotEnoughMoney")
+		NotEnoughMoney.popup()
 	update_hud()
 
 func _on_PreySpawn_pressed():
 	var cost = 750
 	if cost < cashmoney:
 		preypopValue = preypopValue + 1
+		cashmoney = cashmoney - cost
 		emit_signal("spawnPrey")
 	else:
-		emit_signal("NotEnoughMoney")
+		NotEnoughMoney.popup()
 	update_hud()
 
 func _on_ResourceSpawn_pressed():
 	var cost = 300
 	if cost < cashmoney:
 		resourcepopValue = resourcepopValue + 1
+		cashmoney = cashmoney - cost
 		emit_signal("spawnResource")
 	else:
-		emit_signal("NotEnoughMoney")
+		NotEnoughMoney.popup()
 	update_hud()
 
 func _on_PredatorKill_pressed():
-	update_hud()
+	emit_signal("killMob")
+
 
 func _on_PreyKill_pressed():
-	update_hud()
+	emit_signal("killMob")
+
 
 func _on_ResourceKill_pressed():
-	update_hud()
+	emit_signal("killMob")
+

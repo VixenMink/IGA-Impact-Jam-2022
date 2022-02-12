@@ -91,6 +91,13 @@ margin_bottom = 464.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 4.0
 
+[node name="AlertBox" type="AcceptDialog" parent="MarginContainer/BaseBox/MiddleBox"]
+margin_left = 340.0
+margin_top = 155.0
+margin_right = 644.0
+margin_bottom = 213.0
+dialog_text = "You don't have enough money for this action!"
+
 [node name="BottomGrid" type="GridContainer" parent="MarginContainer/BaseBox"]
 margin_top = 468.0
 margin_right = 984.0
