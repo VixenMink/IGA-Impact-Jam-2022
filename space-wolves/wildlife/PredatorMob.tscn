@@ -82,7 +82,6 @@ radius = 500.0
 collision_layer = 8
 collision_mask = 2147483667
 SPEED = 45
-MAX_HEALTH = 10
 
 [node name="Sprite" parent="." index="0"]
 scale = Vector2( 0.25, 0.25 )
