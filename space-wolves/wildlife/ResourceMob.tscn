@@ -21,7 +21,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="ResourceMob" groups=["resource"] instance=ExtResource( 1 )]
+[node name="ResourceMob" groups=["Resource"] instance=ExtResource( 1 )]
 collision_layer = 32
 collision_mask = 2147483651
 SPEED = 5
@@ -53,7 +53,11 @@ start_state = NodePath("RandomMoveState")
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="9"]
 position = Vector2( 1.00781, -5.13311 )
 frames = SubResource( 4 )
+frame = 3
 playing = true
+
+[node name="NamePlate" parent="." index="10"]
+text = "Resource"
 
 [editable path="HurtBox"]
 [editable path="HitboxPivot/HitBox"]
