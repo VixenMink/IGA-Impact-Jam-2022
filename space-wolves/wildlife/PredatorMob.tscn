@@ -113,7 +113,6 @@ collision_mask = 16
 shape = SubResource( 5 )
 
 [node name="DetectRange" parent="HitboxPivot" index="2"]
-visible = false
 collision_mask = 16
 
 [node name="CollisionShape2D" parent="HitboxPivot/DetectRange" index="0"]

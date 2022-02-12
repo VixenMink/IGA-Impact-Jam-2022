@@ -73,6 +73,7 @@ func _process(_delta):
 
 
 func _physics_process(_delta):
+	
 	if detectableEntities.size() > 0:
 		can_see_target = _check_target_line_of_sight()
 	else:
@@ -159,7 +160,7 @@ func spritedir_loop() -> void:
 
 func anim_switch(animation, speed = 1):
 	if anim == null or !anim.has_animation(str(animation,'_',sprite_dir)):
-		print('fail at animation: ', animation,'_',sprite_dir)
+		#print('fail at animation: ', animation,'_',sprite_dir)
 		return
 	var newanim = str(animation,'_',sprite_dir)
 	
@@ -250,7 +251,7 @@ func _check_target_line_of_sight() -> bool:
 	var space_state = get_world_2d().direct_space_state
 	
 	for curTarget in detectableEntities:
-		var visionMask = 60
+		var visionMask = 56
 
 		var result = space_state.intersect_ray(global_position, curTarget.global_position, [self], visionMask)
 		
