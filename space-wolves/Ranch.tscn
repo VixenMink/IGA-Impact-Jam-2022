@@ -143,5 +143,4 @@ position = Vector2( 1014, 522 )
 
 [node name="HUD" parent="." instance=ExtResource( 9 )]
 
-
 [connection signal="timeout" from="TickTimer" to="." method="_on_TickTimer_timeout"]
