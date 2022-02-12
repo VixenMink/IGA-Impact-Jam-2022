@@ -8,10 +8,352 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "Astar",
+"language": "GDScript",
+"path": "res://space-wolves/Astar.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "BaseEntity",
+"language": "GDScript",
+"path": "res://space-wolves/enemies/BaseEntity.gd"
+}, {
+"base": "Tween",
+"class": "CurveTween",
+"language": "GDScript",
+"path": "res://space-wolves/utilities/CurveTween.gd"
+}, {
+"base": "Node",
+"class": "DiscordRPC",
+"language": "GDScript",
+"path": "res://addons/godot_editor_discord_presence/Discord RPC/DiscordRPC.gd"
+}, {
+"base": "Reference",
+"class": "DiscordRPCEnum",
+"language": "GDScript",
+"path": "res://addons/godot_editor_discord_presence/Discord RPC/DiscordRPCEnum.gd"
+}, {
+"base": "Node",
+"class": "EnemyBaseState",
+"language": "GDScript",
+"path": "res://space-wolves/statemachine/EnemyBaseState.gd"
+}, {
+"base": "Reference",
+"class": "GSAIAgentLocation",
+"language": "GDScript",
+"path": "res://addons/com.gdquest.godot-steering-ai-framework/GSAIAgentLocation.gd"
+}, {
+"base": "GSAISteeringBehavior",
+"class": "GSAIArrive",
+"language": "GDScript",
+"path": "res://addons/com.gdquest.godot-steering-ai-framework/Behaviors/GSAIArrive.gd"
+}, {
+"base": "GSAIGroupBehavior",
+"class": "GSAIAvoidCollisions",
+"language": "GDScript",
+"path": "res://addons/com.gdquest.godot-steering-ai-framework/Behaviors/GSAIAvoidCollisions.gd"
+}, {
+"base": "GSAISteeringBehavior",
+"class": "GSAIBlend",
+"language": "GDScript",
+"path": "res://addons/com.gdquest.godot-steering-ai-framework/Behaviors/GSAIBlend.gd"
+}, {
+"base": "GSAIGroupBehavior",
+"class": "GSAICohesion",
+"language": "GDScript",
+"path": "res://addons/com.gdquest.godot-steering-ai-framework/Behaviors/GSAICohesion.gd"
+}, {
+"base": "GSAIPursue",
+"class": "GSAIEvade",
+"language": "GDScript",
+"path": "res://addons/com.gdquest.godot-steering-ai-framework/Behaviors/GSAIEvade.gd"
+}, {
+"base": "GSAIMatchOrientation",
+"class": "GSAIFace",
+"language": "GDScript",
+"path": "res://addons/com.gdquest.godot-steering-ai-framework/Behaviors/GSAIFace.gd"
+}, {
+"base": "GSAISeek",
+"class": "GSAIFlee",
+"language": "GDScript",
+"path": "res://addons/com.gdquest.godot-steering-ai-framework/Behaviors/GSAIFlee.gd"
+}, {
+"base": "GSAIArrive",
+"class": "GSAIFollowPath",
+"language": "GDScript",
+"path": "res://addons/com.gdquest.godot-steering-ai-framework/Behaviors/GSAIFollowPath.gd"
+}, {
+"base": "GSAISteeringBehavior",
+"class": "GSAIGroupBehavior",
+"language": "GDScript",
+"path": "res://addons/com.gdquest.godot-steering-ai-framework/GSAIGroupBehavior.gd"
+}, {
+"base": "GSAIProximity",
+"class": "GSAIInfiniteProximity",
+"language": "GDScript",
+"path": "res://addons/com.gdquest.godot-steering-ai-framework/Proximities/GSAIInfiniteProximity.gd"
+}, {
+"base": "GSAISpecializedAgent",
+"class": "GSAIKinematicBody2DAgent",
+"language": "GDScript",
+"path": "res://addons/com.gdquest.godot-steering-ai-framework/Agents/GSAIKinematicBody2DAgent.gd"
+}, {
+"base": "GSAISpecializedAgent",
+"class": "GSAIKinematicBody3DAgent",
+"language": "GDScript",
+"path": "res://addons/com.gdquest.godot-steering-ai-framework/Agents/GSAIKinematicBody3DAgent.gd"
+}, {
+"base": "GSAIMatchOrientation",
+"class": "GSAILookWhereYouGo",
+"language": "GDScript",
+"path": "res://addons/com.gdquest.godot-steering-ai-framework/Behaviors/GSAILookWhereYouGo.gd"
+}, {
+"base": "GSAISteeringBehavior",
+"class": "GSAIMatchOrientation",
+"language": "GDScript",
+"path": "res://addons/com.gdquest.godot-steering-ai-framework/Behaviors/GSAIMatchOrientation.gd"
+}, {
+"base": "Reference",
+"class": "GSAIPath",
+"language": "GDScript",
+"path": "res://addons/com.gdquest.godot-steering-ai-framework/GSAIPath.gd"
+}, {
+"base": "GSAISteeringBehavior",
+"class": "GSAIPriority",
+"language": "GDScript",
+"path": "res://addons/com.gdquest.godot-steering-ai-framework/Behaviors/GSAIPriority.gd"
+}, {
+"base": "Reference",
+"class": "GSAIProximity",
+"language": "GDScript",
+"path": "res://addons/com.gdquest.godot-steering-ai-framework/Proximities/GSAIProximity.gd"
+}, {
+"base": "GSAISteeringBehavior",
+"class": "GSAIPursue",
+"language": "GDScript",
+"path": "res://addons/com.gdquest.godot-steering-ai-framework/Behaviors/GSAIPursue.gd"
+}, {
+"base": "GSAIProximity",
+"class": "GSAIRadiusProximity",
+"language": "GDScript",
+"path": "res://addons/com.gdquest.godot-steering-ai-framework/Proximities/GSAIRadiusProximity.gd"
+}, {
+"base": "GSAISpecializedAgent",
+"class": "GSAIRigidBody2DAgent",
+"language": "GDScript",
+"path": "res://addons/com.gdquest.godot-steering-ai-framework/Agents/GSAIRigidBody2DAgent.gd"
+}, {
+"base": "GSAISpecializedAgent",
+"class": "GSAIRigidBody3DAgent",
+"language": "GDScript",
+"path": "res://addons/com.gdquest.godot-steering-ai-framework/Agents/GSAIRigidBody3DAgent.gd"
+}, {
+"base": "GSAISteeringBehavior",
+"class": "GSAISeek",
+"language": "GDScript",
+"path": "res://addons/com.gdquest.godot-steering-ai-framework/Behaviors/GSAISeek.gd"
+}, {
+"base": "GSAIGroupBehavior",
+"class": "GSAISeparation",
+"language": "GDScript",
+"path": "res://addons/com.gdquest.godot-steering-ai-framework/Behaviors/GSAISeparation.gd"
+}, {
+"base": "GSAISteeringAgent",
+"class": "GSAISpecializedAgent",
+"language": "GDScript",
+"path": "res://addons/com.gdquest.godot-steering-ai-framework/Agents/GSAISpecializedAgent.gd"
+}, {
+"base": "GSAIAgentLocation",
+"class": "GSAISteeringAgent",
+"language": "GDScript",
+"path": "res://addons/com.gdquest.godot-steering-ai-framework/GSAISteeringAgent.gd"
+}, {
+"base": "Reference",
+"class": "GSAISteeringBehavior",
+"language": "GDScript",
+"path": "res://addons/com.gdquest.godot-steering-ai-framework/GSAISteeringBehavior.gd"
+}, {
+"base": "Reference",
+"class": "GSAITargetAcceleration",
+"language": "GDScript",
+"path": "res://addons/com.gdquest.godot-steering-ai-framework/GSAITargetAcceleration.gd"
+}, {
+"base": "Reference",
+"class": "GSAIUtils",
+"language": "GDScript",
+"path": "res://addons/com.gdquest.godot-steering-ai-framework/GSAIUtils.gd"
+}, {
+"base": "Area2D",
+"class": "HitBox",
+"language": "GDScript",
+"path": "res://space-wolves/utilities/HitBox.gd"
+}, {
+"base": "Reference",
+"class": "IPC",
+"language": "GDScript",
+"path": "res://addons/godot_editor_discord_presence/Discord RPC/ipc/IPC.gd"
+}, {
+"base": "Reference",
+"class": "IPCModule",
+"language": "GDScript",
+"path": "res://addons/godot_editor_discord_presence/Discord RPC/ipc/module/IPCModule.gd"
+}, {
+"base": "Reference",
+"class": "IPCPayload",
+"language": "GDScript",
+"path": "res://addons/godot_editor_discord_presence/Discord RPC/ipc/IPCPayload.gd"
+}, {
+"base": "Reference",
+"class": "IPCPipe",
+"language": "GDScript",
+"path": "res://addons/godot_editor_discord_presence/Discord RPC/ipc/pipe/IPCPipe.gd"
+}, {
+"base": "Reference",
+"class": "IPCUtil",
+"language": "GDScript",
+"path": "res://addons/godot_editor_discord_presence/Discord RPC/util/IPCUtil.gd"
+}, {
+"base": "Reference",
+"class": "RichPresence",
+"language": "GDScript",
+"path": "res://addons/godot_editor_discord_presence/Discord RPC/ipc/module/rich presence/RichPresence.gd"
+}, {
+"base": "Reference",
+"class": "RichPresenceButton",
+"language": "GDScript",
+"path": "res://addons/godot_editor_discord_presence/Discord RPC/ipc/module/rich presence/RichPresenceButton.gd"
+}, {
+"base": "IPCModule",
+"class": "RichPresenceModule",
+"language": "GDScript",
+"path": "res://addons/godot_editor_discord_presence/Discord RPC/ipc/module/rich presence/RichPresenceModule.gd"
+}, {
+"base": "Node2D",
+"class": "Screen",
+"language": "GDScript",
+"path": "res://addons/toolbox_project/scenes/screens/Screen.gd"
+}, {
+"base": "",
+"class": "StreamPeerUnix",
+"language": "NativeScript",
+"path": "res://addons/godot_editor_discord_presence/godot-unix-socket/unix-socket.gdns"
+}, {
+"base": "Reference",
+"class": "URLUtil",
+"language": "GDScript",
+"path": "res://addons/godot_editor_discord_presence/Discord RPC/util/URLUtil.gd"
+}, {
+"base": "Reference",
+"class": "UUID",
+"language": "GDScript",
+"path": "res://addons/godot_editor_discord_presence/Discord RPC/util/UUID.gd"
+}, {
+"base": "IPCPipe",
+"class": "UnixPipe",
+"language": "GDScript",
+"path": "res://addons/godot_editor_discord_presence/Discord RPC/ipc/pipe/UnixPipe.gd"
+}, {
+"base": "IPCPayload",
+"class": "UpdateRichPresencePayload",
+"language": "GDScript",
+"path": "res://addons/godot_editor_discord_presence/Discord RPC/ipc/module/rich presence/UpdateRichPresencePayload.gd"
+}, {
+"base": "IPCPipe",
+"class": "WindowsPipe",
+"language": "GDScript",
+"path": "res://addons/godot_editor_discord_presence/Discord RPC/ipc/pipe/WindowsPipe.gd"
+} ]
+_global_script_class_icons={
+"Astar": "",
+"BaseEntity": "",
+"CurveTween": "",
+"DiscordRPC": "",
+"DiscordRPCEnum": "",
+"EnemyBaseState": "",
+"GSAIAgentLocation": "",
+"GSAIArrive": "",
+"GSAIAvoidCollisions": "",
+"GSAIBlend": "",
+"GSAICohesion": "",
+"GSAIEvade": "",
+"GSAIFace": "",
+"GSAIFlee": "",
+"GSAIFollowPath": "",
+"GSAIGroupBehavior": "",
+"GSAIInfiniteProximity": "",
+"GSAIKinematicBody2DAgent": "",
+"GSAIKinematicBody3DAgent": "",
+"GSAILookWhereYouGo": "",
+"GSAIMatchOrientation": "",
+"GSAIPath": "",
+"GSAIPriority": "",
+"GSAIProximity": "",
+"GSAIPursue": "",
+"GSAIRadiusProximity": "",
+"GSAIRigidBody2DAgent": "",
+"GSAIRigidBody3DAgent": "",
+"GSAISeek": "",
+"GSAISeparation": "",
+"GSAISpecializedAgent": "",
+"GSAISteeringAgent": "",
+"GSAISteeringBehavior": "",
+"GSAITargetAcceleration": "",
+"GSAIUtils": "",
+"HitBox": "",
+"IPC": "",
+"IPCModule": "",
+"IPCPayload": "",
+"IPCPipe": "",
+"IPCUtil": "",
+"RichPresence": "",
+"RichPresenceButton": "",
+"RichPresenceModule": "",
+"Screen": "",
+"StreamPeerUnix": "",
+"URLUtil": "",
+"UUID": "",
+"UnixPipe": "",
+"UpdateRichPresencePayload": "",
+"WindowsPipe": ""
+}
+
 [application]
 
 config/name="IGA-Impact-Jam-2022"
+run/main_scene="res://screens/ScreenSplash.tscn"
 config/icon="res://icon.png"
+
+[audio]
+
+default_bus_layout="res://addons/toolbox_project/bus_layout.tres"
+
+[autoload]
+
+C="*res://addons/toolbox_project/autoloads/Config.gd"
+D="*res://addons/toolbox_project/autoloads/Debug.gd"
+ScreenMngr="*res://addons/toolbox_project/autoloads/ScreenMngr.gd"
+StateMngr="*res://addons/toolbox_project/autoloads/StateMngr.gd"
+SignalMngr="*res://addons/toolbox_project/autoloads/SignalMngr.gd"
+PersistenceMngr="*res://addons/toolbox_project/autoloads/PersistenceMngr.gd"
+SoundMngr="*res://addons/toolbox_project/autoloads/SoundMngr.gd"
+ControlMngr="*res://addons/toolbox_project/autoloads/ControlMngr.gd"
+Settings="*res://singletons/Settings.gd"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/godot_editor_discord_presence/plugin.cfg", "res://addons/imrp/plugin.cfg", "res://addons/toolbox_project/plugin.cfg" )
+
+[layer_names]
+
+2d_physics/layer_1="Terrain"
+2d_physics/layer_2="Fixtures"
+2d_physics/layer_4="Predator"
+2d_physics/layer_5="Prey"
+2d_physics/layer_6="People"
+2d_physics/layer_8="PredatorHurtBox"
+2d_physics/layer_9="PreyHurtBox"
+2d_physics/layer_10="PeopleHurtBox"
 
 [physics]
 

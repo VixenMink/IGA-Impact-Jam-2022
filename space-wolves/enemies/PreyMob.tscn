@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://space-wolves/enemies/BaseEntity.tscn" type="PackedScene" id=1]
+[ext_resource path="res://space-wolves/enemies/MovementStates/RandomMoveState.tscn" type="PackedScene" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 28.542, 29.8963 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 35.1988, 34.4054 )
+
+[node name="PreyMob" instance=ExtResource( 1 )]
+collision_layer = 16
+collision_mask = 2147483659
+SPEED = 40
+MAX_HEALTH = 8
+
+[node name="PhysicsBox" parent="." index="1"]
+shape = SubResource( 1 )
+
+[node name="HurtBox" parent="." index="4"]
+collision_layer = 256
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+shape = SubResource( 3 )
+
+[node name="HitBox" parent="HitboxPivot" index="0"]
+DAMAGE = 0
+
+[node name="StateMachine" parent="." index="7"]
+kinematic_body = NodePath("..")
+animation_player = NodePath("../AnimationPlayer")
+start_state = NodePath("RandomMoveState")
+
+[node name="RandomMoveState" parent="StateMachine" index="0" instance=ExtResource( 2 )]
+
+[editable path="HurtBox"]
+[editable path="HitboxPivot/HitBox"]
