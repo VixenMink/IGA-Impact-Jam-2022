@@ -9,8 +9,9 @@
 [ext_resource path="res://space-wolves/wildlife/BasicStates/ChaseState.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/SpaceWolfAnimationTestAssetSHeet.png" type="Texture" id=8]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 6.04683, 6.54472 )
+[sub_resource type="CapsuleShape2D" id=12]
+radius = 13.3461
+height = 35.7918
 
 [sub_resource type="Animation" id=8]
 length = 0.001
@@ -37,18 +38,6 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ false ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0 ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -98,30 +87,33 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 9, 9 )
 
-[sub_resource type="CircleShape2D" id=9]
-radius = 12.0937
+[sub_resource type="CapsuleShape2D" id=11]
+radius = 11.2928
+height = 11.6797
 
 [sub_resource type="CircleShape2D" id=5]
-radius = 26.5074
+radius = 32.2498
 
 [sub_resource type="CircleShape2D" id=6]
 radius = 500.0
 
 [node name="PredatorMob" instance=ExtResource( 6 )]
+position = Vector2( 0, 0 )
 collision_layer = 8
 collision_mask = 2147483667
 SPEED = 45
 
 [node name="Sprite" parent="." index="0"]
-position = Vector2( -8.06244, 6.15973 )
 rotation = 1.5708
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 8 )
+offset = Vector2( -27, 80 )
 hframes = 11
 vframes = 4
 
 [node name="PhysicsBox" parent="." index="1"]
-shape = SubResource( 1 )
+rotation = 1.5708
+shape = SubResource( 12 )
 
 [node name="AnimationPlayer" parent="." index="2"]
 anims/RESET = SubResource( 8 )
@@ -135,12 +127,16 @@ collision_layer = 128
 visible = false
 shape = SubResource( 4 )
 
+[node name="HitboxPivot" parent="." index="5"]
+rotation = 1.5708
+
 [node name="HitBox" parent="HitboxPivot" index="0"]
 collision_mask = 2147483904
 
 [node name="CollisionShape2D" parent="HitboxPivot/HitBox" index="0"]
 position = Vector2( 0, 0 )
-shape = SubResource( 9 )
+rotation = 3.14159
+shape = SubResource( 11 )
 
 [node name="AttackRange" parent="HitboxPivot" index="1"]
 collision_mask = 16
