@@ -3,8 +3,8 @@ extends KinematicBody2D
 class_name BaseEntity
 
 export (int) var SPEED := 0
-export (int) var MAX_HEALTH := 2
-export (int) var DECAY_RATE := .2
+export (float) var MAX_HEALTH := 10.0
+export (float) var DECAY_RATE := 1.0
 
 var state = 'error'
 
@@ -84,6 +84,7 @@ func _physics_process(_delta):
 	
 	if health < MAX_HEALTH * .75:
 		hungry = true
+		buildDetectableList()
 	if hungry and health == MAX_HEALTH:
 		hungry = false
 
@@ -211,6 +212,15 @@ func _take_damage(attackBox : HitBox, entity):
 			amDead = true
 			emit_signal("died", self)
 			queue_free()
+
+
+func _take_hunger_damage():
+	health = health - DECAY_RATE
+		
+	if health <= 0:
+		amDead = true
+		emit_signal("died", self)
+		queue_free()
 
 
 func navigate():
