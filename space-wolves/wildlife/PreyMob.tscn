@@ -37,6 +37,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( 1.5, 1.5 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("HitboxPivot/HitBox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=10]
 resource_name = "attack-eat"
@@ -51,6 +63,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1.5, 1.5 ), Vector2( 1.7, 1.7 ), Vector2( 1.5, 1.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HitboxPivot/HitBox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true, false ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -81,9 +105,10 @@ radius = 75.0
 radius = 500.0
 
 [node name="PreyMob" instance=ExtResource( 6 )]
-collision_layer = 8
-collision_mask = 2147483667
-SPEED = 25
+collision_layer = 16
+collision_mask = 2147483683
+SPEED = 35
+MAX_HEALTH = 5
 
 [node name="Sprite" parent="." index="0"]
 scale = Vector2( 1.5, 1.5 )
@@ -97,7 +122,7 @@ anims/attack-eat = SubResource( 10 )
 anims/ram-windup = SubResource( 2 )
 
 [node name="HurtBox" parent="." index="4"]
-collision_layer = 128
+collision_layer = 256
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 visible = false
@@ -111,7 +136,7 @@ position = Vector2( -0.503904, -1.02662 )
 shape = SubResource( 11 )
 
 [node name="AttackRange" parent="HitboxPivot" index="1"]
-collision_mask = 16
+collision_mask = 32
 
 [node name="CollisionShape2D" parent="HitboxPivot/AttackRange" index="0"]
 shape = SubResource( 5 )

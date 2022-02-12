@@ -25,7 +25,7 @@ func _get_transition(_delta, states_map):
 
 
 func _enter_state(_new_state, _old_state):
-	selfRef.anim_switch("attack")
+	animationRef.play("attack-eat")
 	attackComplete = false
 
 

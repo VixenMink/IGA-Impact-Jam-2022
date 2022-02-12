@@ -30,7 +30,6 @@ func _enter_state(_new_state, _old_state):
 
 
 func _exit_state(_old_state, _new_state):
-	
 	pass
 
 
