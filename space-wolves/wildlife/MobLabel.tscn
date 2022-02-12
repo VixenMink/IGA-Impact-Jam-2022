@@ -2,7 +2,6 @@
 
 [ext_resource path="res://space-wolves/wildlife/MobLabel.gd" type="Script" id=1]
 
-
 [node name="MobLabel" type="Label"]
 margin_left = -10.0
 margin_top = -22.0

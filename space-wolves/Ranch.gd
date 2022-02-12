@@ -14,6 +14,9 @@ func _ready():
 		D.e("Game", ["Signal next_level is already connected"])
 	
 	pathfinding.create_navigation_map($AStarGrid)
+	
+	
+	
 	Settings.curGameState = Settings.GAME_STATES.PLAY
 
 func _on_game_started():

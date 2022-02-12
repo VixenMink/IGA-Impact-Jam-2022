@@ -31,6 +31,7 @@ func _enter_state(_new_state, _old_state):
 
 func _exit_state(_old_state, _new_state):
 	attackComplete = false
+	selfRef.health = selfRef.health + 1
 
 
 func _on_anim_complete(anim_name):
