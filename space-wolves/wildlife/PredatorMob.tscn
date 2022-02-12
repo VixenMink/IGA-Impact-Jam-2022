@@ -39,6 +39,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [ false ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "ram-windup"
@@ -92,12 +104,14 @@ radius = 11.2928
 height = 11.6797
 
 [sub_resource type="CircleShape2D" id=5]
-radius = 32.2498
+radius = 26.5074
 
 [sub_resource type="CircleShape2D" id=6]
 radius = 500.0
 
+
 [node name="PredatorMob" groups=["Predator"] instance=ExtResource( 6 )]
+
 position = Vector2( 0, 0 )
 scale = Vector2( 1, 1 )
 collision_layer = 8
