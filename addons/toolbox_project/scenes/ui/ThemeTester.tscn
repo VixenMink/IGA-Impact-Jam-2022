@@ -199,6 +199,7 @@ margin_bottom = 27.0
 
 [node name="AnimatedIcon" parent="VBoxContainer5/IconIntValue/IconHolder" index="0" instance=ExtResource( 2 )]
 scale = Vector2( 3, 3 )
+frame = 2
 
 [node name="IconValue" parent="VBoxContainer5" instance=ExtResource( 5 )]
 anchor_right = 0.0
@@ -207,9 +208,6 @@ margin_top = 43.0
 margin_right = 314.0
 margin_bottom = 75.0
 size_flags_vertical = 1
-has_halfes = true
-value_now = 2.5
-value_max = 5
 
 [node name="VBoxContainer7" type="VBoxContainer" parent="."]
 margin_top = 368.0

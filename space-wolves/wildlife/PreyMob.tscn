@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://space-wolves/wildlife/BasicStates/SeekState.tscn" type="PackedScene" id=1]
 [ext_resource path="res://space-wolves/wildlife/BasicStates/ReturnState.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://space-wolves/wildlife/BasicStates/DefaultState.tscn" type="PackedScene" id=5]
 [ext_resource path="res://space-wolves/wildlife/BaseEntity.tscn" type="PackedScene" id=6]
 [ext_resource path="res://space-wolves/wildlife/BasicStates/ChaseState.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/DeerRD500.png" type="Texture" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6.04683, 6.54472 )
@@ -26,7 +27,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:scale")
+tracks/1/path = NodePath("HitboxPivot/HitBox/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -35,10 +36,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 1.5, 1.5 ) ]
+"values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("HitboxPivot/HitBox/CollisionShape2D:disabled")
+tracks/2/path = NodePath("Sprite:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -47,34 +48,35 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ false ]
+"values": [ 0 ]
 }
 
 [sub_resource type="Animation" id=10]
 resource_name = "attack-eat"
+loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:scale")
+tracks/0/path = NodePath("HitboxPivot/HitBox/CollisionShape2D:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1.5, 1.5 ), Vector2( 1.7, 1.7 ), Vector2( 1.5, 1.5 ) ]
+"times": PoolRealArray( 0, 0.3, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true, false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("HitboxPivot/HitBox/CollisionShape2D:disabled")
+tracks/1/path = NodePath("Sprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3, 0.7, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ false, true, true, false ]
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 5 ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -105,12 +107,16 @@ radius = 75.0
 radius = 500.0
 
 [node name="PreyMob" instance=ExtResource( 6 )]
+position = Vector2( 0, 0 )
+scale = Vector2( 1, 1 )
 collision_layer = 16
 collision_mask = 2147483683
 SPEED = 35
 
 [node name="Sprite" parent="." index="0"]
-scale = Vector2( 1.5, 1.5 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 8 )
+hframes = 6
 
 [node name="PhysicsBox" parent="." index="1"]
 shape = SubResource( 1 )
