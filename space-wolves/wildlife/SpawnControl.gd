@@ -48,7 +48,7 @@ func _on_breedResource():
 
 
 func _on_breedPredator(howmany: float):
-	var repeatNumber = howmany + (randi()%5+1)
+	var repeatNumber = howmany + (randi()%5)
 	while repeatNumber > 0:
 		var spawnlocation = (Settings.SpawnLocations[randi()%Settings.SpawnLocations.size()]).global_position
 		var newMob = predatorRef.instance()
@@ -58,7 +58,7 @@ func _on_breedPredator(howmany: float):
 
 
 func _on_breedPrey(howmany: float):
-	var repeatNumber = howmany + (randi()%3+1)
+	var repeatNumber = howmany + (randi()%3)
 	while repeatNumber > 0:
 		var spawnlocation = (Settings.SpawnLocations[randi()%Settings.SpawnLocations.size()]).global_position
 		var newMob = preyRef.instance()

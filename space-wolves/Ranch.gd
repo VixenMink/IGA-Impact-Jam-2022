@@ -57,7 +57,7 @@ func _process(_delta):
 	elif resourceCount > 10 and resourceCount > 5 * preyCount:
 		$HUD.Warning.text = "Hunt flora! The flora will run wild in the system if not culled!"
 	elif Settings.Player_Cash < roundCount * 500:
-		$HUD.Warning.text = "Cull populations! You don't have enough money for upkeep of the ranch!"
+		$HUD.Warning.text = "Cull populations! You don't have enough money for upkeep!"
 	else:
 		$HUD.Warning.text = ""
 

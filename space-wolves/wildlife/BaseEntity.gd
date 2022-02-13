@@ -164,7 +164,6 @@ func _apply_momentum(curVelocity, force) -> bool:
 
 func anim_switch(animation, speed = 1):
 	if anim == null or !anim.has_animation(str(animation)):
-		#print('fail at animation: ', animation,'_',sprite_dir)
 		return
 	var newanim = str(animation)
 	
@@ -190,7 +189,7 @@ func _on_hurtbox_entered(attackBox : HitBox):
 func _take_damage(attackBox : HitBox, entity):
 	
 	health = health - attackBox.DAMAGE
-	entity.health = entity.health + 2.1
+	entity.health = entity.health + 1.1
 	
 	if health <= 0:
 		amDead = true
