@@ -41,7 +41,7 @@ func _unhandled_input(_event):
 func _on_Area2D_body_entered(body):
 	print(body.name)
 	body._ShowYourName()
-	curTarget = body
+	Settings.curTarget = body
 
 
 func _on_CaptureArea_body_exited(body):

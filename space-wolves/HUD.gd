@@ -3,12 +3,15 @@ extends CanvasLayer
 signal spawnPredator
 signal spawnPrey
 signal spawnResource
+signal killPred
+signal killPrey
+signal killResource
 signal killMob
 
 onready var Cash = $MarginContainer/BaseBox/TopBox/VBoxContainer/Cash
-onready var PredatorPop = $MarginContainer/BaseBox/TopBox/VBoxContainer/Cash
-onready var PreyPop = $"MarginContainer/BaseBox/TopBox/VBoxContainer/Predator pop"
-onready var ResourcePop = $"MarginContainer/BaseBox/TopBox/VBoxContainer/Resourse Pop"
+onready var PredatorPop = $MarginContainer/BaseBox/TopBox/VBoxContainer/PredatorPop
+onready var PreyPop = $MarginContainer/BaseBox/TopBox/VBoxContainer/PreyPop
+onready var ResourcePop = $MarginContainer/BaseBox/TopBox/VBoxContainer/ResoursePop
 onready var Progress = $MarginContainer/BaseBox/TopBox/VBoxContainer2/ProgressBar
 onready var Round = $MarginContainer/BaseBox/TopBox/VBoxContainer2/Round
 onready var PredatorSpawn = $MarginContainer/BaseBox/BottomGrid/PredatorSPawn
@@ -18,6 +21,10 @@ onready var PreyKill = $MarginContainer/BaseBox/BottomGrid/PreyKill
 onready var ResourceSpawn = $MarginContainer/BaseBox/BottomGrid/ResourceSpawn
 onready var ResourceKill = $MarginContainer/BaseBox/BottomGrid/ResourceKill
 onready var NotEnoughMoney = $MarginContainer/BaseBox/MiddleBox/AlertBox
+
+var Prey
+var Pred
+var Resource
 
 var predatorpopValue = Settings.Predator_Pop.size()
 var preypopValue = Settings.Prey_Pop.size()
@@ -32,11 +39,12 @@ func _ready():
 	preypopValue = Settings.Prey_Pop.size()
 	resourcepopValue = Settings.Resource_Pop.size()
 	cashmoney = Settings.Player_Cash
+#	$SpawnControl.connect("predSpawnComplete", self, '_on_predSpawnComplete')
+#	$SpawnControl.connect('preySpawnComplete', self, '_on_preySpawnComplete')
+#	$SpawnControl.connect("resourceSpawnComplete", self, '_on_resourceSpawnComplete')
 	Round.text = str('Round: ' , Settings.GameRound)
-
-
-func _process(_delta):
 	update_hud()
+
 
 func update_hud():
 	update_populations()
@@ -54,7 +62,6 @@ func update_cash():
 func _on_PredatorSPawn_pressed():
 	var cost = 1500
 	if cost < cashmoney:
-		predatorpopValue = predatorpopValue + 1
 		cashmoney = cashmoney - cost
 		emit_signal("spawnPredator")
 	else:
@@ -64,7 +71,6 @@ func _on_PredatorSPawn_pressed():
 func _on_PreySpawn_pressed():
 	var cost = 750
 	if cost < cashmoney:
-		preypopValue = preypopValue + 1
 		cashmoney = cashmoney - cost
 		emit_signal("spawnPrey")
 	else:
@@ -74,7 +80,6 @@ func _on_PreySpawn_pressed():
 func _on_ResourceSpawn_pressed():
 	var cost = 300
 	if cost < cashmoney:
-		resourcepopValue = resourcepopValue + 1
 		cashmoney = cashmoney - cost
 		emit_signal("spawnResource")
 	else:
@@ -88,7 +93,33 @@ func _on_PredatorKill_pressed():
 func _on_PreyKill_pressed():
 	emit_signal("killMob")
 
-
 func _on_ResourceKill_pressed():
 	emit_signal("killMob")
+
+func _on_predSpawnComplete():
+	predatorpopValue = predatorpopValue + 1
+	update_hud()
+
+func _on_preySpawnComplete():
+	preypopValue = preypopValue + 1
+	update_hud()
+
+func _on_resourceSpawnComplete():
+	resourcepopValue = resourcepopValue + 1
+	update_hud()
+
+func _on_ShotThroughTheHart(REWARD, TYPE):
+	print('shotrecieved',REWARD,TYPE)
+	if TYPE == 1:
+		predatorpopValue = predatorpopValue - 1
+		cashmoney = cashmoney + 1000
+	elif TYPE == 2:
+		preypopValue = preypopValue - 1
+		cashmoney = cashmoney + 500
+	else:
+		resourcepopValue = resourcepopValue - 1
+		cashmoney = cashmoney + 250
+		
+	update_hud()
+
 

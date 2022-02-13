@@ -11,10 +11,11 @@ var volume_music := 0
 var volume_voice := 0
 
 #Player Variables
-var Player_Cash = 500
+var Player_Cash = 5000
 var Predator_Pop = []
 var Prey_Pop  = []
 var Resource_Pop = []
+var curTarget
 
 enum MENU_STATES {
 	INITIAL,
