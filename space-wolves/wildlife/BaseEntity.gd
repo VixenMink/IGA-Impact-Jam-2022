@@ -47,7 +47,7 @@ var targetPos
 
 var amDead := false
 var invulnerable := false
-var hungry := true
+var hungry := false
 var canbeKilled := false
 
 var Pred
@@ -100,7 +100,7 @@ func _physics_process(_delta):
 		hungry = true
 		buildDetectableList()
 	if hungry and health == MAX_HEALTH:
-		hungry = true
+		hungry = false
 
 
 
@@ -208,8 +208,8 @@ func _take_damage(attackBox : HitBox, entity):
 	if confirmHit:
 		if health <= 0:
 			amDead = true
-			emit_signal("died", self)
 			decrease_populations()
+			emit_signal("died", self)
 			queue_free()
 
 
@@ -231,11 +231,11 @@ func _take_hunger_damage():
 		
 	if health <= 0:
 		amDead = true
+		decrease_populations()
 		emit_signal("died", self)
 		queue_free()
 
 func increase_populations():
-	print('checking and starting pops')
 	if TYPE == 1:
 		Settings.Predator_Pop = Settings.Predator_Pop + 1
 	elif TYPE == 2:

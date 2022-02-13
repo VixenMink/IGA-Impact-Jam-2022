@@ -47,6 +47,11 @@ func _on_spawnResource():
 	
 	emit_signal("resourceSpawnComplete")
 
+func _on_breed():
+	_on_breedResource()
+	_on_breedPredator(1)
+	_on_breedPrey(1)
+
 func _on_breedResource():
 	var repeatNumber = randi()%4 + 2
 	while repeatNumber > 0:
@@ -60,7 +65,7 @@ func _on_breedResource():
 		repeatNumber = repeatNumber - 1
 
 func _on_breedPredator(howmany: float):
-	var repeatNumber = howmany
+	var repeatNumber = howmany + (randi()%5+1)
 	while repeatNumber > 0:
 		var spawnlocation = (Settings.SpawnLocations[randi()%Settings.SpawnLocations.size()]).global_position
 		var newMob = predatorRef.instance()
@@ -72,7 +77,7 @@ func _on_breedPredator(howmany: float):
 		repeatNumber = repeatNumber - 1
 
 func _on_breedPrey(howmany: float):
-	var repeatNumber = howmany
+	var repeatNumber = howmany + (randi()%3+1)
 	while repeatNumber > 0:
 		var spawnlocation = (Settings.SpawnLocations[randi()%Settings.SpawnLocations.size()]).global_position
 		var newMob = preyRef.instance()
@@ -94,8 +99,8 @@ func intialPrey():
 		var spawnlocation = Settings.SpawnLocations[randi()%Settings.SpawnLocations.size()].global_position
 		var newMob = preyRef.instance()
 		newMob.position = spawnlocation
-		newMob.REWARD = 250
-		newMob.TYPE = 3
+		newMob.REWARD = 500
+		newMob.TYPE = 2
 		self.get_parent().add_child(newMob)
 		self.get_parent().connect_children()
 		repeatNumber = repeatNumber - 1

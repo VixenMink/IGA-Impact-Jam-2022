@@ -32,19 +32,7 @@ var Resource
 var cashmoney = Settings.Player_Cash
 
 func _ready():
-	print(Settings.Predator_Pop)
-	print(Settings.Prey_Pop)
-	print(Settings.Resource_Pop)
-#	Settings.Predator_Pop = get_tree().get_nodes_in_group('Predator')
-#	Settings.Prey_Pop = get_tree().get_nodes_in_group('Prey')
-#	Settings.Resource_Pop = get_tree().get_nodes_in_group('Resource')
-#	predatorpopValue = Settings.Predator_Pop.size()
-#	preypopValue = Settings.Prey_Pop.size()
-#	resourcepopValue = Settings.Resource_Pop.size()
 	cashmoney = Settings.Player_Cash
-#	$SpawnControl.connect("predSpawnComplete", self, '_on_predSpawnComplete')
-#	$SpawnControl.connect('preySpawnComplete', self, '_on_preySpawnComplete')
-#	$SpawnControl.connect("resourceSpawnComplete", self, '_on_resourceSpawnComplete')
 	Round.text = str('Round: ' , Settings.GameRound)
 	update_hud()
 
@@ -56,9 +44,9 @@ func update_hud():
 	update_cash()
 
 func update_populations():
-		PredatorPop.text = str('Predator Population: ' , Settings.Predator_Pop)
-		PreyPop.text = str("Prey Population: " , Settings.Prey_Pop)
-		ResourcePop.text = str('Resource Population: ' , Settings.Resource_Pop)
+	PredatorPop.text = str('Predator Population: ' , Settings.Predator_Pop)
+	PreyPop.text = str("Prey Population: " , Settings.Prey_Pop)
+	ResourcePop.text = str('Resource Population: ' , Settings.Resource_Pop)
 
 func update_cash():
 	Cash.text = str('Cash: $' , cashmoney)
