@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/rg-rock-guitar-loopable.ogg-87d0759424b7c6263c6c5a523b1373c1.oggstr"
+
+[deps]
+
+source_file="res://assets/sound/rg-rock-guitar-loopable.ogg"
+dest_files=[ "res://.import/rg-rock-guitar-loopable.ogg-87d0759424b7c6263c6c5a523b1373c1.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
