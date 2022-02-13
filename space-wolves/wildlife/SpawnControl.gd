@@ -12,10 +12,6 @@ var resourceRef = load ('res://space-wolves/wildlife/ResourceMob.tscn')
 
 func _ready():
 	randomize()
-#	$HUD.connect('spawnPredator', self, '_on_spawnPredator')
-#	$HUD.connect('spawnPrey', self, '_on_spawnPrey')
-#	$HUD.connect('spawnResource', self, '_on_spawnResource')
-	intialspawn()
 
 
 func _on_spawnPredator():
@@ -52,14 +48,66 @@ func _on_spawnResource():
 	emit_signal("resourceSpawnComplete")
 
 func _on_breedResource():
-	pass
+	var repeatNumber = randi()%4 + 2
+	while repeatNumber > 0:
+		var spawnlocation = (Settings.SpawnLocations[randi()%Settings.SpawnLocations.size()]).global_position
+		var newMob = resourceRef.instance()
+		newMob.position = spawnlocation
+		newMob.REWARD = 250
+		newMob.TYPE = 3
+		self.get_parent().add_child(newMob)
+		self.get_parent().connect_children()
+		repeatNumber = repeatNumber - 1
+
+func _on_breedPredator(howmany: float):
+	var repeatNumber = howmany
+	while repeatNumber > 0:
+		var spawnlocation = (Settings.SpawnLocations[randi()%Settings.SpawnLocations.size()]).global_position
+		var newMob = predatorRef.instance()
+		newMob.position = spawnlocation
+		newMob.REWARD = 1000
+		newMob.TYPE = 1
+		self.get_parent().add_child(newMob)
+		self.get_parent().connect_children()
+		repeatNumber = repeatNumber - 1
+
+func _on_breedPrey(howmany: float):
+	var repeatNumber = howmany
+	while repeatNumber > 0:
+		var spawnlocation = (Settings.SpawnLocations[randi()%Settings.SpawnLocations.size()]).global_position
+		var newMob = preyRef.instance()
+		newMob.position = spawnlocation
+		newMob.REWARD = 500
+		newMob.TYPE = 2
+		self.get_parent().add_child(newMob)
+		self.get_parent().connect_children()
+		repeatNumber = repeatNumber - 1
+
 
 func intialspawn():
 	intialPrey()
 	intialResource()
 
 func intialPrey():
-	pass
+	var repeatNumber = randi()%5 + 1
+	while repeatNumber > 0:
+		var spawnlocation = Settings.SpawnLocations[randi()%Settings.SpawnLocations.size()].global_position
+		var newMob = preyRef.instance()
+		newMob.position = spawnlocation
+		newMob.REWARD = 250
+		newMob.TYPE = 3
+		self.get_parent().add_child(newMob)
+		self.get_parent().connect_children()
+		repeatNumber = repeatNumber - 1
 
 func intialResource():
-	pass
+	var repeatNumber = randi()%10 + 2
+	while repeatNumber > 0:
+		var spawnlocation = (Settings.SpawnLocations[randi()%Settings.SpawnLocations.size()]).global_position
+		var newMob = resourceRef.instance()
+		newMob.position = spawnlocation
+		newMob.REWARD = 250
+		newMob.TYPE = 3
+		self.get_parent().add_child(newMob)
+		self.get_parent().connect_children()
+		repeatNumber = repeatNumber - 1

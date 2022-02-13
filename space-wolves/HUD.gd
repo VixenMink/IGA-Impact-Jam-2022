@@ -26,18 +26,21 @@ var Prey
 var Pred
 var Resource
 
-var predatorpopValue = Settings.Predator_Pop.size()
-var preypopValue = Settings.Prey_Pop.size()
-var resourcepopValue = Settings.Resource_Pop.size()
+#var predatorpopValue = Settings.Predator_Pop.size()
+#var preypopValue = Settings.Prey_Pop.size()
+#var resourcepopValue = Settings.Resource_Pop.size()
 var cashmoney = Settings.Player_Cash
 
 func _ready():
-	Settings.Predator_Pop = get_tree().get_nodes_in_group('Predator')
-	Settings.Prey_Pop = get_tree().get_nodes_in_group('Prey')
-	Settings.Resource_Pop = get_tree().get_nodes_in_group('Resource')
-	predatorpopValue = Settings.Predator_Pop.size()
-	preypopValue = Settings.Prey_Pop.size()
-	resourcepopValue = Settings.Resource_Pop.size()
+	print(Settings.Predator_Pop)
+	print(Settings.Prey_Pop)
+	print(Settings.Resource_Pop)
+#	Settings.Predator_Pop = get_tree().get_nodes_in_group('Predator')
+#	Settings.Prey_Pop = get_tree().get_nodes_in_group('Prey')
+#	Settings.Resource_Pop = get_tree().get_nodes_in_group('Resource')
+#	predatorpopValue = Settings.Predator_Pop.size()
+#	preypopValue = Settings.Prey_Pop.size()
+#	resourcepopValue = Settings.Resource_Pop.size()
 	cashmoney = Settings.Player_Cash
 #	$SpawnControl.connect("predSpawnComplete", self, '_on_predSpawnComplete')
 #	$SpawnControl.connect('preySpawnComplete', self, '_on_preySpawnComplete')
@@ -45,15 +48,17 @@ func _ready():
 	Round.text = str('Round: ' , Settings.GameRound)
 	update_hud()
 
+func _process(delta):
+	update_hud()
 
 func update_hud():
 	update_populations()
 	update_cash()
 
 func update_populations():
-		PredatorPop.text = str('Predator Population: ' , predatorpopValue)
-		PreyPop.text = str("Prey Population: " , preypopValue)
-		ResourcePop.text = str('Resource Population: ' , resourcepopValue)
+		PredatorPop.text = str('Predator Population: ' , Settings.Predator_Pop)
+		PreyPop.text = str("Prey Population: " , Settings.Prey_Pop)
+		ResourcePop.text = str('Resource Population: ' , Settings.Resource_Pop)
 
 func update_cash():
 	Cash.text = str('Cash: $' , cashmoney)
@@ -96,30 +101,21 @@ func _on_PreyKill_pressed():
 func _on_ResourceKill_pressed():
 	emit_signal("killMob")
 
-func _on_predSpawnComplete():
-	predatorpopValue = predatorpopValue + 1
-	update_hud()
+#func _on_predSpawnComplete():
+#	predatorpopValue = predatorpopValue + 1
+#	update_hud()
 
-func _on_preySpawnComplete():
-	preypopValue = preypopValue + 1
-	update_hud()
+#func _on_preySpawnComplete():
+#	preypopValue = preypopValue + 1
+#	update_hud()
 
-func _on_resourceSpawnComplete():
-	resourcepopValue = resourcepopValue + 1
-	update_hud()
+#func _on_resourceSpawnComplete():
+#	resourcepopValue = resourcepopValue + 1
+#	update_hud()
 
 func _on_ShotThroughTheHart(REWARD, TYPE):
 	print('shotrecieved',REWARD,TYPE)
-	if TYPE == 1:
-		predatorpopValue = predatorpopValue - 1
-		cashmoney = cashmoney + 1000
-	elif TYPE == 2:
-		preypopValue = preypopValue - 1
-		cashmoney = cashmoney + 500
-	else:
-		resourcepopValue = resourcepopValue - 1
-		cashmoney = cashmoney + 250
-		
+	cashmoney = cashmoney + REWARD
 	update_hud()
 
 

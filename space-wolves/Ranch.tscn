@@ -1,8 +1,5 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://space-wolves/wildlife/ResourceMob.tscn" type="PackedScene" id=1]
-[ext_resource path="res://space-wolves/wildlife/PredatorMob.tscn" type="PackedScene" id=2]
-[ext_resource path="res://space-wolves/wildlife/PreyMob.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/resources/BasicTech-TileSet.tres" type="TileSet" id=4]
 [ext_resource path="res://space-wolves/Ranch.gd" type="Script" id=5]
 [ext_resource path="res://space-wolves/Astar.gd" type="Script" id=6]
@@ -58,6 +55,68 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="SpawnPoints" type="Node" parent="."]
+
+[node name="Position2D" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 165, 244 )
+
+[node name="Position2D2" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 941, 702 )
+
+[node name="Position2D3" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 179, 682 )
+
+[node name="Position2D4" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 648, 460 )
+
+[node name="Position2D5" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 249, 939 )
+
+[node name="Position2D6" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 660, 171 )
+
+[node name="Position2D7" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 1052, 499 )
+
+[node name="Position2D8" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 1087, 168 )
+
+[node name="Position2D9" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 1486, 211 )
+
+[node name="Position2D10" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 1483, 679 )
+
+[node name="Position2D11" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 1929, 184 )
+
+[node name="Position2D12" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 1978, 589 )
+
+[node name="Position2D13" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 1997, 976 )
+
+[node name="Position2D14" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 1527, 1072 )
+
+[node name="Position2D15" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 1019, 1085 )
+
+[node name="Position2D16" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 536, 1159 )
+
+[node name="Position2D17" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 1453, 1409 )
+
+[node name="Position2D18" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 849, 1406 )
+
+[node name="Position2D19" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 1922, 1353 )
+
+[node name="Position2D20" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 248, 1404 )
+
 [node name="StartPoint" type="Position2D" parent="."]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -72,59 +131,8 @@ wait_time = 6.0
 autostart = true
 
 [node name="WorldTimer" type="Timer" parent="."]
-wait_time = 60.0
+wait_time = 5.0
 autostart = true
-
-[node name="PreyMob" parent="." groups=["enemies"] instance=ExtResource( 3 )]
-position = Vector2( 559, 439 )
-REWARD = 1000
-TYPE = 1
-
-[node name="ResourceMob" parent="." groups=["enemies"] instance=ExtResource( 1 )]
-position = Vector2( 584, 188 )
-REWARD = 250
-TYPE = 3
-MAX_HEALTH = 10.0
-
-[node name="PredatorMob3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 306, 423.846 )
-scale = Vector2( 0.976944, 0.924204 )
-
-[node name="ResourceMob2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 318, 740.846 )
-scale = Vector2( 0.976944, 0.924204 )
-MAX_HEALTH = 10.0
-
-[node name="ResourceMob3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 457, 583.846 )
-scale = Vector2( 0.976944, 0.924204 )
-MAX_HEALTH = 10.0
-
-[node name="ResourceMob4" parent="." instance=ExtResource( 1 )]
-position = Vector2( 123, 736.846 )
-scale = Vector2( 0.976944, 0.924204 )
-MAX_HEALTH = 10.0
-
-[node name="ResourceMob5" parent="." instance=ExtResource( 1 )]
-position = Vector2( 518, 89.8464 )
-scale = Vector2( 0.976944, 0.924204 )
-MAX_HEALTH = 10.0
-
-[node name="PredatorMob" parent="." groups=["enemies"] instance=ExtResource( 2 )]
-position = Vector2( 171, 317.922 )
-scale = Vector2( 0.98457, 0.948808 )
-
-[node name="PredatorMob2" parent="." groups=["enemies"] instance=ExtResource( 2 )]
-position = Vector2( 173, 546 )
-
-[node name="PreyMob2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 968, 270 )
-
-[node name="PreyMob3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 805, 620 )
-
-[node name="PreyMob4" parent="." instance=ExtResource( 3 )]
-position = Vector2( 516, 709 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
