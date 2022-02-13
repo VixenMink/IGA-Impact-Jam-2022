@@ -31,11 +31,11 @@ func _process(delta):
 # CALLBACKS
 func _on_MenuButton_pressed():
 	if pops_screen:
-		SoundMngr.play_ui_sound("res://assets/sound/event-alert.ogg")
+		SoundMngr.play_ui_sound("res://assets/sound/event-alert.wav")
 		ScreenMngr.pop_screen()
 		
 	if pushes_screen:
-		SoundMngr.play_ui_sound("res://assets/sound/button-onclick-1.ogg")
+		SoundMngr.play_ui_sound("res://assets/sound/button-onclick-1.wav")
 		ScreenMngr.push_screen(C.get(screen_to_push_in_config))
 		
 		

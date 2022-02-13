@@ -90,7 +90,7 @@ func _on_InvisibleWall_pressed():
 		_on_BtnResume_pressed()
 
 func _on_BtnResume_pressed():
-	SoundMngr.play_ui_sound("res://assets/sound/button-onclick-1.ogg")
+	SoundMngr.play_ui_sound("res://assets/sound/button-onclick-1.wav")
 	if can_open_and_close:
 		SignalMngr.emit_signal(signal_to_open_to, false)
 	else:

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/possible-additional-music-loop.wav-da9e27b2dfd9e83262360d50f4984518.sample"
+
+[deps]
+
+source_file="res://assets/sound/possible-additional-music-loop.wav"
+dest_files=[ "res://.import/possible-additional-music-loop.wav-da9e27b2dfd9e83262360d50f4984518.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

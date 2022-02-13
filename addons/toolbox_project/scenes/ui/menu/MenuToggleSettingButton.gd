@@ -16,7 +16,7 @@ func _enter_tree():
 		grab_focus()
 
 func _on_MenuToggleSettingButton_toggled(button_pressed):
-	SoundMngr.play_ui_sound("res://assets/sound/button-onclick-1.ogg")
+	SoundMngr.play_ui_sound("res://assets/sound/button-onclick-1.wav")
 	PersistenceMngr.set_state("settingsVideo." + setting, button_pressed)
 	
 	

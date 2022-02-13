@@ -86,7 +86,7 @@ func get_all_menu_control_buttons():
 #############################################################
 # CALLBACKS	
 func _on_Button_pressed():
-	SoundMngr.play_ui_sound("res://assets/sound/button-onclick-1.ogg")
+	SoundMngr.play_ui_sound("res://assets/sound/button-onclick-1.wav")
 	if button.pressed:
 		start_awaiting()
 	else:
