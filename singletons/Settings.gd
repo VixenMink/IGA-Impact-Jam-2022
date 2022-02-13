@@ -10,12 +10,14 @@ var volume_sound := 0
 var volume_music := 0
 var volume_voice := 0
 
-#Player Variables
+#Gameplay variables
 var Player_Cash = 5000
-var Predator_Pop = []
-var Prey_Pop  = []
-var Resource_Pop = []
+var Predator_Pop = 0
+var Prey_Pop  = 0
+var Resource_Pop = 0
 var curTarget
+var GameRound = 1
+var SpawnLocations 
 
 enum MENU_STATES {
 	INITIAL,
@@ -34,5 +36,3 @@ var curGameState = GAME_STATES.PAUSE
 
 var credits = 0
 
-#Gameplay variables
-var GameRound = 1

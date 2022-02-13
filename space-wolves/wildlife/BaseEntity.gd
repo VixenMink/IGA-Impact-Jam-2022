@@ -59,6 +59,8 @@ signal ShotThroughTheHart
 
 
 func _ready():
+	increase_populations()
+	
 	var _err = damagedtween.connect("curve_tween", self, "_on_DamagedTween_curve_tween")
 	_err = hurtbox.connect("area_entered", self, "_on_hurtbox_entered")
 	
@@ -205,6 +207,7 @@ func _take_damage(attackBox : HitBox, entity):
 	if confirmHit:
 		if health <= 0:
 			amDead = true
+			decrease_populations()
 			emit_signal("died", self)
 			queue_free()
 
@@ -218,6 +221,7 @@ func _on_killMob():
 				continue
 			Settings.curTarget = body
 			break
+		decrease_populations()
 		queue_free()
 
 
@@ -226,9 +230,27 @@ func _take_hunger_damage():
 		
 	if health <= 0:
 		amDead = true
+		decrease_populations()
 		emit_signal("died", self)
 		queue_free()
 
+func increase_populations():
+	if TYPE == 1:
+		Settings.Predator_Pop = Settings.Predator_Pop + 1
+	elif TYPE == 2:
+		Settings.Prey_Pop = Settings.Prey_Pop + 1
+	elif TYPE == 3:
+		Settings.Resource_Pop = Settings.Resource_Pop + 1
+	else:
+		print('pop error')
+
+func decrease_populations():
+	if TYPE == 1:
+		Settings.Predator_Pop = Settings.Predator_Pop - 1
+	elif TYPE == 2:
+		Settings.Prey_Pop = Settings.Prey_Pop - 1
+	elif TYPE == 3:
+		Settings.Resource_Pop = Settings.Resource_Pop - 1
 
 func navigate():
 	if path.size() > 1:
