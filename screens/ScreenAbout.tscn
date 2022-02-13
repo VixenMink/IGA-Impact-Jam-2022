@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://addons/toolbox_project/scenes/screens/Screen.tscn" type="PackedScene" id=1]
 [ext_resource path="res://addons/toolbox_project/scenes/ui/components/UIBox.tscn" type="PackedScene" id=2]
@@ -7,6 +7,19 @@
 [ext_resource path="res://addons/toolbox_project/scenes/ui/menu/MenuButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://addons/toolbox_project/defaults/screens/ScreenAbout.gd" type="Script" id=6]
 [ext_resource path="res://assets/Nebula Blue.png" type="Texture" id=7]
+[ext_resource path="res://assets/fonts/jura/JuraMedium.ttf" type="DynamicFontData" id=8]
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 32
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 32
+font_data = ExtResource( 8 )
 
 [sub_resource type="Animation" id=1]
 resource_name = "Marquis"
@@ -233,15 +246,16 @@ __meta__ = {
 [node name="LabelBig" parent="MenuLayer/UIBox/VBoxContainer/Panel/VBoxContainer" index="0" instance=ExtResource( 4 )]
 anchor_right = 0.0
 margin_right = 787.0
-margin_bottom = 54.0
+margin_bottom = 52.0
 text = "Created by"
 
 [node name="Label2" type="Label" parent="MenuLayer/UIBox/VBoxContainer/Panel/VBoxContainer" index="1"]
-margin_top = 70.0
+margin_top = 68.0
 margin_right = 787.0
 margin_bottom = 123.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_fonts/font = SubResource( 3 )
 text = "Tommy Wiseau"
 valign = 1
 
@@ -249,15 +263,16 @@ valign = 1
 anchor_right = 0.0
 margin_top = 139.0
 margin_right = 787.0
-margin_bottom = 193.0
-text = "Sprites by"
+margin_bottom = 191.0
+text = "Art by"
 
 [node name="Label3" type="Label" parent="MenuLayer/UIBox/VBoxContainer/Panel/VBoxContainer" index="3"]
-margin_top = 209.0
+margin_top = 207.0
 margin_right = 787.0
 margin_bottom = 262.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_fonts/font = SubResource( 4 )
 text = "Tommy Wiseau"
 valign = 1
 
@@ -265,15 +280,16 @@ valign = 1
 anchor_right = 0.0
 margin_top = 278.0
 margin_right = 787.0
-margin_bottom = 332.0
-text = "Sounds by"
+margin_bottom = 330.0
+text = "Music by"
 
 [node name="Label5" type="Label" parent="MenuLayer/UIBox/VBoxContainer/Panel/VBoxContainer" index="5"]
-margin_top = 348.0
+margin_top = 346.0
 margin_right = 787.0
 margin_bottom = 401.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_fonts/font = SubResource( 5 )
 text = "Tommy Wiseau"
 valign = 1
 
