@@ -84,32 +84,33 @@ func register_wildlife(wildlifeType : int, change : int):
 
 
 func _on_WorldTimer_timeout():
-	if preyCount < 2:
+	if predCount < 2:
 		print("Game Over! Too few predators. Ecological disaster.")
-		emit_signal("level_lost")
-	if preyCount < 3:
+		SignalMngr.emit_signal("level_lost")
+	elif preyCount < 3:
 		print("Game Over! Too few prey. Ecological disaster.")
-	if resourceCount > 10 and resourceCount > 5 * preyCount:
+		SignalMngr.emit_signal("level_lost")
+	elif resourceCount > 10 and resourceCount > 5 * preyCount:
 		print("Game Over! Too few predators. Ecological disaster.")
-		
-		
-	roundCount = roundCount + 1
-	breed()
+		SignalMngr.emit_signal("level_lost")
+	else:
+		roundCount = roundCount + 1
+		breed()
 
 
 func breed():
 	var predcouples
 	var preycouples
-	if Settings.Predator_Pop >= 2:
-		predcouples = floor(Settings.Predator_Pop/2)
+	if predCount >= 2:
+		predcouples = floor(predCount/2)
 		if predcouples == 0:
 			predcouples = 1
 		emit_signal('breedPredator', predcouples)
 	else:
 		pass
 	
-	if Settings.Prey_Pop >= 3:
-		preycouples = floor(Settings.Prey_Pop/3)
+	if preyCount >= 3:
+		preycouples = floor(preyCount/3)
 		if preycouples == 0:
 			preycouples = 1
 		emit_signal("breedPrey", preycouples)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://space-wolves/wildlife/BaseEntity.tscn" type="PackedScene" id=1]
 [ext_resource path="res://space-wolves/wildlife/MovementStates/RandomMoveState.tscn" type="PackedScene" id=2]
@@ -9,34 +9,6 @@
 [ext_resource path="res://assets/Kelp05.png" type="Texture" id=11]
 [ext_resource path="res://assets/Kelp06.png" type="Texture" id=12]
 [ext_resource path="res://assets/Kelp07.png" type="Texture" id=13]
-
-[sub_resource type="Gradient" id=6]
-offsets = PoolRealArray( 0, 0.00621118, 1 )
-colors = PoolColorArray( 0, 0, 0, 1, 0.882353, 0.341176, 0.854902, 1, 1, 1, 1, 1 )
-
-[sub_resource type="GradientTexture" id=7]
-gradient = SubResource( 6 )
-
-[sub_resource type="Curve" id=10]
-min_value = -500.0
-max_value = 500.0
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=8]
-curve = SubResource( 10 )
-
-[sub_resource type="ParticlesMaterial" id=9]
-emission_shape = 1
-emission_sphere_radius = 20.0
-flag_disable_z = true
-gravity = Vector3( 0, 50, 0 )
-orbit_velocity = 1.0
-orbit_velocity_random = 1.0
-orbit_velocity_curve = SubResource( 8 )
-scale = 2.0
-scale_random = 0.7
-color = Color( 0.988235, 1, 0.694118, 1 )
-color_ramp = SubResource( 7 )
 
 [sub_resource type="CircleShape2D" id=5]
 radius = 18.2563
@@ -70,7 +42,6 @@ speed_scale = 0.5
 explosiveness = 0.5
 randomness = 0.6
 local_coords = false
-process_material = SubResource( 9 )
 
 [node name="PhysicsBox" parent="." index="1"]
 shape = SubResource( 5 )

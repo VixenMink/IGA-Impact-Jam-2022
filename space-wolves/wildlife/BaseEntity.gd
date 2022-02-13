@@ -75,8 +75,7 @@ func _ready():
 
 
 func _process(_delta):
-	if Settings.ENEMY_DEBUG:
-		update()
+	update()
 
 
 func _physics_process(_delta):
