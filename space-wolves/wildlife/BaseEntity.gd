@@ -245,11 +245,13 @@ func generate_path(destination : Vector2):
 		path = pathFinder.get_new_path(collision_shape.global_position, destination)
 		line.points = path
 
+
 func update_facing():
 	if VELOCITY != Vector2.ZERO:
-		sprite.rotation = global_position.angle_to_point(VELOCITY)
-		pivot.rotation = global_position.angle_to_point(VELOCITY)
-		collision_shape.rotation = global_position.angle_to_point(VELOCITY)
+		print(VELOCITY.angle() + deg2rad(90))
+		sprite.rotation = lerp(sprite.rotation, VELOCITY.angle() + deg2rad(90), 0.1)
+		pivot.rotation = lerp(pivot.rotation, VELOCITY.angle() + deg2rad(90), 0.1)
+		hurtbox.rotation = lerp(hurtbox.rotation, VELOCITY.angle() + deg2rad(90), 0.1)
 
 
 func _check_target_line_of_sight() -> bool:

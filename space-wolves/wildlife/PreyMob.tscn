@@ -109,7 +109,7 @@ radius = 500.0
 position = Vector2( 0, 0 )
 scale = Vector2( 1, 1 )
 collision_layer = 16
-collision_mask = 2147483683
+collision_mask = 2147483682
 SPEED = 35
 
 [node name="Sprite" parent="." index="0"]
@@ -177,9 +177,6 @@ nextAttackState = NodePath("../MeleeStrikeState")
 transitionDelay = 0.5
 
 [node name="MeleeStrikeState" parent="StateMachine" index="5" instance=ExtResource( 3 )]
-
-[node name="NamePlate" parent="." index="9"]
-text = "Prey"
 
 [editable path="HurtBox"]
 [editable path="HitboxPivot/HitBox"]
