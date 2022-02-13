@@ -41,7 +41,7 @@ func connect_children():
 	var creatureArray = get_tree().get_nodes_in_group('wildlife')
 	for creature in creatureArray:
 		$HUD.connect('killMob', creature, '_on_killMob')
-		creature.connect('ShotThroughTheHeart', $HUD, '_on_ShotThroughTheHart')
+		creature.connect('ShotThroughTheHart', $HUD, '_on_ShotThroughTheHart')
 
 
 func _on_TickTimer_timeout():
