@@ -19,7 +19,7 @@ var resourceCount := 0
 func _ready():
 	if SignalMngr.connect("game_started", self, "_on_game_started") != OK:
 		D.e("Game", ["Signal game_started is already connected"])
-	if SignalMngr.connect("restart_level", self, "restart_level") != OK:
+	if SignalMngr.connect("restart_level", self, "x") != OK:
 		D.e("Game", ["Signal restart_level is already connected"])
 	if SignalMngr.connect("next_level", self, "next_level")!= OK:
 		D.e("Game", ["Signal next_level is already connected"])
@@ -48,9 +48,15 @@ func restart_level():
 func next_level():
 	pass
 
-func _process(_adelta):
-	pass
-
+func _process(_delta):
+	if predCount < 2:
+		$HUD.Warning.text = "Too few predators! At least 2 Predators are needed for a stable ecosystem!"
+	elif preyCount < 3:
+		$HUD.Warning.text = "Too few prey! At least 3 prey are needed for a stable ecosystem!"
+	elif resourceCount > 10 and resourceCount > 5 * preyCount:
+		$HUD.Warning.text = "Too much flora! The flora will run wild in the system if not culled!"
+	else:
+		$HUD.Warning.text = ""
 
 func connect_children():
 	var creatureArray = get_tree().get_nodes_in_group('wildlife')
@@ -78,6 +84,15 @@ func register_wildlife(wildlifeType : int, change : int):
 
 
 func _on_WorldTimer_timeout():
+	if preyCount < 2:
+		print("Game Over! Too few predators. Ecological disaster.")
+		emit_signal("level_lost")
+	if preyCount < 3:
+		print("Game Over! Too few prey. Ecological disaster.")
+	if resourceCount > 10 and resourceCount > 5 * preyCount:
+		print("Game Over! Too few predators. Ecological disaster.")
+		
+		
 	roundCount = roundCount + 1
 	breed()
 

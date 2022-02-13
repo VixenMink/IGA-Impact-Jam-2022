@@ -19,7 +19,7 @@ onready var ResourceSpawn = $MarginContainer/BaseBox/BottomGrid/ResourceSpawn
 onready var ResourceKill = $MarginContainer/BaseBox/BottomGrid/ResourceKill
 onready var NotEnoughMoney = $MarginContainer/BaseBox/MiddleBox/AlertBox
 onready var CurrentTarget = $MarginContainer/BaseBox/TopBox/VBoxContainer2/TargetLabel
-
+onready var Warning = $MarginContainer/BaseBox/TopBox/VBoxContainer3/Label
 
 var cashmoney = Settings.Player_Cash
 
