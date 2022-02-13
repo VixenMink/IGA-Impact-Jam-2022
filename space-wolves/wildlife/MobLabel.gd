@@ -4,7 +4,6 @@ var textToDisplay = ""
 var thingToTrack = "";
 var parentMob
 
-var debug = true
 var showHealth = false
 
 # Called when the node enters the scene tree for the first time.
@@ -32,7 +31,7 @@ func translate_state(state):
 	#enum STATES {IDLE, ATTACK, SEEK, CHASE, WANDER, RETURN}
 
 func _process(_delta):
-	if debug:
+	if Settings.ENEMY_DEBUG:
 		var targetName = 'NONE'
 		if parentMob.target:
 			targetName = parentMob.target.name
