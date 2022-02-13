@@ -51,6 +51,9 @@ func _on_spawnResource():
 	
 	emit_signal("resourceSpawnComplete")
 
+func _on_breedResource():
+	pass
+
 func intialspawn():
 	intialPrey()
 	intialResource()
