@@ -90,9 +90,12 @@ func breed():
 	else:
 		pass
 	
-	if Settings.Prey_Pop > 3:
+	if Settings.Prey_Pop >= 3:
 		preycouples = floor(Settings.Prey_Pop/3)
+		if preycouples == 0:
+			preycouples = 1
+		emit_signal("breedPrey", preycouples)
 	else:
-		preycouples = 1
-	emit_signal("breedPrey", preycouples)
+		pass
+	
 	emit_signal('breedResource')
