@@ -9,7 +9,8 @@ func _ready():
 	title_song_player = AudioStreamPlayer.new()
 	add_child(title_song_player)
 	title_song_player.bus = "Music"
-	title_song_player.stream = C.TITLE_SONG
+	
+	title_song_player.stream = load("res://assets/sound/possible-additional-music-loop.ogg")
 	
 	ui_sound_player = AudioStreamPlayer.new()
 	add_child(ui_sound_player)
@@ -26,7 +27,7 @@ func _on_screen_entered(screen):
 
 func play_ui_sound(stream=C.UI_SELECT):
 	if stream:
-		ui_sound_player.stream = stream
+		ui_sound_player.stream = load(stream)
 		ui_sound_player.play()
 
 func _on_settingsAudio_update(settingsAudio):

@@ -34,7 +34,7 @@ onready var num_coins = get_tree().get_nodes_in_group("PickupCoin").size()
 
 func _ready():
 	StateMngr.score.connect("state_changed", self, "_on_score_changed")
-	audioStreamPlayer.stream = soundtrack if soundtrack else C.DEFAULT_LEVEL_SONG
+	audioStreamPlayer.stream = soundtrack if soundtrack else load("res://assets/sound/rg-rock-guitar-loopable.ogg")
 	audioStreamPlayer.play()
 
 func _on_score_changed(score):
