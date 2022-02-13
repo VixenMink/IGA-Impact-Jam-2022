@@ -3,7 +3,7 @@ extends KinematicBody2D
 class_name BaseEntity
 
 export (int) var REWARD := 0
-export (int) var TYPE := 0
+export (int) var MY_TYPE := 0
 export (int) var SPEED := 0
 export (float) var MAX_HEALTH := 10.0
 export (float) var DECAY_RATE := 1.0
@@ -11,8 +11,6 @@ export (float) var DECAY_RATE := 1.0
 var state = 'error'
 
 var move_dir = Vector2.ZERO		#where we want to go
-#var facing_dir = Vector2.LEFT	#where we are facing in vector notation
-
 var health = MAX_HEALTH
 
 var VELOCITY := Vector2.ZERO
@@ -43,31 +41,24 @@ var target_in_attack_range := false
 var can_see_target := false
 var target_last_known_position : Vector2
 var debug_los_color := Color(1.0, .329, .298)
-var targetPos
+var targetPos 
 
 var amDead := false
 var invulnerable := false
 var hungry := false
 var canbeKilled := false
 
-var Pred
-var Prey
-var Resource
-
 signal died
-signal ShotThroughTheHart
 
 
-func _ready():
-	increase_populations()
-	
+func _ready():	
 	var _err = damagedtween.connect("curve_tween", self, "_on_DamagedTween_curve_tween")
 	_err = hurtbox.connect("area_entered", self, "_on_hurtbox_entered")
 	
 	randomize()
 	MAX_HEALTH = MAX_HEALTH * rand_range(.75, 1.25)
-	
 	health = MAX_HEALTH
+	
 	origin_pos = get_global_position()
 	hitboxCollider.disabled = true
 	
@@ -76,6 +67,7 @@ func _ready():
 		if tree.has_group("path_finding"):
 			pathFinder = tree.get_nodes_in_group("path_finding")[0]
 		
+		get_parent().register_wildlife(MY_TYPE, 1)
 		set_physics_process(false)
 		set_process(false)
 		
@@ -95,20 +87,20 @@ func _physics_process(_delta):
 		target_in_attack_range = false
 		target = null
 	
-	if health < MAX_HEALTH * .75:
+	if health < MAX_HEALTH * .9:
 		hungry = true
 		buildDetectableList()
-	if hungry and health == MAX_HEALTH:
+	if hungry and health >= MAX_HEALTH:
 		hungry = false
 
 
-
 func _ShowYourName():
-		nameplate.visible = true
+	nameplate.visible = true
 
 
 func _hideYourName():
 	nameplate.visible = false
+
 
 func _draw() -> void:
 	if can_see_target:
@@ -146,8 +138,6 @@ func _apply_movement(_delta, _useGravity = false) -> void:
 
 func _apply_gravity(_delta):
 	return
-	
-	#VELOCITY += GRAVITY * delta
 
 
 # Movement based on force
@@ -192,37 +182,20 @@ func _on_hurtbox_entered(attackBox : HitBox):
 
 
 func _take_damage(attackBox : HitBox, entity):
-	var confirmHit = false
 	
-	# check projectiles first
-	if entity.collision_layer == 512:
-		health = health - attackBox.DAMAGE
-		confirmHit = true
-		entity.queue_free()
-	# then other hitboxes
-	else:
-		health = health - attackBox.DAMAGE
-		confirmHit = true
+	health = health - attackBox.DAMAGE
+	entity.health = entity.health + 2.1
 	
-	if confirmHit:
-		if health <= 0:
-			amDead = true
-			decrease_populations()
-			emit_signal("died", self)
-			queue_free()
+	if health <= 0:
+		amDead = true
+		get_parent().register_wildlife(MY_TYPE, -1)
+		emit_signal("died", self)
+		queue_free()
 
 
 func _on_killMob():
-	if (Settings.curTarget != null) and (self.name == Settings.curTarget.name):
-		emit_signal("ShotThroughTheHart", self.REWARD, self.TYPE)
-		Settings.curTarget = null
-		for body in $HitboxPivot/DetectRange.get_overlapping_bodies():
-			if body == self:
-				continue
-			Settings.curTarget = body
-			break
-		decrease_populations()
-		queue_free()
+	get_parent().register_wildlife(MY_TYPE, -1)
+	queue_free()
 
 
 func _take_hunger_damage():
@@ -230,27 +203,10 @@ func _take_hunger_damage():
 		
 	if health <= 0:
 		amDead = true
-		decrease_populations()
+		get_parent().register_wildlife(MY_TYPE, -1)
 		emit_signal("died", self)
 		queue_free()
 
-func increase_populations():
-	if TYPE == 1:
-		Settings.Predator_Pop = Settings.Predator_Pop + 1
-	elif TYPE == 2:
-		Settings.Prey_Pop = Settings.Prey_Pop + 1
-	elif TYPE == 3:
-		Settings.Resource_Pop = Settings.Resource_Pop + 1
-	else:
-		print('pop error')
-
-func decrease_populations():
-	if TYPE == 1:
-		Settings.Predator_Pop = Settings.Predator_Pop - 1
-	elif TYPE == 2:
-		Settings.Prey_Pop = Settings.Prey_Pop - 1
-	elif TYPE == 3:
-		Settings.Resource_Pop = Settings.Resource_Pop - 1
 
 func navigate():
 	if path.size() > 1:
@@ -327,6 +283,14 @@ func buildDetectableList():
 	for body in $HitboxPivot/DetectRange.get_overlapping_bodies():
 		if amHostileTo(body):
 			detectableEntities.push_back(body)
+	
+	detectableEntities.sort_custom(self, "customComparison")
+
+func customComparison(a, b):
+	if typeof(a) != typeof(b):
+		return typeof(a) < typeof(b)
+	else:
+		return a < b
 
 
 func _on_DetectRange_body_entered(body):

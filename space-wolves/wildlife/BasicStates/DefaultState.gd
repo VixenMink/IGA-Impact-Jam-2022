@@ -16,9 +16,10 @@ func _state_logic(delta):
 
 
 func _get_transition(_delta, states_map):
-	if selfRef.can_see_target and selfRef.target_in_attack_range:
+
+	if selfRef.hungry and selfRef.can_see_target and selfRef.target_in_attack_range:
 		return states_map['AttackState']
-	if selfRef.can_see_target and !selfRef.target_in_attack_range:
+	if selfRef.hungry and selfRef.can_see_target and !selfRef.target_in_attack_range:
 		return states_map['ChaseState']
 	
 	return null

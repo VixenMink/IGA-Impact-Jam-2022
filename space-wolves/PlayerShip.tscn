@@ -1,7 +1,26 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://space-wolves/PlayerShip.gd" type="Script" id=1]
 [ext_resource path="res://assets/cc_unitLeo.png" type="Texture" id=2]
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0.111801, 0.950311 )
+colors = PoolColorArray( 0.969727, 0.212128, 0.212128, 1, 0.995252, 0.99707, 0.0662117, 1 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+lifetime_randomness = 0.4
+trail_divisor = 3
+emission_shape = 1
+emission_sphere_radius = 5.0
+flag_disable_z = true
+gravity = Vector3( 0, 98, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color = Color( 0.952941, 0.898039, 0.345098, 1 )
+color_ramp = SubResource( 5 )
 
 [sub_resource type="RectangleShape2D" id=2]
 
@@ -17,13 +36,23 @@ script = ExtResource( 1 )
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 2 )
 
+[node name="Particles2D" type="Particles2D" parent="Sprite"]
+position = Vector2( 0, 244 )
+scale = Vector2( 4, 4 )
+amount = 60
+lifetime = 1.75
+randomness = 0.5
+process_material = SubResource( 6 )
+
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource( 2 )
 
 [node name="CaptureArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 56
 

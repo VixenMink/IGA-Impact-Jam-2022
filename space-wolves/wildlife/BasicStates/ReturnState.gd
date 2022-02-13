@@ -11,7 +11,7 @@ func _get_input(_event):
 
 
 func _state_logic(delta):
-	if selfRef.global_position.distance_to(selfRef.origin_pos) > 32:
+	if selfRef.global_position.distance_to(selfRef.origin_pos) > 64:
 		selfRef.generate_path(selfRef.origin_pos)
 	
 	selfRef._apply_gravity(delta)
@@ -21,11 +21,11 @@ func _state_logic(delta):
 
 
 func _get_transition(_delta, states_map):
-	if selfRef.path.size() <= 1 and  selfRef.global_position.distance_to(selfRef.origin_pos) > 0:
+	if selfRef.path.size() == 0 or selfRef.global_position.distance_to(selfRef.origin_pos) < 64:
 		return states_map['DefaultState']
-	if selfRef.can_see_target and !selfRef.target_in_attack_range:
+	if selfRef.hungry and selfRef.can_see_target and !selfRef.target_in_attack_range:
 		return states_map['ChaseState']
-	if selfRef.target_in_attack_range:
+	if selfRef.hungry and selfRef.target_in_attack_range:
 		return states_map['AttackState']
 	
 	return null

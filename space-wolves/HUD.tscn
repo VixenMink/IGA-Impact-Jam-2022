@@ -25,122 +25,129 @@ margin_bottom = 580.0
 
 [node name="TopBox" type="HBoxContainer" parent="MarginContainer/BaseBox"]
 margin_right = 984.0
-margin_bottom = 92.0
+margin_bottom = 76.0
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/BaseBox/TopBox"]
 margin_right = 490.0
-margin_bottom = 92.0
+margin_bottom = 76.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Cash" type="Label" parent="MarginContainer/BaseBox/TopBox/VBoxContainer"]
 margin_right = 490.0
-margin_bottom = 20.0
+margin_bottom = 16.0
 size_flags_vertical = 3
 text = "Cash: $0"
 
 [node name="PredatorPop" type="Label" parent="MarginContainer/BaseBox/TopBox/VBoxContainer"]
-margin_top = 24.0
+margin_top = 20.0
 margin_right = 490.0
-margin_bottom = 44.0
+margin_bottom = 36.0
 size_flags_vertical = 3
 text = "Predator Pop: 5"
 
 [node name="PreyPop" type="Label" parent="MarginContainer/BaseBox/TopBox/VBoxContainer"]
-margin_top = 48.0
+margin_top = 40.0
 margin_right = 490.0
-margin_bottom = 68.0
+margin_bottom = 56.0
 size_flags_vertical = 3
 text = "Prey Pop: 5"
 
 [node name="ResoursePop" type="Label" parent="MarginContainer/BaseBox/TopBox/VBoxContainer"]
-margin_top = 72.0
+margin_top = 60.0
 margin_right = 490.0
-margin_bottom = 92.0
+margin_bottom = 76.0
 size_flags_vertical = 3
 text = "Resource Pop: 5"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/BaseBox/TopBox"]
 margin_left = 494.0
 margin_right = 984.0
-margin_bottom = 92.0
+margin_bottom = 76.0
 size_flags_horizontal = 3
 
 [node name="ProgressBar" type="ProgressBar" parent="MarginContainer/BaseBox/TopBox/VBoxContainer2"]
 margin_right = 490.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
+max_value = 30.0
+step = 1.0
 
 [node name="Round" type="Label" parent="MarginContainer/BaseBox/TopBox/VBoxContainer2"]
 margin_top = 18.0
 margin_right = 490.0
-margin_bottom = 74.0
+margin_bottom = 58.0
 size_flags_vertical = 3
 text = "Round 1"
 
-[node name="RichTextLabel2" type="Label" parent="MarginContainer/BaseBox/TopBox/VBoxContainer2"]
-margin_top = 78.0
+[node name="TargetLabel" type="Label" parent="MarginContainer/BaseBox/TopBox/VBoxContainer2"]
+margin_top = 62.0
 margin_right = 490.0
-margin_bottom = 92.0
+margin_bottom = 76.0
 text = "Current Target: Null"
 
 [node name="MiddleBox" type="CenterContainer" parent="MarginContainer/BaseBox"]
-margin_top = 96.0
+margin_top = 80.0
 margin_right = 984.0
-margin_bottom = 464.0
+margin_bottom = 384.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 4.0
 
 [node name="AlertBox" type="AcceptDialog" parent="MarginContainer/BaseBox/MiddleBox"]
-margin_left = 340.0
-margin_top = 155.0
-margin_right = 644.0
-margin_bottom = 213.0
+visible = true
+margin_left = 259.0
+margin_top = 105.0
+margin_right = 725.0
+margin_bottom = 198.0
 theme = ExtResource( 2 )
-dialog_text = "You don't have enough money for this action!"
+dialog_text = "You don't have enough money for this action!D"
 
 [node name="BottomGrid" type="GridContainer" parent="MarginContainer/BaseBox"]
-margin_top = 468.0
-margin_right = 984.0
-margin_bottom = 560.0
+modulate = Color( 1, 1, 1, 0.745098 )
+show_behind_parent = true
+margin_top = 388.0
+margin_right = 300.0
+margin_bottom = 559.0
+size_flags_horizontal = 0
 size_flags_vertical = 3
 theme = ExtResource( 2 )
-columns = 3
+custom_constants/vseparation = 1
 
 [node name="PredatorSPawn" type="Button" parent="MarginContainer/BaseBox/BottomGrid"]
-margin_right = 317.0
-margin_bottom = 38.0
+margin_right = 300.0
+margin_bottom = 42.0
 focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 enabled_focus_mode = 0
-text = "Predator: Spawn"
+text = "Introduce Predator"
 
 [node name="PreySpawn" type="Button" parent="MarginContainer/BaseBox/BottomGrid"]
-margin_left = 333.0
-margin_right = 650.0
-margin_bottom = 38.0
+margin_top = 43.0
+margin_right = 300.0
+margin_bottom = 85.0
 focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 enabled_focus_mode = 0
-text = "Prey: Spawn"
+text = "Introduce Prey"
 
 [node name="ResourceSpawn" type="Button" parent="MarginContainer/BaseBox/BottomGrid"]
-margin_left = 666.0
-margin_right = 983.0
-margin_bottom = 38.0
+margin_top = 86.0
+margin_right = 300.0
+margin_bottom = 128.0
 focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 enabled_focus_mode = 0
-text = "Resource: Spawn"
+text = "Cultivate Flora"
 
 [node name="PredatorKill" type="Button" parent="MarginContainer/BaseBox/BottomGrid"]
-margin_top = 54.0
-margin_right = 317.0
-margin_bottom = 92.0
+visible = false
+margin_top = 174.0
+margin_right = 277.0
+margin_bottom = 216.0
 focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -148,21 +155,20 @@ enabled_focus_mode = 0
 text = "Predator: Kill"
 
 [node name="PreyKill" type="Button" parent="MarginContainer/BaseBox/BottomGrid"]
-margin_left = 333.0
-margin_top = 54.0
-margin_right = 650.0
-margin_bottom = 92.0
+margin_top = 129.0
+margin_right = 300.0
+margin_bottom = 171.0
 focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 enabled_focus_mode = 0
-text = "Prey: Kill"
+text = "Hunt Target"
 
 [node name="ResourceKill" type="Button" parent="MarginContainer/BaseBox/BottomGrid"]
-margin_left = 666.0
-margin_top = 54.0
-margin_right = 983.0
-margin_bottom = 92.0
+visible = false
+margin_top = 232.0
+margin_right = 277.0
+margin_bottom = 274.0
 focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3

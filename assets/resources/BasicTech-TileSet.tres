@@ -1,4 +1,9 @@
-[gd_resource type="TileSet" load_steps=57 format=2]
+
+[gd_resource type="TileSet" load_steps=59 format=2]
+
+[ext_resource path="res://assets/tilesets/TileMap_SF/tileset_sf.png" type="Texture" id=1]
+[ext_resource path="res://assets/gridOverlay64x64.png" type="Texture" id=2]
+
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -1230,3 +1235,17 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 57/shape_one_way_margin = 0.0
 57/shapes = [  ]
 57/z_index = 0
+58/name = "gridOverlay64x64.png 58"
+58/texture = ExtResource( 2 )
+58/tex_offset = Vector2( 0, 0 )
+58/modulate = Color( 1, 1, 1, 1 )
+58/region = Rect2( 0, 0, 64, 64 )
+58/tile_mode = 0
+58/occluder_offset = Vector2( 0, 0 )
+58/navigation_offset = Vector2( 0, 0 )
+58/shape_offset = Vector2( 0, 0 )
+58/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+58/shape_one_way = false
+58/shape_one_way_margin = 0.0
+58/shapes = [  ]
+58/z_index = 0

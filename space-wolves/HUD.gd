@@ -3,9 +3,6 @@ extends CanvasLayer
 signal spawnPredator
 signal spawnPrey
 signal spawnResource
-signal killPred
-signal killPrey
-signal killResource
 signal killMob
 
 onready var Cash = $MarginContainer/BaseBox/TopBox/VBoxContainer/Cash
@@ -21,36 +18,43 @@ onready var PreyKill = $MarginContainer/BaseBox/BottomGrid/PreyKill
 onready var ResourceSpawn = $MarginContainer/BaseBox/BottomGrid/ResourceSpawn
 onready var ResourceKill = $MarginContainer/BaseBox/BottomGrid/ResourceKill
 onready var NotEnoughMoney = $MarginContainer/BaseBox/MiddleBox/AlertBox
+onready var CurrentTarget = $MarginContainer/BaseBox/TopBox/VBoxContainer2/TargetLabel
 
-var Prey
-var Pred
-var Resource
 
-#var predatorpopValue = Settings.Predator_Pop.size()
-#var preypopValue = Settings.Prey_Pop.size()
-#var resourcepopValue = Settings.Resource_Pop.size()
 var cashmoney = Settings.Player_Cash
 
 func _ready():
-	cashmoney = Settings.Player_Cash
-	Round.text = str('Round: ' , Settings.GameRound)
-	update_hud()
+	cashmoney = 5000
+	
 
-func _process(delta):
+
+func _process(_delta):
 	update_hud()
+	Round.text = str('Round: ' , get_parent().roundCount)
+	$MarginContainer/BaseBox/TopBox/VBoxContainer2/ProgressBar.value = 30 - get_parent().roundTimer.time_left
 
 func update_hud():
 	update_populations()
 	update_cash()
+	
+	var weakTarget = weakref(get_parent().player.curTarget)
+	if not weakTarget.get_ref():
+		CurrentTarget.text = "No creature below you"
+	else:
+		CurrentTarget.text = str("Targetting: ", get_parent().player.curTarget.name)
+	#$MarginContainer/BaseBox/TopBox/VBoxContainer2/ProgressBar.value = get_parent().roundTimer.
+
 
 func update_populations():
-	PredatorPop.text = str('Predator Population: ' , Settings.Predator_Pop)
-	PreyPop.text = str("Prey Population: " , Settings.Prey_Pop)
-	ResourcePop.text = str('Resource Population: ' , Settings.Resource_Pop)
+	PredatorPop.text = str('Predator Population: ' , get_parent().predCount)
+	PreyPop.text = str("Prey Population: " , get_parent().preyCount)
+	ResourcePop.text = str('Resource Population: ' , get_parent().resourceCount)
+
 
 func update_cash():
 	Cash.text = str('Cash: $' , cashmoney)
 	Settings.Player_Cash = cashmoney
+
 
 func _on_PredatorSPawn_pressed():
 	var cost = 1500
@@ -59,7 +63,7 @@ func _on_PredatorSPawn_pressed():
 		emit_signal("spawnPredator")
 	else:
 		NotEnoughMoney.popup()
-	update_hud()
+
 
 func _on_PreySpawn_pressed():
 	var cost = 750
@@ -68,7 +72,7 @@ func _on_PreySpawn_pressed():
 		emit_signal("spawnPrey")
 	else:
 		NotEnoughMoney.popup()
-	update_hud()
+
 
 func _on_ResourceSpawn_pressed():
 	var cost = 300
@@ -77,33 +81,26 @@ func _on_ResourceSpawn_pressed():
 		emit_signal("spawnResource")
 	else:
 		NotEnoughMoney.popup()
-	update_hud()
+
 
 func _on_PredatorKill_pressed():
 	emit_signal("killMob")
 
 
 func _on_PreyKill_pressed():
+	var weakTarget = weakref(get_parent().player.curTarget)
+	if not weakTarget.get_ref():
+		print('error on kill')
+	else:
+		_on_ShotThroughTheHart( get_parent().player.curTarget.REWARD, get_parent().player.curTarget.MY_TYPE)
+		get_parent().player.curTarget._on_killMob()
+		
 	emit_signal("killMob")
+
 
 func _on_ResourceKill_pressed():
 	emit_signal("killMob")
 
-#func _on_predSpawnComplete():
-#	predatorpopValue = predatorpopValue + 1
-#	update_hud()
 
-#func _on_preySpawnComplete():
-#	preypopValue = preypopValue + 1
-#	update_hud()
-
-#func _on_resourceSpawnComplete():
-#	resourcepopValue = resourcepopValue + 1
-#	update_hud()
-
-func _on_ShotThroughTheHart(REWARD, TYPE):
-	print('shotrecieved',REWARD,TYPE)
+func _on_ShotThroughTheHart(REWARD, _TYPE):
 	cashmoney = cashmoney + REWARD
-	update_hud()
-
-
