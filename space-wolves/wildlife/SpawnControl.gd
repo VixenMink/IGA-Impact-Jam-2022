@@ -22,7 +22,10 @@ func _on_spawnPredator():
 	var spawnlocation = get_parent().get_node('PlayerShip').global_position
 	var newMob = predatorRef.instance()
 	newMob.position = spawnlocation
+	newMob.REWARD = 1000
+	newMob.TYPE = 1
 	self.get_parent().add_child(newMob)
+	self.get_parent().connect_children()
 	
 	emit_signal("predSpawnComplete")
 
@@ -30,7 +33,10 @@ func _on_spawnPrey():
 	var spawnlocation = get_parent().get_node('PlayerShip').global_position
 	var newMob = preyRef.instance()
 	newMob.position = spawnlocation
+	newMob.REWARD = 500
+	newMob.TYPE = 2
 	self.get_parent().add_child(newMob)
+	self.get_parent().connect_children()
 	
 	emit_signal("preySpawnComplete")
 
@@ -38,7 +44,10 @@ func _on_spawnResource():
 	var spawnlocation = get_parent().get_node('PlayerShip').global_position
 	var newMob = resourceRef.instance()
 	newMob.position = spawnlocation
+	newMob.REWARD = 250
+	newMob.TYPE = 3
 	self.get_parent().add_child(newMob)
+	self.get_parent().connect_children()
 	
 	emit_signal("resourceSpawnComplete")
 

@@ -3,6 +3,9 @@ extends CanvasLayer
 signal spawnPredator
 signal spawnPrey
 signal spawnResource
+signal killPred
+signal killPrey
+signal killResource
 signal killMob
 
 onready var Cash = $MarginContainer/BaseBox/TopBox/VBoxContainer/Cash
@@ -19,7 +22,10 @@ onready var ResourceSpawn = $MarginContainer/BaseBox/BottomGrid/ResourceSpawn
 onready var ResourceKill = $MarginContainer/BaseBox/BottomGrid/ResourceKill
 onready var NotEnoughMoney = $MarginContainer/BaseBox/MiddleBox/AlertBox
 
-#var SpawnControl = get_tree().get_node('SpawnControl')
+var Prey
+var Pred
+var Resource
+
 var predatorpopValue = Settings.Predator_Pop.size()
 var preypopValue = Settings.Prey_Pop.size()
 var resourcepopValue = Settings.Resource_Pop.size()
@@ -37,7 +43,7 @@ func _ready():
 #	$SpawnControl.connect('preySpawnComplete', self, '_on_preySpawnComplete')
 #	$SpawnControl.connect("resourceSpawnComplete", self, '_on_resourceSpawnComplete')
 	Round.text = str('Round: ' , Settings.GameRound)
-  update_hud()
+	update_hud()
 
 
 func update_hud():
@@ -87,7 +93,6 @@ func _on_PredatorKill_pressed():
 func _on_PreyKill_pressed():
 	emit_signal("killMob")
 
-
 func _on_ResourceKill_pressed():
 	emit_signal("killMob")
 
@@ -102,3 +107,19 @@ func _on_preySpawnComplete():
 func _on_resourceSpawnComplete():
 	resourcepopValue = resourcepopValue + 1
 	update_hud()
+
+func _on_ShotThroughTheHart(REWARD, TYPE):
+	print('shotrecieved',REWARD,TYPE)
+	if TYPE == 1:
+		predatorpopValue = predatorpopValue - 1
+		cashmoney = cashmoney + 1000
+	elif TYPE == 2:
+		preypopValue = preypopValue - 1
+		cashmoney = cashmoney + 500
+	else:
+		resourcepopValue = resourcepopValue - 1
+		cashmoney = cashmoney + 250
+		
+	update_hud()
+
+

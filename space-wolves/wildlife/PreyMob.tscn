@@ -36,7 +36,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 1.5, 1.5 ) ]
+"values": [ Vector2( 0.25, 0.25 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("HitboxPivot/HitBox/CollisionShape2D:disabled")
@@ -63,7 +63,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5, 1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1.5, 1.5 ), Vector2( 1.7, 1.7 ), Vector2( 1.5, 1.5 ) ]
+"values": [ Vector2( 0.25, 0.25 ), Vector2( 0.27, 0.27 ), Vector2( 0.25, 0.25 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("HitboxPivot/HitBox/CollisionShape2D:disabled")
@@ -113,7 +113,7 @@ collision_mask = 2147483683
 SPEED = 35
 
 [node name="Sprite" parent="." index="0"]
-scale = Vector2( 1.5, 1.5 )
+scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 8 )
 hframes = 6
 

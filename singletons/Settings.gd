@@ -15,6 +15,7 @@ var Player_Cash = 5000
 var Predator_Pop = []
 var Prey_Pop  = []
 var Resource_Pop = []
+var curTarget
 
 enum MENU_STATES {
 	INITIAL,

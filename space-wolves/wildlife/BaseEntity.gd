@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 class_name BaseEntity
 
+export (int) var REWARD := 0
+export (int) var TYPE := 0
 export (int) var SPEED := 0
 export (float) var MAX_HEALTH := 10.0
 export (float) var DECAY_RATE := 1.0
@@ -46,8 +48,14 @@ var targetPos
 var amDead := false
 var invulnerable := false
 var hungry := true
+var canbeKilled := false
+
+var Pred
+var Prey
+var Resource
 
 signal died
+signal ShotThroughTheHart
 
 
 func _ready():
@@ -93,9 +101,10 @@ func _physics_process(_delta):
 		hungry = true
 
 
+
 func _ShowYourName():
-	print('i should show myself')
-	nameplate.visible = true
+		nameplate.visible = true
+
 
 func _hideYourName():
 	nameplate.visible = false
@@ -199,6 +208,18 @@ func _take_damage(attackBox : HitBox, entity):
 			amDead = true
 			emit_signal("died", self)
 			queue_free()
+
+
+func _on_killMob():
+	if (Settings.curTarget != null) and (self.name == Settings.curTarget.name):
+		emit_signal("ShotThroughTheHart", self.REWARD, self.TYPE)
+		Settings.curTarget = null
+		for body in $HitboxPivot/DetectRange.get_overlapping_bodies():
+			if body == self:
+				continue
+			Settings.curTarget = body
+			break
+		queue_free()
 
 
 func _take_hunger_damage():
