@@ -57,18 +57,19 @@ func add_traversable_tiles(tiles: Array):
 func connect_traversable_tiles(tiles: Array):
 	for tile in tiles:
 		var id = get_id_for_point(tile)
-		
-		for x in range(2):
-			for y in range(2):
-		#var neighbors = [Vector2(0,1), Vector2(-1,0), Vector2(1,0), Vector2(0,-1)]
-		#for point in neighbors:
-				var target = tile + Vector2(x, y)
-				var target_id = get_id_for_point(target)
-				
-				if tile == target or not astar.has_point(target_id):
-					continue
-				
-				astar.connect_points(id, target_id, true)
+
+			
+		#for x in range(2):
+		#	for y in range(2):
+		var neighbors = [Vector2(0,1), Vector2(-1,0), Vector2(1,0), Vector2(0,-1)]
+		for point in neighbors:
+			var target = tile + point
+			var target_id = get_id_for_point(target)
+			
+			if tile == target or not astar.has_point(target_id):
+				continue
+			
+			astar.connect_points(id, target_id, true)
 
 
 func update_navigation_map_statics():

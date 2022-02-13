@@ -4,7 +4,7 @@ var textToDisplay = ""
 var thingToTrack = "";
 var parentMob
 
-var debug = true
+var debug = false
 var showHealth = false
 
 # Called when the node enters the scene tree for the first time.

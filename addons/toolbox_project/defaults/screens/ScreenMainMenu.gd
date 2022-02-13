@@ -1,7 +1,8 @@
 extends Screen
 
-onready var btn_start = $MenuLayer/UIBox/VBoxContainer/PanelContainer/Menu/BtnStart
-onready var btn_settings = $MenuLayer/UIBox/VBoxContainer/PanelContainer/Menu/BtnSettings
+onready var btn_start = $MenuLayer/UIBox/VBoxContainer/PanelContainerMargin/PanelContainer/Menu/BtnStart
+onready var btn_settings = $MenuLayer/UIBox/VBoxContainer/PanelContainerMargin/PanelContainer/Menu/BtnSettings
+
 
 func _ready():
 	if C.SHOW_LEVEL_MENU:

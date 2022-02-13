@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://space-wolves/wildlife/BasicStates/SeekState.tscn" type="PackedScene" id=1]
 [ext_resource path="res://space-wolves/wildlife/BasicStates/ReturnState.tscn" type="PackedScene" id=2]
@@ -7,11 +7,10 @@
 [ext_resource path="res://space-wolves/wildlife/BasicStates/DefaultState.tscn" type="PackedScene" id=5]
 [ext_resource path="res://space-wolves/wildlife/BaseEntity.tscn" type="PackedScene" id=6]
 [ext_resource path="res://space-wolves/wildlife/BasicStates/ChaseState.tscn" type="PackedScene" id=7]
-[ext_resource path="res://assets/SpaceWolfAnimationTestAssetSHeet.png" type="Texture" id=8]
+[ext_resource path="res://assets/SpaceWolfAnimationSpaceWolf.png" type="Texture" id=8]
 
-[sub_resource type="CapsuleShape2D" id=12]
-radius = 13.3461
-height = 35.7918
+[sub_resource type="CircleShape2D" id=12]
+radius = 16.0
 
 [sub_resource type="Animation" id=8]
 length = 0.001
@@ -39,6 +38,51 @@ tracks/1/keys = {
 "update": 0,
 "values": [ false ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "default"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 79 ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "ram-fire"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 79 ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "ram-windup"
@@ -55,16 +99,28 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.968627, 0.0431373, 0.0431373, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("HitboxPivot/HitBox/CollisionShape2D:disabled")
+tracks/1/path = NodePath("Sprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.8 ),
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 15 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HitboxPivot/HitBox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ false, true ]
+"values": [ true, false ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -74,34 +130,33 @@ loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
-tracks/0/loop_wrap = true
+tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1.9 ),
+"times": PoolRealArray( 0, 3.8 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0, 42 ]
+"values": [ 0, 79 ]
 }
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 9, 9 )
+extents = Vector2( 40, 20 )
 
 [sub_resource type="CapsuleShape2D" id=11]
 radius = 11.2928
-height = 11.6797
+height = 83.4144
 
 [sub_resource type="CircleShape2D" id=5]
-radius = 32.2498
+radius = 38.4187
 
 [sub_resource type="CircleShape2D" id=6]
 radius = 500.0
 
 [node name="PredatorMob" groups=["Predator"] instance=ExtResource( 6 )]
-position = Vector2( 0, 0 )
 scale = Vector2( 1, 1 )
 collision_layer = 8
-collision_mask = 2147483667
+collision_mask = 2147483666
 SPEED = 45
 
 [node name="Sprite" parent="." index="0"]
@@ -109,8 +164,8 @@ rotation = 1.5708
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 8 )
 offset = Vector2( -27, 80 )
-hframes = 11
-vframes = 4
+hframes = 12
+vframes = 7
 
 [node name="PhysicsBox" parent="." index="1"]
 rotation = 1.5708
@@ -118,6 +173,8 @@ shape = SubResource( 12 )
 
 [node name="AnimationPlayer" parent="." index="2"]
 anims/RESET = SubResource( 8 )
+anims/default = SubResource( 14 )
+anims/ram-fire = SubResource( 13 )
 anims/ram-windup = SubResource( 2 )
 anims/walk = SubResource( 10 )
 
@@ -125,7 +182,7 @@ anims/walk = SubResource( 10 )
 collision_layer = 128
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
-visible = false
+position = Vector2( 4.66711, -1.02845 )
 shape = SubResource( 4 )
 
 [node name="HitboxPivot" parent="." index="5"]
@@ -135,7 +192,6 @@ rotation = 1.5708
 collision_mask = 2147483904
 
 [node name="CollisionShape2D" parent="HitboxPivot/HitBox" index="0"]
-position = Vector2( 0, 0 )
 rotation = 3.14159
 shape = SubResource( 11 )
 
@@ -177,9 +233,6 @@ nextAttackState = NodePath("../RamState")
 transitionDelay = 0.5
 
 [node name="RamState" parent="StateMachine" index="5" instance=ExtResource( 3 )]
-
-[node name="NamePlate" parent="." index="9"]
-text = "Predator"
 
 [editable path="HurtBox"]
 [editable path="HitboxPivot/HitBox"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://addons/toolbox_project/scenes/screens/Screen.tscn" type="PackedScene" id=1]
 [ext_resource path="res://addons/toolbox_project/scenes/ui/components/UIBox.tscn" type="PackedScene" id=2]
@@ -6,7 +6,195 @@
 [ext_resource path="res://addons/toolbox_project/scenes/ui/components/LabelBig.tscn" type="PackedScene" id=4]
 [ext_resource path="res://addons/toolbox_project/defaults/screens/ScreenOptionsMenu.gd" type="Script" id=5]
 [ext_resource path="res://addons/toolbox_project/scenes/ui/menu/MenuButton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/Nebula Blue.png" type="Texture" id=7]
 
+[sub_resource type="Animation" id=1]
+resource_name = "Marquis"
+length = 120.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect:margin_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.6, 58.3, 119.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -2050.0, -2, -2050.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("MenuLayer/UIBox/VBoxContainer/MarginContainer2-Cosmic/RichTextLabel-Csmic:custom_colors/default_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0.956863, 0.890196, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MenuLayer/UIBox/VBoxContainer/MarginContainer2-Cosmic/RichTextLabel-Csmic:percent_visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MenuLayer/UIBox/VBoxContainer/MarginContainer2-Cosmic/RichTextLabel-Csmic:visible_characters")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -1 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MenuLayer/UIBox/VBoxContainer/Label-WolvesinSpace:custom_fonts/font:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 36 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("MenuLayer/UIBox/VBoxContainer/MarginContainer3-Canidae/RichTextLabel2-Canidae:percent_visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("MenuLayer/UIBox/VBoxContainer/MarginContainer3-Canidae/RichTextLabel2-Canidae:visible_characters")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -1 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("MenuLayer/UIBox/VBoxContainer/MarginContainer2-Cosmic/RichTextLabel2-O:percent_visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("MenuLayer/UIBox/VBoxContainer/Label-WolvesinSpace:percent_visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("MenuLayer/UIBox/VBoxContainer/Label-WolvesinSpace:visible_characters")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -1 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("MenuLayer/UIBox/VBoxContainer/Label-WolvesinSpace:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("MenuLayer/UIBox/VBoxContainer/Label-WolvesinSpace:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("TextureRect:margin_left")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -600.0 ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("TextureRect:margin_top")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -2050.0 ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("TextureRect:size_flags_stretch_ratio")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
 
 [node name="ScreenOptionsMenu" instance=ExtResource( 1 )]
 script = ExtResource( 5 )
@@ -17,68 +205,94 @@ script = ExtResource( 5 )
 
 [node name="UIBox" parent="MenuLayer" index="0" instance=ExtResource( 2 )]
 
-[node name="PanelContainer" type="PanelContainer" parent="MenuLayer/UIBox" index="0"]
-margin_left = 220.0
-margin_top = 93.0
-margin_right = 804.0
-margin_bottom = 507.0
+[node name="MarginContainer" type="MarginContainer" parent="MenuLayer/UIBox" index="0"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1004.0
+margin_bottom = 580.0
+custom_constants/margin_right = 225
+custom_constants/margin_left = 225
+
+[node name="PanelContainer" type="PanelContainer" parent="MenuLayer/UIBox/MarginContainer" index="0"]
+margin_left = 225.0
+margin_top = 84.0
+margin_right = 759.0
+margin_bottom = 476.0
 size_flags_vertical = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer/UIBox/PanelContainer" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer/UIBox/MarginContainer/PanelContainer" index="0"]
 margin_left = 24.0
 margin_top = 24.0
-margin_right = 560.0
-margin_bottom = 390.0
+margin_right = 510.0
+margin_bottom = 368.0
 size_flags_horizontal = 3
 size_flags_vertical = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LabelBig" parent="MenuLayer/UIBox/PanelContainer/VBoxContainer" index="0" instance=ExtResource( 4 )]
+[node name="LabelBig" parent="MenuLayer/UIBox/MarginContainer/PanelContainer/VBoxContainer" index="0" instance=ExtResource( 4 )]
 anchor_right = 0.0
-margin_right = 536.0
-margin_bottom = 41.0
+margin_right = 486.0
+margin_bottom = 54.0
 text = "SETTINGS"
 
-[node name="Menu" type="GridContainer" parent="MenuLayer/UIBox/PanelContainer/VBoxContainer" index="1"]
-margin_top = 57.0
-margin_right = 536.0
-margin_bottom = 366.0
+[node name="Menu" type="GridContainer" parent="MenuLayer/UIBox/MarginContainer/PanelContainer/VBoxContainer" index="1"]
+margin_top = 70.0
+margin_right = 486.0
+margin_bottom = 344.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="BtnVideo" parent="MenuLayer/UIBox/PanelContainer/VBoxContainer/Menu" index="0" instance=ExtResource( 6 )]
-margin_right = 536.0
-margin_bottom = 49.0
+[node name="BtnVideo" parent="MenuLayer/UIBox/MarginContainer/PanelContainer/VBoxContainer/Menu" index="0" instance=ExtResource( 6 )]
+margin_right = 486.0
+margin_bottom = 42.0
 text = "Video Settings"
 screen_to_push_in_config = "SCREEN_OPTIONS_VIDEO_MENU"
 grabs_focus = true
 
-[node name="BtnAudio" parent="MenuLayer/UIBox/PanelContainer/VBoxContainer/Menu" index="1" instance=ExtResource( 6 )]
-margin_top = 65.0
-margin_right = 536.0
-margin_bottom = 114.0
+[node name="BtnAudio" parent="MenuLayer/UIBox/MarginContainer/PanelContainer/VBoxContainer/Menu" index="1" instance=ExtResource( 6 )]
+margin_top = 58.0
+margin_right = 486.0
+margin_bottom = 100.0
 text = "Audio Settings"
 screen_to_push_in_config = "SCREEN_OPTIONS_AUDIO_MENU"
 
-[node name="BtnControls" parent="MenuLayer/UIBox/PanelContainer/VBoxContainer/Menu" index="2" instance=ExtResource( 6 )]
-margin_top = 130.0
-margin_right = 536.0
-margin_bottom = 179.0
+[node name="BtnControls" parent="MenuLayer/UIBox/MarginContainer/PanelContainer/VBoxContainer/Menu" index="2" instance=ExtResource( 6 )]
+margin_top = 116.0
+margin_right = 486.0
+margin_bottom = 158.0
 text = "Controls"
 screen_to_push_in_config = "SCREEN_OPTIONS_CONTROLS_MENU"
 
-[node name="BtnAbout" parent="MenuLayer/UIBox/PanelContainer/VBoxContainer/Menu" index="3" instance=ExtResource( 6 )]
-margin_top = 195.0
-margin_right = 536.0
-margin_bottom = 244.0
+[node name="BtnAbout" parent="MenuLayer/UIBox/MarginContainer/PanelContainer/VBoxContainer/Menu" index="3" instance=ExtResource( 6 )]
+margin_top = 174.0
+margin_right = 486.0
+margin_bottom = 216.0
 text = "About"
 screen_to_push_in_config = "SCREEN_ABOUT"
 
-[node name="BtnBack" parent="MenuLayer/UIBox/PanelContainer/VBoxContainer/Menu" index="4" instance=ExtResource( 6 )]
-margin_top = 260.0
-margin_right = 536.0
-margin_bottom = 309.0
+[node name="BtnBack" parent="MenuLayer/UIBox/MarginContainer/PanelContainer/VBoxContainer/Menu" index="4" instance=ExtResource( 6 )]
+margin_top = 232.0
+margin_right = 486.0
+margin_bottom = 274.0
 text = "Back"
 pushes_screen = false
 screen_to_push_in_config = ""
 pops_screen = true
+
+[node name="TextureRect" type="TextureRect" parent="." index="3"]
+margin_left = -600.0
+margin_top = -2050.0
+size_flags_horizontal = 7
+size_flags_vertical = 3
+texture = ExtResource( 7 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="." index="4"]
+autoplay = "Marquis"
+anims/Marquis = SubResource( 1 )
+anims/RESET = SubResource( 2 )

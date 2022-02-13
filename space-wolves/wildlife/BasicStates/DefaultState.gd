@@ -25,7 +25,7 @@ func _get_transition(_delta, states_map):
 
 
 func _enter_state(_new_state, _old_state):
-	#animationRef.play("default")
+	animationRef.play("default")
 	pass
 
 
