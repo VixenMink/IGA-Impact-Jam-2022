@@ -41,7 +41,6 @@ MY_TYPE = 3
 SPEED = 5
 MAX_HEALTH = 7.0
 
-
 [node name="Sprite" parent="." index="0"]
 texture = null
 
