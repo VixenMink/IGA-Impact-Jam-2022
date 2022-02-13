@@ -90,16 +90,16 @@ func update_navigation_map_statics():
 					if should_display_grid:
 						grid_rects[str(id)].color = enabled_color
 	
-	var obstacles = get_tree().get_nodes_in_group("obstacles")
-	for obstacletile in obstacles:
-		if obstacletile is TileMap:
-			var tiles = obstacletile.get_used_cells()
-			for tile in tiles:
-				var id = get_id_for_point(tile)
-				if astar.has_point(id):
-					astar.set_point_disabled(id, true)
-					if should_display_grid:
-						grid_rects[str(id)].color = disabled_color
+	#var obstacles = get_tree().get_nodes_in_group("obstacles")
+	#for obstacletile in obstacles:
+	#	if obstacletile is TileMap:
+	#		var tiles = obstacletile.get_used_cells()
+	#		for tile in tiles:
+	#			var id = get_id_for_point(tile)
+	#			if astar.has_point(id):
+	#				astar.set_point_disabled(id, true)
+	#				if should_display_grid:
+	#					grid_rects[str(id)].color = disabled_color
 
 
 func update_navigation_map_dynamics(npc, enable=false):

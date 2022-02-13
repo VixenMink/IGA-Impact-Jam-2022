@@ -98,7 +98,7 @@ func _on_WorldTimer_timeout():
 		print("Game Over! Too few predators. Ecological disaster.")
 		$HUD.Warning.modulate = Color.red
 		SignalMngr.emit_signal("level_lost")
-	elif roundCount >= 1:
+	elif roundCount >= 10:
 		$HUD.Warning.text = "Maintaining ecological balance is a never ending journey! But for now, you've saved NeoTokyo."
 		$HUD.Warning.modulate = Color.yellowgreen
 		SignalMngr.emit_signal("level_won")
