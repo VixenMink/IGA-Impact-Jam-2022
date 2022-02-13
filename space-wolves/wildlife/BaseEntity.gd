@@ -131,6 +131,11 @@ func _apply_movement(_delta, _useGravity = false) -> void:
 	update_facing()
 	var _err = move_and_slide(VELOCITY, GRAVITY_DIR, false, 4, PI/4, false)
 	
+	if VELOCITY != Vector2.ZERO:
+		$Sprite/Particles2D.emitting = true
+	else:
+		$Sprite/Particles2D.emitting = false
+		
 	# Code for pushing things
 	for index in get_slide_count():
 		var _collision = get_slide_collision(index)
@@ -146,7 +151,7 @@ func _apply_momentum(curVelocity, force) -> bool:
 	
 	curVelocity = curVelocity * force
 	var _err = move_and_slide(curVelocity, GRAVITY_DIR, false, 4, PI/4, false)
-	
+
 	# Code for pushing things
 	for index in get_slide_count():
 		var _collision = get_slide_collision(index)
