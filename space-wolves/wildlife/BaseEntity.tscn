@@ -11,7 +11,6 @@
 
 [node name="BaseEntity" type="KinematicBody2D" groups=["wildlife"]]
 light_mask = 0
-position = Vector2( 0, 3 )
 scale = Vector2( 0.992255, 0.974068 )
 collision_layer = 0
 collision_mask = 2147483649
@@ -28,13 +27,15 @@ texture = ExtResource( 3 )
 curve = ExtResource( 6 )
 
 [node name="HurtBox" parent="." instance=ExtResource( 1 )]
-scale = Vector2( 0.964193, 0.97233 )
 collision_layer = 4
 
 [node name="HitboxPivot" type="Position2D" parent="."]
 
 [node name="HitBox" parent="HitboxPivot" instance=ExtResource( 4 )]
 collision_mask = 2147483662
+
+[node name="CollisionShape2D" parent="HitboxPivot/HitBox" index="0"]
+position = Vector2( 0, 0 )
 
 [node name="AttackRange" type="Area2D" parent="HitboxPivot"]
 collision_layer = 0
