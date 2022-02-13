@@ -170,6 +170,7 @@ hframes = 12
 vframes = 7
 
 [node name="PhysicsBox" parent="." index="1"]
+visible = false
 rotation = 1.5708
 shape = SubResource( 12 )
 
@@ -181,6 +182,7 @@ anims/ram-windup = SubResource( 2 )
 anims/walk = SubResource( 10 )
 
 [node name="HurtBox" parent="." index="4"]
+visible = false
 collision_layer = 128
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
@@ -188,6 +190,7 @@ position = Vector2( 4.66711, -1.02845 )
 shape = SubResource( 4 )
 
 [node name="HitboxPivot" parent="." index="5"]
+visible = false
 rotation = 1.5708
 
 [node name="HitBox" parent="HitboxPivot" index="0"]

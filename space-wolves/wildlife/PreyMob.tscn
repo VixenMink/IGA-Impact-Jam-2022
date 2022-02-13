@@ -167,6 +167,7 @@ hframes = 6
 vframes = 2
 
 [node name="PhysicsBox" parent="." index="1"]
+visible = false
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" parent="." index="2"]
@@ -185,6 +186,7 @@ position = Vector2( 7.6028, -7.52035 )
 shape = SubResource( 4 )
 
 [node name="HitBox" parent="HitboxPivot" index="0"]
+visible = false
 collision_mask = 2147484160
 
 [node name="CollisionShape2D" parent="HitboxPivot/HitBox" index="0"]
