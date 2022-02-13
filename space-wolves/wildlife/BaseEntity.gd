@@ -131,10 +131,12 @@ func _apply_movement(_delta, _useGravity = false) -> void:
 	var _err = move_and_slide(VELOCITY, GRAVITY_DIR, false, 4, PI/4, false)
 	
 	if VELOCITY != Vector2.ZERO:
-		$Sprite/Particles2D.emitting = true
+		#$Sprite/Particles2D.emitting = true
+		pass
 	else:
-		$Sprite/Particles2D.emitting = false
-		
+		#$Sprite/Particles2D.emitting = false
+		pass
+	
 	# Code for pushing things
 	for index in get_slide_count():
 		var _collision = get_slide_collision(index)

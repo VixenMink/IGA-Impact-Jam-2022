@@ -48,15 +48,17 @@ func restart_level():
 func next_level():
 	pass
 
+
 func _process(_delta):
 	if predCount < 2:
-		$HUD.Warning.text = "Too few predators! At least 2 Predators are needed for a stable ecosystem!"
+		$HUD.Warning.text = "Introduce more predators! At least 2 Predators are needed for a stable ecosystem!"
 	elif preyCount < 3:
-		$HUD.Warning.text = "Too few prey! At least 3 prey are needed for a stable ecosystem!"
+		$HUD.Warning.text = "Introduce more prey! At least 3 prey are needed for a stable ecosystem!"
 	elif resourceCount > 10 and resourceCount > 5 * preyCount:
-		$HUD.Warning.text = "Too much flora! The flora will run wild in the system if not culled!"
+		$HUD.Warning.text = "Hunt flora! The flora will run wild in the system if not culled!"
 	else:
 		$HUD.Warning.text = ""
+
 
 func connect_children():
 	var creatureArray = get_tree().get_nodes_in_group('wildlife')
@@ -86,13 +88,20 @@ func register_wildlife(wildlifeType : int, change : int):
 func _on_WorldTimer_timeout():
 	if predCount < 2:
 		print("Game Over! Too few predators. Ecological disaster.")
+		$HUD.Warning.modulate = Color.red
 		SignalMngr.emit_signal("level_lost")
 	elif preyCount < 3:
 		print("Game Over! Too few prey. Ecological disaster.")
+		$HUD.Warning.modulate = Color.red
 		SignalMngr.emit_signal("level_lost")
 	elif resourceCount > 10 and resourceCount > 5 * preyCount:
 		print("Game Over! Too few predators. Ecological disaster.")
+		$HUD.Warning.modulate = Color.red
 		SignalMngr.emit_signal("level_lost")
+	elif roundCount >= 1:
+		$HUD.Warning.text = "Maintaining ecological balance is a never ending journey! But for now, you've saved NeoTokyo."
+		$HUD.Warning.modulate = Color.yellowgreen
+		SignalMngr.emit_signal("level_won")
 	else:
 		roundCount = roundCount + 1
 		breed()
@@ -101,6 +110,7 @@ func _on_WorldTimer_timeout():
 func breed():
 	var predcouples
 	var preycouples
+	
 	if predCount >= 2:
 		predcouples = floor(predCount/2)
 		if predcouples == 0:
