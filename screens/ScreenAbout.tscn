@@ -224,7 +224,7 @@ scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer/UIBox/VBoxContainer/Panel" index="0"]
 margin_right = 906.0
-margin_bottom = 1647.0
+margin_bottom = 2032.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -232,7 +232,7 @@ __meta__ = {
 [node name="LabelBig" parent="MenuLayer/UIBox/VBoxContainer/Panel/VBoxContainer" index="0" instance=ExtResource( 4 )]
 anchor_right = 0.0
 margin_right = 906.0
-margin_bottom = 1647.0
+margin_bottom = 2032.0
 text = "Cosmic Canidae: Credits and Accreditation
 
 Lead Gameplay Designer: Darius DeJesus
@@ -262,7 +262,14 @@ Sci Fi UI Sound 001.wav by crash_358
 Godot Plugins:
 Godot-Toolbox-Project
 Improved Resource Picker
-Godot Editor Discord Presence"
+Godot Editor Discord Presence
+
+Font information: 
+Copyright (c) 2009, Daniel Johnson
+ (<il.basso.buffo@gmail.com>),
+with Reserved Font Name Jura.
+Copyright © 2021 GGBot, 
+with Reserved Font Name \"Neon Sans\"."
 
 [node name="MarginContainer" type="MarginContainer" parent="MenuLayer/UIBox/VBoxContainer" index="1"]
 margin_top = 518.0
