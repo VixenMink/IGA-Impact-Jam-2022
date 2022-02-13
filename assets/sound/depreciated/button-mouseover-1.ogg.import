@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/button-mouseover-1.ogg-8661c6d12d071a112f0dcb58c178bf34.oggstr"
+
+[deps]
+
+source_file="res://assets/sound/depreciated/button-mouseover-1.ogg"
+dest_files=[ "res://.import/button-mouseover-1.ogg-8661c6d12d071a112f0dcb58c178bf34.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
