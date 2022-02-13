@@ -1,7 +1,30 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://space-wolves/HUD.gd" type="Script" id=1]
 [ext_resource path="res://addons/toolbox_project/assets/theme.tres" type="Theme" id=2]
+[ext_resource path="res://assets/fonts/jura/JuraDemiBold.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 20
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 20
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 22
+extra_spacing_top = -5
+extra_spacing_bottom = -5
+font_data = ExtResource( 3 )
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -25,52 +48,61 @@ margin_bottom = 580.0
 
 [node name="TopBox" type="HBoxContainer" parent="MarginContainer/BaseBox"]
 margin_right = 984.0
-margin_bottom = 108.0
+margin_bottom = 84.0
 size_flags_vertical = 3
+custom_constants/separation = 25
+alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/BaseBox/TopBox"]
-margin_right = 195.0
-margin_bottom = 108.0
+margin_right = 212.0
+margin_bottom = 84.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.5
+size_flags_stretch_ratio = 0.3
+custom_constants/separation = 0
 
 [node name="Cash" type="Label" parent="MarginContainer/BaseBox/TopBox/VBoxContainer"]
-margin_right = 195.0
-margin_bottom = 24.0
+margin_right = 212.0
+margin_bottom = 21.0
 size_flags_vertical = 3
+custom_fonts/font = SubResource( 2 )
 text = "Cash: $0"
 
 [node name="PredatorPop" type="Label" parent="MarginContainer/BaseBox/TopBox/VBoxContainer"]
-margin_top = 28.0
-margin_right = 195.0
-margin_bottom = 52.0
+margin_top = 21.0
+margin_right = 212.0
+margin_bottom = 42.0
 size_flags_vertical = 3
+custom_fonts/font = SubResource( 3 )
 text = "Predator Pop: 5"
 
 [node name="PreyPop" type="Label" parent="MarginContainer/BaseBox/TopBox/VBoxContainer"]
-margin_top = 56.0
-margin_right = 195.0
-margin_bottom = 80.0
+margin_top = 42.0
+margin_right = 212.0
+margin_bottom = 63.0
 size_flags_vertical = 3
+custom_fonts/font = SubResource( 4 )
 text = "Prey Pop: 5"
 
 [node name="ResoursePop" type="Label" parent="MarginContainer/BaseBox/TopBox/VBoxContainer"]
-margin_top = 84.0
-margin_right = 195.0
-margin_bottom = 108.0
+margin_top = 63.0
+margin_right = 212.0
+margin_bottom = 84.0
 size_flags_vertical = 3
+custom_fonts/font = SubResource( 5 )
 text = "Resource Pop: 5"
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/BaseBox/TopBox"]
-margin_left = 199.0
-margin_right = 589.0
-margin_bottom = 108.0
+margin_left = 237.0
+margin_right = 732.0
+margin_bottom = 84.0
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.7
+alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer/BaseBox/TopBox/VBoxContainer3"]
-margin_right = 390.0
-margin_bottom = 108.0
+margin_right = 495.0
+margin_bottom = 84.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 2 )
@@ -79,36 +111,47 @@ align = 1
 autowrap = true
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/BaseBox/TopBox"]
-margin_left = 593.0
+margin_left = 757.0
+margin_top = 7.0
 margin_right = 984.0
-margin_bottom = 108.0
-size_flags_horizontal = 3
-
-[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/BaseBox/TopBox/VBoxContainer2"]
-margin_right = 391.0
-margin_bottom = 46.0
-size_flags_horizontal = 3
-theme = ExtResource( 2 )
-max_value = 30.0
-step = 1.0
+margin_bottom = 84.0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+size_flags_stretch_ratio = 0.3
+custom_constants/separation = -2
+alignment = 2
 
 [node name="Round" type="Label" parent="MarginContainer/BaseBox/TopBox/VBoxContainer2"]
-margin_top = 50.0
-margin_right = 391.0
-margin_bottom = 77.0
+margin_right = 227.0
+margin_bottom = 24.0
 size_flags_vertical = 1
 theme = ExtResource( 2 )
 text = "Round 1"
+align = 1
 
 [node name="TargetLabel" type="Label" parent="MarginContainer/BaseBox/TopBox/VBoxContainer2"]
-margin_top = 81.0
-margin_right = 391.0
-margin_bottom = 108.0
+margin_top = 22.0
+margin_right = 227.0
+margin_bottom = 46.0
 theme = ExtResource( 2 )
 text = "Current Target: Null"
+align = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/BaseBox/TopBox/VBoxContainer2"]
+margin_top = 44.0
+margin_right = 227.0
+margin_bottom = 77.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 11
+size_flags_vertical = 8
+theme = ExtResource( 2 )
+custom_fonts/font = SubResource( 1 )
+max_value = 30.0
+step = 1.0
 
 [node name="MiddleBox" type="CenterContainer" parent="MarginContainer/BaseBox"]
-margin_top = 112.0
+margin_top = 88.0
 margin_right = 984.0
 margin_bottom = 385.0
 size_flags_vertical = 3
@@ -116,10 +159,10 @@ size_flags_stretch_ratio = 4.0
 
 [node name="AlertBox" type="AcceptDialog" parent="MarginContainer/BaseBox/MiddleBox"]
 visible = true
-margin_left = 259.0
-margin_top = 90.0
-margin_right = 725.0
-margin_bottom = 183.0
+margin_left = 211.0
+margin_top = 103.0
+margin_right = 772.0
+margin_bottom = 193.0
 theme = ExtResource( 2 )
 dialog_text = "You don't have enough money for this action!"
 
