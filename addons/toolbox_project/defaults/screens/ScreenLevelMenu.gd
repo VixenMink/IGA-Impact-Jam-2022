@@ -44,6 +44,6 @@ func is_level_unlocked(level_id):
 	)
 
 func _on_button_pressed(level_id):
-	SoundMngr.play_ui_sound(C.UI_SELECT)
+	SoundMngr.play_ui_sound("res://assets/sound/button-onclick-1.ogg")
 	StateMngr.start_level_id = level_id
 	ScreenMngr.push_screen(C.SCREEN_GAME)
