@@ -144,7 +144,7 @@ tracks/0/keys = {
 extents = Vector2( 40, 20 )
 
 [sub_resource type="CapsuleShape2D" id=11]
-radius = 11.2928
+radius = 36.0
 height = 83.4144
 
 [sub_resource type="CircleShape2D" id=5]
@@ -157,7 +157,9 @@ radius = 500.0
 scale = Vector2( 1, 1 )
 collision_layer = 8
 collision_mask = 2147483666
-SPEED = 45
+REWARD = 1000
+MY_TYPE = 2
+SPEED = 65
 
 [node name="Sprite" parent="." index="0"]
 rotation = 1.5708
@@ -233,6 +235,9 @@ nextAttackState = NodePath("../RamState")
 transitionDelay = 0.5
 
 [node name="RamState" parent="StateMachine" index="5" instance=ExtResource( 3 )]
+
+[node name="NamePlate" parent="." index="9"]
+text = "Predator"
 
 [editable path="HurtBox"]
 [editable path="HitboxPivot/HitBox"]
