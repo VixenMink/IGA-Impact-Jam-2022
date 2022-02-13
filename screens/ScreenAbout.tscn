@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://addons/toolbox_project/scenes/screens/Screen.tscn" type="PackedScene" id=1]
 [ext_resource path="res://addons/toolbox_project/scenes/ui/components/UIBox.tscn" type="PackedScene" id=2]
@@ -7,19 +7,6 @@
 [ext_resource path="res://addons/toolbox_project/scenes/ui/menu/MenuButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://addons/toolbox_project/defaults/screens/ScreenAbout.gd" type="Script" id=6]
 [ext_resource path="res://assets/Nebula Blue.png" type="Texture" id=7]
-[ext_resource path="res://assets/fonts/jura/JuraMedium.ttf" type="DynamicFontData" id=8]
-
-[sub_resource type="DynamicFont" id=3]
-size = 32
-font_data = ExtResource( 8 )
-
-[sub_resource type="DynamicFont" id=4]
-size = 32
-font_data = ExtResource( 8 )
-
-[sub_resource type="DynamicFont" id=5]
-size = 32
-font_data = ExtResource( 8 )
 
 [sub_resource type="Animation" id=1]
 resource_name = "Marquis"
@@ -228,76 +215,43 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="MenuLayer/UIBox/VBoxContainer" index="0"]
+[node name="Panel" type="ScrollContainer" parent="MenuLayer/UIBox/VBoxContainer" index="0"]
 margin_right = 984.0
 margin_bottom = 502.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer/UIBox/VBoxContainer/Panel" index="0"]
-anchor_left = 0.1
-anchor_top = 0.1
-anchor_right = 0.9
-anchor_bottom = 0.9
+margin_right = 906.0
+margin_bottom = 1042.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="LabelBig" parent="MenuLayer/UIBox/VBoxContainer/Panel/VBoxContainer" index="0" instance=ExtResource( 4 )]
 anchor_right = 0.0
-margin_right = 787.0
-margin_bottom = 52.0
-text = "Created by"
+margin_right = 906.0
+margin_bottom = 1042.0
+text = "Cosmic Canidae: Credits and Accreditation
+Lead Gameplay Designer: Darius DeJesus
+Lead Gameplay Designer: Tearcell.com
+Project Manager: MTBVibe
+UI/UX Designer: Babs
+Asst. Gameplay Programmer: Jacob
+Art Department: Minkies and Ryan
+Original Music by: Racoon Nation
+QA Department
+Lars
 
-[node name="Label2" type="Label" parent="MenuLayer/UIBox/VBoxContainer/Panel/VBoxContainer" index="1"]
-margin_top = 68.0
-margin_right = 787.0
-margin_bottom = 209.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = SubResource( 3 )
-text = "Gameplay: Darius DeJesus - Tearcell.com
-Gameplay: Jacob
-Project Manger: MTBVibe
-Title Screens: Babs"
-align = 1
-valign = 1
+Additional Sound Courtesy of:
+Freesound.org as follows
+Creative Commons Attribution:
+Alert 02 by rhodesmas
+OtherWorlds 4 by RokZRooM
 
-[node name="LabelBig2" parent="MenuLayer/UIBox/VBoxContainer/Panel/VBoxContainer" index="2" instance=ExtResource( 4 )]
-anchor_right = 0.0
-margin_top = 225.0
-margin_right = 787.0
-margin_bottom = 277.0
-text = "Art by"
-
-[node name="Label3" type="Label" parent="MenuLayer/UIBox/VBoxContainer/Panel/VBoxContainer" index="3"]
-margin_top = 293.0
-margin_right = 787.0
-margin_bottom = 326.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = SubResource( 4 )
-text = "Minkies and Ryan"
-align = 1
-valign = 1
-
-[node name="LabelBig3" parent="MenuLayer/UIBox/VBoxContainer/Panel/VBoxContainer" index="4" instance=ExtResource( 4 )]
-anchor_right = 0.0
-margin_top = 342.0
-margin_right = 787.0
-margin_bottom = 394.0
-text = "Music by"
-
-[node name="Label5" type="Label" parent="MenuLayer/UIBox/VBoxContainer/Panel/VBoxContainer" index="5"]
-margin_top = 410.0
-margin_right = 787.0
-margin_bottom = 443.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
-text = "Racoon Nation"
-align = 1
-valign = 1
+Creative Commons 0:
+Sci Fi UI Sound 001.wav by crash_358"
 
 [node name="MarginContainer" type="MarginContainer" parent="MenuLayer/UIBox/VBoxContainer" index="1"]
 margin_top = 518.0
@@ -319,6 +273,8 @@ grabs_focus = true
 [node name="TextureRect" type="TextureRect" parent="." index="3"]
 margin_left = -600.0
 margin_top = -2050.0
+margin_right = 3444.0
+margin_bottom = 2054.0
 size_flags_horizontal = 7
 size_flags_vertical = 3
 texture = ExtResource( 7 )
