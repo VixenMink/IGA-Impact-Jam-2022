@@ -42,6 +42,7 @@ func _on_Area2D_body_entered(body):
 	print(body.name)
 	body._ShowYourName()
 	Settings.curTarget = body
+	curTarget = body
 
 
 func _on_CaptureArea_body_exited(body):

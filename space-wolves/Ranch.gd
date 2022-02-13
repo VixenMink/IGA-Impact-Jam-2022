@@ -5,9 +5,15 @@ signal breedPredator
 signal breedPrey
 
 onready var pathfinding := $Astar
-onready var player_id := 1
+onready var hud := $HUD
+onready var player := $PlayerShip
+onready var roundTimer := $WorldTimer
 
-var howmany
+var roundCount = 1
+var preyCount := 0
+var predCount := 0
+var resourceCount := 0
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,7 +30,13 @@ func _ready():
 	Settings.curGameState = Settings.GAME_STATES.PLAY
 	
 	$SpawnControl.intialspawn()
-	connect_children()
+	
+	var _err = $HUD.connect('spawnPredator', $SpawnControl , '_on_spawnPredator')
+	_err = $HUD.connect('spawnPrey', $SpawnControl , '_on_spawnPrey')
+	_err = $HUD.connect('spawnResource', $SpawnControl , '_on_spawnResource')
+	_err = self.connect('breedResource', $SpawnControl, '_on_breedResource')
+	_err = self.connect("breedPredator", $SpawnControl, '_on_breedPredator')
+	_err = self.connect("breedPrey", $SpawnControl, '_on_breedPrey')
 
 
 func _on_game_started():
@@ -36,35 +48,15 @@ func restart_level():
 func next_level():
 	pass
 
-func set_child_values():
-	var predArray = get_tree().get_nodes_in_group('Predator')
-	var preyArray = get_tree().get_nodes_in_group('Prey')
-	var resourceArray = get_tree().get_nodes_in_group('Resources')
-	for pred in predArray:
-		pred.REWARD = 1000
-		pred.TYPE = 1
-	for prey in preyArray:
-		prey.REWARD = 500
-		prey.TYPE = 2
-	for resource in resourceArray:
-		resource.REWARD = 250
-		resource.TYPE = 3
+func _process(_adelta):
+	pass
+
 
 func connect_children():
-	$HUD.connect('spawnPredator', $SpawnControl , '_on_spawnPredator')
-	$HUD.connect('spawnPrey', $SpawnControl , '_on_spawnPrey')
-	$HUD.connect('spawnResource', $SpawnControl , '_on_spawnResource')
-	$SpawnControl.connect("predSpawnComplete", $HUD, '_on_predSpawnComplete')
-	$SpawnControl.connect('preySpawnComplete', $HUD, '_on_preySpawnComplete')
-	$SpawnControl.connect("resourceSpawnComplete", $HUD, '_on_resourceSpawnComplete')
-	self.connect('breedResource', $SpawnControl, '_on_breedResource')
-	self.connect("breedPredator", $SpawnControl, '_on_breedPredator')
-	self.connect("breedPrey", $SpawnControl, '_on_breedPrey')
-	
 	var creatureArray = get_tree().get_nodes_in_group('wildlife')
 	for creature in creatureArray:
-		$HUD.connect('killMob', creature, '_on_killMob')
-		creature.connect('ShotThroughTheHart', $HUD, '_on_ShotThroughTheHart')
+		var _err = $HUD.connect('killMob', creature, '_on_killMob')
+		_err = creature.connect('ShotThroughTheHart', $HUD, '_on_ShotThroughTheHart')
 
 
 func _on_TickTimer_timeout():
@@ -76,8 +68,19 @@ func _on_TickTimer_timeout():
 		wildlife._take_hunger_damage()
 
 
+func register_wildlife(wildlifeType : int, change : int):
+	if wildlifeType == 1:
+		preyCount = preyCount + change
+	if wildlifeType == 2:
+		predCount = predCount + change
+	if wildlifeType == 3:
+		resourceCount = resourceCount + change
+
+
 func _on_WorldTimer_timeout():
+	roundCount = roundCount + 1
 	breed()
+
 
 func breed():
 	var predcouples

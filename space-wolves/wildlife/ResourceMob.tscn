@@ -11,7 +11,7 @@
 radius = 18.2563
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 19.8594, 20.0609 )
+extents = Vector2( 15, 15 )
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
@@ -24,8 +24,9 @@ animations = [ {
 [node name="ResourceMob" groups=["Resource"] instance=ExtResource( 1 )]
 collision_layer = 32
 collision_mask = 2147483651
+REWARD = 250
+MY_TYPE = 3
 SPEED = 5
-MAX_HEALTH = 20
 
 [node name="Sprite" parent="." index="0"]
 texture = null
@@ -53,6 +54,7 @@ start_state = NodePath("RandomMoveState")
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="9"]
 position = Vector2( 1.00781, -5.13311 )
 frames = SubResource( 4 )
+frame = 3
 playing = true
 
 [node name="NamePlate" parent="." index="10"]
