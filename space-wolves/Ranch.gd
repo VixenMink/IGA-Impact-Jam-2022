@@ -37,6 +37,11 @@ func connect_children():
 	$SpawnControl.connect("predSpawnComplete", $HUD, '_on_predSpawnComplete')
 	$SpawnControl.connect('preySpawnComplete', $HUD, '_on_preySpawnComplete')
 	$SpawnControl.connect("resourceSpawnComplete", $HUD, '_on_resourceSpawnComplete')
+	
+	var creatureArray = get_tree().get_nodes_in_group('wildlife')
+	for creature in creatureArray:
+		$HUD.connect('killMob', creature, '_on_killMob')
+		creature.connect('ShotThroughTheHart', $HUD, '_on_ShotThroughTheHart')
 
 
 func _on_TickTimer_timeout():
