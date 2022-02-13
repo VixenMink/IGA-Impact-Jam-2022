@@ -7,7 +7,7 @@
 [ext_resource path="res://space-wolves/wildlife/BasicStates/DefaultState.tscn" type="PackedScene" id=5]
 [ext_resource path="res://space-wolves/wildlife/BaseEntity.tscn" type="PackedScene" id=6]
 [ext_resource path="res://space-wolves/wildlife/BasicStates/ChaseState.tscn" type="PackedScene" id=7]
-[ext_resource path="res://assets/DeerColor01.PNG" type="Texture" id=8]
+[ext_resource path="res://assets/DeerFinal.png" type="Texture" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 41.8239, 43.1181 )
@@ -92,7 +92,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=13]
 resource_name = "default"
-length = 2.0
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -101,7 +100,7 @@ tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1.9 ),
+"times": PoolRealArray( 0, 0.8 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0, 5 ]

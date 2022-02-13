@@ -18,7 +18,7 @@ func _state_logic(delta):
 	
 	selfRef.generate_path(moveTarget)
 	
-	if selfRef.path.size() == 0:
+	if selfRef.path.size() == 1:
 		selfRef.path = []
 		var steerVelocity = selfRef.global_position.direction_to(moveTarget)
 		selfRef.VELOCITY = steerVelocity
