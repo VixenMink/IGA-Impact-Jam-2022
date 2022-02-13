@@ -56,6 +56,8 @@ func _process(_delta):
 		$HUD.Warning.text = "Introduce more prey! At least 3 prey are needed for a stable ecosystem!"
 	elif resourceCount > 10 and resourceCount > 5 * preyCount:
 		$HUD.Warning.text = "Hunt flora! The flora will run wild in the system if not culled!"
+	elif Settings.Player_Cash < roundCount * 500:
+		$HUD.Warning.text = "Cull populations! You don't have enough money for upkeep of the ranch!"
 	else:
 		$HUD.Warning.text = ""
 
@@ -96,6 +98,10 @@ func _on_WorldTimer_timeout():
 		SignalMngr.emit_signal("level_lost")
 	elif resourceCount > 10 and resourceCount > 5 * preyCount:
 		print("Game Over! Too few predators. Ecological disaster.")
+		$HUD.Warning.modulate = Color.red
+		SignalMngr.emit_signal("level_lost")
+	elif Settings.Player_Cash < roundCount * 500:
+		print("Game Over! You can't afford to run the reserve any more.")
 		$HUD.Warning.modulate = Color.red
 		SignalMngr.emit_signal("level_lost")
 	elif roundCount >= 10:
