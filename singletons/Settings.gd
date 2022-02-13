@@ -1,6 +1,6 @@
 extends Node
 
-var ENEMY_DEBUG := true
+var ENEMY_DEBUG := false
 
 var enable_sound := true
 var enable_music := true

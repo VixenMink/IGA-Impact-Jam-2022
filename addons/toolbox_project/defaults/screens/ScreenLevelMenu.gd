@@ -1,7 +1,7 @@
 tool
 extends Screen
 
-onready var menu = $MenuLayer/UIBox/PanelContainer/VBoxContainer/Menu
+onready var menu = $MenuLayer/UIBox/PanelContainer/VBoxContainer/MarginContainer2/Menu
 func _ready():
 	
 	for child in menu.get_children():
@@ -13,7 +13,7 @@ func _ready():
 		var btn:Button = Button.new()
 		
 		# Init
-		btn.text = str(level_id + 1)
+		btn.text = str("START")
 		btn.connect("pressed", self, "_on_button_pressed", [level_id])
 		btn.disabled = !is_level_unlocked(level_id)
 		btn.size_flags_horizontal = btn.SIZE_EXPAND_FILL
