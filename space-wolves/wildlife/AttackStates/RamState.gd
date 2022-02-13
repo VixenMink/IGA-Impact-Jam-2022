@@ -46,4 +46,5 @@ func _exit_state(_old_state, _new_state):
 
 func _on_anim_complete(anim_name):
 	if anim_name == 'ram-windup':
+		animationRef.play("ram-fire")
 		ramTime = true

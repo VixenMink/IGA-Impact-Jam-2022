@@ -691,24 +691,24 @@ script = ExtResource( 6 )
 [node name="UIBox" parent="MenuLayer" index="0" instance=ExtResource( 2 )]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer/UIBox" index="0"]
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 1004.0
-margin_bottom = 580.0
+margin_left = 220.0
+margin_top = 80.0
+margin_right = 804.0
+margin_bottom = 526.0
 size_flags_horizontal = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MarginContainer2-Cosmic" type="MarginContainer" parent="MenuLayer/UIBox/VBoxContainer" index="0"]
-margin_right = 984.0
+margin_right = 584.0
 margin_bottom = 135.0
 custom_constants/margin_top = 20
 custom_constants/margin_bottom = 0
 
 [node name="RichTextLabel-Csmic" type="Label" parent="MenuLayer/UIBox/VBoxContainer/MarginContainer2-Cosmic" index="0"]
 margin_top = 20.0
-margin_right = 984.0
+margin_right = 584.0
 margin_bottom = 135.0
 size_flags_vertical = 3
 custom_colors/font_color = Color( 0.72549, 0.0745098, 0.780392, 1 )
@@ -721,7 +721,7 @@ percent_visible = -0.2
 
 [node name="RichTextLabel2-O" type="Label" parent="MenuLayer/UIBox/VBoxContainer/MarginContainer2-Cosmic" index="1"]
 margin_top = 20.0
-margin_right = 984.0
+margin_right = 584.0
 margin_bottom = 135.0
 size_flags_vertical = 3
 custom_colors/font_color = Color( 0.72549, 0.0745098, 0.780392, 1 )
@@ -733,13 +733,13 @@ valign = 1
 
 [node name="MarginContainer3-Canidae" type="MarginContainer" parent="MenuLayer/UIBox/VBoxContainer" index="1"]
 margin_top = 151.0
-margin_right = 984.0
+margin_right = 584.0
 margin_bottom = 236.0
 custom_constants/margin_top = -30
 
 [node name="RichTextLabel2-Canidae" type="Label" parent="MenuLayer/UIBox/VBoxContainer/MarginContainer3-Canidae" index="0"]
 margin_top = -30.0
-margin_right = 984.0
+margin_right = 584.0
 margin_bottom = 85.0
 custom_colors/font_color = Color( 0, 0.647059, 1, 1 )
 custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
@@ -750,7 +750,7 @@ percent_visible = -0.142857
 
 [node name="Label-WolvesinSpace" type="Label" parent="MenuLayer/UIBox/VBoxContainer" index="2"]
 margin_top = 252.0
-margin_right = 984.0
+margin_right = 584.0
 margin_bottom = 290.0
 custom_colors/font_color = Color( 0.262745, 0.937255, 0.223529, 1 )
 custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
@@ -765,39 +765,38 @@ __meta__ = {
 
 [node name="PanelContainerMargin" type="MarginContainer" parent="MenuLayer/UIBox/VBoxContainer" index="3"]
 margin_top = 306.0
-margin_right = 984.0
-margin_bottom = 512.0
+margin_right = 584.0
+margin_bottom = 446.0
 custom_constants/margin_right = 225
 custom_constants/margin_left = 225
 
 [node name="PanelContainer" type="PanelContainer" parent="MenuLayer/UIBox/VBoxContainer/PanelContainerMargin" index="0"]
 margin_left = 225.0
-margin_right = 759.0
-margin_bottom = 206.0
+margin_right = 359.0
+margin_bottom = 140.0
 
 [node name="Menu" type="GridContainer" parent="MenuLayer/UIBox/VBoxContainer/PanelContainerMargin/PanelContainer" index="0"]
 margin_left = 24.0
 margin_top = 24.0
-margin_right = 510.0
-margin_bottom = 182.0
+margin_right = 110.0
+margin_bottom = 116.0
 
 [node name="BtnStart" parent="MenuLayer/UIBox/VBoxContainer/PanelContainerMargin/PanelContainer/Menu" index="0" instance=ExtResource( 5 )]
-margin_right = 486.0
-margin_bottom = 42.0
+margin_right = 86.0
 text = "Start Game"
 grabs_focus = true
 
 [node name="BtnSettings" parent="MenuLayer/UIBox/VBoxContainer/PanelContainerMargin/PanelContainer/Menu" index="1" instance=ExtResource( 5 )]
-margin_top = 58.0
-margin_right = 486.0
-margin_bottom = 100.0
+margin_top = 36.0
+margin_right = 86.0
+margin_bottom = 56.0
 text = "Settings"
 screen_to_push_in_config = "SCREEN_OPTIONS_MENU"
 
 [node name="BtnQuit" parent="MenuLayer/UIBox/VBoxContainer/PanelContainerMargin/PanelContainer/Menu" index="2" instance=ExtResource( 5 )]
-margin_top = 116.0
-margin_right = 486.0
-margin_bottom = 158.0
+margin_top = 72.0
+margin_right = 86.0
+margin_bottom = 92.0
 text = "Quit Game"
 pushes_screen = false
 screen_to_push_in_config = ""

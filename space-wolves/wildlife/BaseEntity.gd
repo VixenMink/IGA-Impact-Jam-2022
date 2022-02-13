@@ -47,7 +47,7 @@ var targetPos
 
 var amDead := false
 var invulnerable := false
-var hungry := true
+var hungry := false
 var canbeKilled := false
 
 var Pred
@@ -86,7 +86,6 @@ func _process(_delta):
 
 
 func _physics_process(_delta):
-	
 	if detectableEntities.size() > 0:
 		can_see_target = _check_target_line_of_sight()
 	else:
@@ -98,7 +97,7 @@ func _physics_process(_delta):
 		hungry = true
 		buildDetectableList()
 	if hungry and health == MAX_HEALTH:
-		hungry = true
+		hungry = false
 
 
 
@@ -248,7 +247,6 @@ func generate_path(destination : Vector2):
 
 func update_facing():
 	if VELOCITY != Vector2.ZERO:
-		print(VELOCITY.angle() + deg2rad(90))
 		sprite.rotation = lerp(sprite.rotation, VELOCITY.angle() + deg2rad(90), 0.1)
 		pivot.rotation = lerp(pivot.rotation, VELOCITY.angle() + deg2rad(90), 0.1)
 		hurtbox.rotation = lerp(hurtbox.rotation, VELOCITY.angle() + deg2rad(90), 0.1)
