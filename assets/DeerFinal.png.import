@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/DeerColor01.PNG-76d925e837592b6e42b9697a68765253.stex"
+path="res://.import/DeerFinal.png-8889ebdc6bdfc6f1dbf9a7f493e86603.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://DeerColor01.PNG"
-dest_files=[ "res://.import/DeerColor01.PNG-76d925e837592b6e42b9697a68765253.stex" ]
+source_file="res://assets/DeerFinal.png"
+dest_files=[ "res://.import/DeerFinal.png-8889ebdc6bdfc6f1dbf9a7f493e86603.stex" ]
 
 [params]
 

@@ -24,7 +24,7 @@ onready var CurrentTarget = $MarginContainer/BaseBox/TopBox/VBoxContainer2/Targe
 var cashmoney = Settings.Player_Cash
 
 func _ready():
-	cashmoney = Settings.Player_Cash
+	cashmoney = 5000
 	
 
 
@@ -102,5 +102,5 @@ func _on_ResourceKill_pressed():
 	emit_signal("killMob")
 
 
-func _on_ShotThroughTheHart(REWARD, TYPE):
+func _on_ShotThroughTheHart(REWARD, _TYPE):
 	cashmoney = cashmoney + REWARD

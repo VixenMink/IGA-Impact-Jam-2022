@@ -41,17 +41,14 @@ var target_in_attack_range := false
 var can_see_target := false
 var target_last_known_position : Vector2
 var debug_los_color := Color(1.0, .329, .298)
-var targetPos
+var targetPos 
 
 var amDead := false
 var invulnerable := false
 var hungry := false
 var canbeKilled := false
 
-
-
 signal died
-signal ShotThroughTheHart
 
 
 func _ready():	
@@ -93,7 +90,7 @@ func _physics_process(_delta):
 	if health < MAX_HEALTH * .9:
 		hungry = true
 		buildDetectableList()
-	if hungry and health == MAX_HEALTH:
+	if hungry and health >= MAX_HEALTH:
 		hungry = false
 
 
@@ -286,6 +283,14 @@ func buildDetectableList():
 	for body in $HitboxPivot/DetectRange.get_overlapping_bodies():
 		if amHostileTo(body):
 			detectableEntities.push_back(body)
+	
+	detectableEntities.sort_custom(self, "customComparison")
+
+func customComparison(a, b):
+	if typeof(a) != typeof(b):
+		return typeof(a) < typeof(b)
+	else:
+		return a < b
 
 
 func _on_DetectRange_body_entered(body):

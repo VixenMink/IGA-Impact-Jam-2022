@@ -215,16 +215,16 @@ custom_constants/margin_left = 225
 
 [node name="PanelContainer" type="PanelContainer" parent="MenuLayer/UIBox/MarginContainer" index="0"]
 margin_left = 225.0
-margin_top = 84.0
+margin_top = 85.0
 margin_right = 759.0
-margin_bottom = 476.0
+margin_bottom = 475.0
 size_flags_vertical = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer/UIBox/MarginContainer/PanelContainer" index="0"]
 margin_left = 24.0
 margin_top = 24.0
 margin_right = 510.0
-margin_bottom = 368.0
+margin_bottom = 366.0
 size_flags_horizontal = 3
 size_flags_vertical = 5
 __meta__ = {
@@ -234,13 +234,13 @@ __meta__ = {
 [node name="LabelBig" parent="MenuLayer/UIBox/MarginContainer/PanelContainer/VBoxContainer" index="0" instance=ExtResource( 4 )]
 anchor_right = 0.0
 margin_right = 486.0
-margin_bottom = 54.0
+margin_bottom = 52.0
 text = "SETTINGS"
 
 [node name="Menu" type="GridContainer" parent="MenuLayer/UIBox/MarginContainer/PanelContainer/VBoxContainer" index="1"]
-margin_top = 70.0
+margin_top = 68.0
 margin_right = 486.0
-margin_bottom = 344.0
+margin_bottom = 342.0
 grow_horizontal = 2
 grow_vertical = 2
 

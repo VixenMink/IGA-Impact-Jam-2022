@@ -1,9 +1,9 @@
 extends Screen
 
 
-onready var btn_video = $MenuLayer/UIBox/PanelContainer/VBoxContainer/Menu/BtnVideo
-onready var btn_audio = $MenuLayer/UIBox/PanelContainer/VBoxContainer/Menu/BtnAudio
-onready var btn_controls = $MenuLayer/UIBox/PanelContainer/VBoxContainer/Menu/BtnControls
+onready var btn_video = $MenuLayer/UIBox/MarginContainer/PanelContainer/VBoxContainer/Menu/BtnVideo
+onready var btn_audio = $MenuLayer/UIBox/MarginContainer/PanelContainer/VBoxContainer/Menu/BtnAudio
+onready var btn_controls = $MenuLayer/UIBox/MarginContainer/PanelContainer/VBoxContainer/Menu/BtnControls
 
 func _ready():
 	if !C.SHOW_SETTINGS_VIDEO:

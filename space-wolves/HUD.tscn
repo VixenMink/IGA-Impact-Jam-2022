@@ -95,21 +95,21 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 4.0
 
 [node name="AlertBox" type="AcceptDialog" parent="MarginContainer/BaseBox/MiddleBox"]
+visible = true
 margin_left = 259.0
 margin_top = 105.0
 margin_right = 725.0
 margin_bottom = 198.0
 theme = ExtResource( 2 )
-dialog_text = "You don't have enough money for this action!"
+dialog_text = "You don't have enough money for this action!D"
 
 [node name="BottomGrid" type="GridContainer" parent="MarginContainer/BaseBox"]
 modulate = Color( 1, 1, 1, 0.745098 )
 show_behind_parent = true
-margin_left = 342.0
 margin_top = 388.0
-margin_right = 642.0
+margin_right = 300.0
 margin_bottom = 559.0
-size_flags_horizontal = 4
+size_flags_horizontal = 0
 size_flags_vertical = 3
 theme = ExtResource( 2 )
 custom_constants/vseparation = 1
