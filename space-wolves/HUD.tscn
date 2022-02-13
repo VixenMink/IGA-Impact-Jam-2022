@@ -101,7 +101,7 @@ margin_top = 105.0
 margin_right = 725.0
 margin_bottom = 198.0
 theme = ExtResource( 2 )
-dialog_text = "You don't have enough money for this action!D"
+dialog_text = "You don't have enough money for this action!"
 
 [node name="BottomGrid" type="GridContainer" parent="MarginContainer/BaseBox"]
 modulate = Color( 1, 1, 1, 0.745098 )
