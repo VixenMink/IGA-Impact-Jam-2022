@@ -68,7 +68,7 @@ position = Vector2( 3.02342, 1.02662 )
 scale = Vector2( 0.05, 0.05 )
 frames = SubResource( 4 )
 animation = "Kelp"
-frame = 5
+frame = 3
 speed_scale = 0.8
 playing = true
 
