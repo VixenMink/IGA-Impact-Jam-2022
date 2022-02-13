@@ -14,3 +14,11 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+pretty_action_names = {
+"game_down": "Move Down",
+"game_interact": "Scan",
+"game_left": "Move Left",
+"game_pause": "Pause",
+"game_right": "Move Right",
+"game_up": "Move Up"
+}
