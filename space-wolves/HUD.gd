@@ -36,7 +36,7 @@ func _ready():
 
 func _process(_delta):
 	update_hud()
-	Round.text = str('Round: ' , get_parent().roundCount)
+	Round.text = str('Generation: ' , get_parent().roundCount)
 	Progress.value = 30 - get_parent().roundTimer.time_left
 
 

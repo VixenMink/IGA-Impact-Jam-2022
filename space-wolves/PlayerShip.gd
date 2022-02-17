@@ -92,8 +92,9 @@ func retarget():
 			break
 
 
-func _on_CaptureArea_body_exited(_body):
-	pass
+func _on_CaptureArea_body_exited(body):
+	if body == curTarget:
+		curTarget = null
 
 
 func _on_CaptureArea_body_entered(body):

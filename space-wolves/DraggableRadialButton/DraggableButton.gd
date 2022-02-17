@@ -29,17 +29,17 @@ func _on_MenuButton_button_down():
 
 
 func _on_MenuButton_button_up():
-	if previousLocation == get_global_position():
-		if menuOpen:
-			ringMenu.disable_buttons()
-			menuOpen = false
-			#$MenuButton.set_normal_texture(normalImage)
-			emit_signal("button_state_changed", false)
-		else:
-			ringMenu.enable_buttons()
-			menuOpen = true
-			#$MenuButton.set_normal_texture(pressedImage)
-			emit_signal("button_state_changed", true)
+	#if previousLocation == get_global_position():
+	if menuOpen:
+		ringMenu.disable_buttons()
+		menuOpen = false
+		#$MenuButton.set_normal_texture(normalImage)
+		emit_signal("button_state_changed", false)
+	else:
+		ringMenu.enable_buttons()
+		menuOpen = true
+		#$MenuButton.set_normal_texture(pressedImage)
+		emit_signal("button_state_changed", true)
 
 
 func clearHuntButton():
