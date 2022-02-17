@@ -68,64 +68,76 @@ __meta__ = {
 [node name="SpawnPoints" type="Node" parent="."]
 
 [node name="Position2D" type="Position2D" parent="SpawnPoints"]
-position = Vector2( 165, 244 )
+position = Vector2( 192, 192 )
 
 [node name="Position2D2" type="Position2D" parent="SpawnPoints"]
-position = Vector2( 941, 702 )
+position = Vector2( 576, 192 )
 
 [node name="Position2D3" type="Position2D" parent="SpawnPoints"]
-position = Vector2( 179, 682 )
+position = Vector2( 960, 192 )
 
 [node name="Position2D4" type="Position2D" parent="SpawnPoints"]
-position = Vector2( 648, 460 )
+position = Vector2( 1344, 192 )
 
 [node name="Position2D5" type="Position2D" parent="SpawnPoints"]
-position = Vector2( 249, 939 )
+position = Vector2( 1728, 192 )
 
 [node name="Position2D6" type="Position2D" parent="SpawnPoints"]
-position = Vector2( 660, 171 )
+position = Vector2( 2112, 192 )
 
 [node name="Position2D7" type="Position2D" parent="SpawnPoints"]
-position = Vector2( 1052, 499 )
+position = Vector2( 192, 576 )
 
 [node name="Position2D8" type="Position2D" parent="SpawnPoints"]
-position = Vector2( 1087, 168 )
+position = Vector2( 576, 576 )
 
 [node name="Position2D9" type="Position2D" parent="SpawnPoints"]
-position = Vector2( 1486, 211 )
+position = Vector2( 960, 576 )
 
 [node name="Position2D10" type="Position2D" parent="SpawnPoints"]
-position = Vector2( 1483, 679 )
+position = Vector2( 1344, 576 )
 
 [node name="Position2D11" type="Position2D" parent="SpawnPoints"]
-position = Vector2( 1929, 184 )
+position = Vector2( 1728, 576 )
 
 [node name="Position2D12" type="Position2D" parent="SpawnPoints"]
-position = Vector2( 1978, 589 )
+position = Vector2( 2112, 576 )
 
 [node name="Position2D13" type="Position2D" parent="SpawnPoints"]
-position = Vector2( 1997, 976 )
+position = Vector2( 192, 960 )
 
 [node name="Position2D14" type="Position2D" parent="SpawnPoints"]
-position = Vector2( 1527, 1072 )
+position = Vector2( 576, 960 )
 
 [node name="Position2D15" type="Position2D" parent="SpawnPoints"]
-position = Vector2( 1019, 1085 )
+position = Vector2( 960, 960 )
 
 [node name="Position2D16" type="Position2D" parent="SpawnPoints"]
-position = Vector2( 536, 1159 )
+position = Vector2( 1344, 960 )
 
 [node name="Position2D17" type="Position2D" parent="SpawnPoints"]
-position = Vector2( 1453, 1409 )
+position = Vector2( 1728, 960 )
 
 [node name="Position2D18" type="Position2D" parent="SpawnPoints"]
-position = Vector2( 849, 1406 )
+position = Vector2( 2112, 960 )
 
 [node name="Position2D19" type="Position2D" parent="SpawnPoints"]
-position = Vector2( 1922, 1353 )
+position = Vector2( 192, 1344 )
 
 [node name="Position2D20" type="Position2D" parent="SpawnPoints"]
-position = Vector2( 248, 1404 )
+position = Vector2( 576, 1344 )
+
+[node name="Position2D21" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 960, 1344 )
+
+[node name="Position2D22" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 1344, 1344 )
+
+[node name="Position2D23" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 1728, 1344 )
+
+[node name="Position2D24" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 2112, 1344 )
 
 [node name="StartPoint" type="Position2D" parent="."]
 
@@ -153,7 +165,7 @@ motion_mirroring = Vector2( 4096, 4096 )
 texture = ExtResource( 8 )
 
 [node name="PlayerShip" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1014, 522 )
+position = Vector2( 1152, 768 )
 
 [node name="HUD" parent="." instance=ExtResource( 9 )]
 
