@@ -140,6 +140,7 @@ position = Vector2( 1728, 1344 )
 position = Vector2( 2112, 1344 )
 
 [node name="StartPoint" type="Position2D" parent="."]
+position = Vector2( 1152, 768 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -20.0

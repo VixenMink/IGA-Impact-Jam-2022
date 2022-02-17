@@ -1,7 +1,8 @@
 extends KinematicBody2D
 
 onready var camera = $Camera2D
-
+onready var particles = $Sprite/Particles2D
+onready var sprite = $Sprite
 
 # camera zoom
 export (float) var pan_speed = 10.0
@@ -16,15 +17,14 @@ var zoom_pos = Vector2()
 var zoom_factor = 1.0
 var zooming = false
 
-
 # Player varibles
 var velocity := Vector2.ZERO
 var curTarget
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass
+
 
 func _process(delta):
 	camera.zoom.x = lerp (camera.zoom.x, camera.zoom.x * zoom_factor, zoom_speed * delta)
@@ -35,6 +35,7 @@ func _process(delta):
 	
 	if not zooming:
 		zoom_factor = 1.0
+
 
 func get_input():
 	var input = Vector2.ZERO
@@ -55,12 +56,12 @@ func _physics_process(_delta):
 	var direction = get_input()
 	if direction: 
 		velocity = lerp(velocity, 128 * direction, .5)
-		$Sprite.rotation = lerp($Sprite.rotation, velocity.angle() + deg2rad(90), 0.1)
-		$Sprite/Particles2D.emitting = true
+		sprite.rotation = lerp(sprite.rotation, velocity.angle() + deg2rad(90), 0.1)
+		particles.emitting = true
 	else:
 		velocity = lerp(velocity, Vector2.ZERO, .3)
-		$Sprite.rotation = lerp($Sprite.rotation, velocity.angle() + deg2rad(90), 0.1)
-		$Sprite/Particles2D.emitting = false
+		sprite.rotation = lerp(sprite.rotation, velocity.angle() + deg2rad(90), 0.1)
+		particles.emitting = false
 	velocity = move_and_slide(velocity)
 
 
@@ -79,15 +80,21 @@ func _input(event):
 				zoom_pos = get_global_mouse_position()
 		else: 
 			zooming = false
-  
 
-func _on_Area2D_body_entered(body):
-	body._ShowYourName()
-	Settings.curTarget = body
+
+func retarget():
+	curTarget = null
+	var overlappingBodies = $CaptureArea.get_overlapping_bodies()
+	
+	for overlappingBody in overlappingBodies:
+		if !overlappingBody.amDead:
+			curTarget = overlappingBody
+			break
+
+
+func _on_CaptureArea_body_exited(_body):
+	pass
+
+
+func _on_CaptureArea_body_entered(body):
 	curTarget = body
-
-
-func _on_CaptureArea_body_exited(body):
-	body._hideYourName()
-
-

@@ -45,22 +45,23 @@ func next_level():
 
 func _process(_delta):
 	if predCount < 2:
-		hud.Warning.text = "Introduce more predators! At least 2 Predators are needed for a stable ecosystem!"
+		hud.WarningBox.show()
+		hud.WarningText.text = "Introduce more predators! At least 2 Predators are needed for a stable ecosystem!"
+		hud.pulseButton('PredatorSpawn')
 	elif preyCount < 3:
-		hud.Warning.text = "Introduce more prey! At least 3 prey are needed for a stable ecosystem!"
+		hud.WarningBox.show()
+		hud.WarningText.text = "Introduce more prey! At least 3 prey are needed for a stable ecosystem!"
+		hud.pulseButton('PreySpawn')
 	elif resourceCount > 10 and resourceCount > 5 * preyCount:
-		hud.Warning.text = "Hunt flora! The flora will run wild in the system if not culled!"
+		hud.WarningBox.show()
+		hud.WarningText.text = "Hunt flora! The flora will run wild in the system if not culled!"
+		hud.pulseButton('ResourceSpawn')
 	elif Settings.Player_Cash < roundCount * 500:
-		hud.Warning.text = "Cull populations! You don't have enough money for upkeep!"
+		hud.WarningBox.show()
+		hud.WarningText.text = "Cull populations! You don't have enough money for upkeep!"
+		hud.pulseButton('KillTarget')
 	else:
-		hud.Warning.text = ""
-
-
-func connect_children():
-	var creatureArray = get_tree().get_nodes_in_group('wildlife')
-	for creature in creatureArray:
-		var _err = hud.connect('killMob', creature, '_on_killMob')
-		_err = creature.connect('ShotThroughTheHart', hud, '_on_ShotThroughTheHart')
+		hud.WarningBox.hide()
 
 
 func _on_TickTimer_timeout():
@@ -84,19 +85,15 @@ func register_wildlife(wildlifeType : int, change : int):
 func _on_WorldTimer_timeout():
 	if predCount < 2:
 		print("Game Over! Too few predators. Ecological disaster.")
-		hud.Warning.modulate = Color.red
 		SignalMngr.emit_signal("level_lost")
 	elif preyCount < 3:
 		print("Game Over! Too few prey. Ecological disaster.")
-		hud.Warning.modulate = Color.red
 		SignalMngr.emit_signal("level_lost")
 	elif resourceCount > 10 and resourceCount > 5 * preyCount:
 		print("Game Over! Too few predators. Ecological disaster.")
-		hud.Warning.modulate = Color.red
 		SignalMngr.emit_signal("level_lost")
 	elif Settings.Player_Cash < roundCount * 500:
 		print("Game Over! You can't afford to run the reserve any more.")
-		hud.Warning.modulate = Color.red
 		SignalMngr.emit_signal("level_lost")
 	elif roundCount >= 10:
 		hud.Warning.text = "Maintaining ecological balance is a never ending journey! But for now, you've saved NeoTokyo."

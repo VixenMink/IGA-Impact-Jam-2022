@@ -1,0 +1,207 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://space-wolves/DraggableRadialButton/DraggableButton.gd" type="Script" id=1]
+[ext_resource path="res://assets/BasicBluePanel.tres" type="StyleBox" id=2]
+[ext_resource path="res://addons/toolbox_project/assets/theme.tres" type="Theme" id=3]
+[ext_resource path="res://space-wolves/label-font-override.tres" type="DynamicFont" id=7]
+[ext_resource path="res://assets/icons/flora-icon.png" type="Texture" id=8]
+[ext_resource path="res://assets/icons/predator-icon.png" type="Texture" id=9]
+[ext_resource path="res://space-wolves/DraggableRadialButton/RadialContainer.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/icons/prey-icon.png" type="Texture" id=11]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.792157, 0.0470588, 0.0470588, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="DraggableButton" type="Control" groups=["draggable"]]
+margin_right = 64.0
+margin_bottom = 64.0
+theme = ExtResource( 3 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+menuOpen = true
+
+[node name="MenuButton" type="TextureButton" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand = true
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="RadialContainer" parent="." instance=ExtResource( 10 )]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 32.0
+margin_top = 32.0
+margin_right = -32.0
+margin_bottom = -32.0
+mouse_filter = 1
+radial_width = 64
+
+[node name="ResourceSpawn" type="TextureButton" parent="RadialContainer" groups=["controlbuttons"]]
+modulate = Color( 1, 1, 1, 0.643137 )
+margin_right = 64.0
+margin_bottom = 64.0
+disabled = true
+expand = true
+
+[node name="Panel" type="Panel" parent="RadialContainer/ResourceSpawn"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+custom_styles/panel = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="Sprite" parent="RadialContainer/ResourceSpawn/Panel"]
+position = Vector2( 34, 24 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 8 )
+
+[node name="Label" type="Label" parent="RadialContainer/ResourceSpawn/Panel"]
+margin_left = -12.0
+margin_top = 41.0
+margin_right = 76.0
+margin_bottom = 68.0
+theme = ExtResource( 3 )
+custom_fonts/font = ExtResource( 7 )
+text = "$300"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="KillTarget" type="TextureButton" parent="RadialContainer" groups=["controlbuttons"]]
+modulate = Color( 1, 1, 1, 0.9 )
+margin_left = 68.0
+margin_top = -32.0
+margin_right = 132.0
+margin_bottom = 32.0
+disabled = true
+expand = true
+
+[node name="Panel" type="Panel" parent="RadialContainer/KillTarget"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="RadialContainer/KillTarget/Panel"]
+margin_left = 9.0
+margin_top = -18.0
+margin_right = 58.0
+margin_bottom = 9.0
+custom_fonts/font = ExtResource( 7 )
+text = "Hunt"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="Sprite" parent="RadialContainer/KillTarget/Panel"]
+position = Vector2( 34, 24 )
+rotation = 1.5708
+scale = Vector2( 0.08, 0.08 )
+
+[node name="Label" type="Label" parent="RadialContainer/KillTarget/Panel"]
+margin_left = 2.0
+margin_top = 41.0
+margin_right = 51.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 7 )
+text = "$0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PreySpawn" type="TextureButton" parent="RadialContainer" groups=["controlbuttons"]]
+modulate = Color( 1, 1, 1, 0.643137 )
+margin_right = 64.0
+margin_bottom = 64.0009
+hint_tooltip = "Prey"
+disabled = true
+expand = true
+
+[node name="Panel" type="Panel" parent="RadialContainer/PreySpawn"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+custom_styles/panel = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="Sprite" parent="RadialContainer/PreySpawn/Panel"]
+position = Vector2( 32, 22 )
+rotation = 1.5708
+scale = Vector2( 0.08, 0.1 )
+texture = ExtResource( 11 )
+
+[node name="Label" type="Label" parent="RadialContainer/PreySpawn/Panel"]
+margin_left = -15.0
+margin_top = 42.0
+margin_right = 73.0
+margin_bottom = 111.0
+custom_fonts/font = ExtResource( 7 )
+text = "$750"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PredatorSpawn" type="TextureButton" parent="RadialContainer" groups=["controlbuttons"]]
+modulate = Color( 1, 1, 1, 0.643137 )
+margin_right = 64.0
+margin_bottom = 64.0009
+disabled = true
+expand = true
+
+[node name="Panel" type="Panel" parent="RadialContainer/PredatorSpawn"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+custom_styles/panel = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="Sprite" parent="RadialContainer/PredatorSpawn/Panel"]
+position = Vector2( 32, 23 )
+rotation = 1.5708
+scale = Vector2( 0.08, 0.1 )
+texture = ExtResource( 9 )
+
+[node name="Label" type="Label" parent="RadialContainer/PredatorSpawn/Panel"]
+margin_left = -14.0
+margin_top = 42.0
+margin_right = 78.0
+margin_bottom = 69.0
+custom_fonts/font = ExtResource( 7 )
+text = "$1500"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="button_down" from="MenuButton" to="." method="_on_MenuButton_button_down"]
+[connection signal="button_up" from="MenuButton" to="." method="_on_MenuButton_button_up"]

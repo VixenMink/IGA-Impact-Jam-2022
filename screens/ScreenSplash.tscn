@@ -82,7 +82,7 @@ __meta__ = {
 
 [node name="TextureRect" type="TextureRect" parent="UI/UIBox/VBoxContainer" index="0"]
 margin_right = 984.0
-margin_bottom = 517.0
+margin_bottom = 492.0
 size_flags_vertical = 3
 texture = ExtResource( 3 )
 expand = true
@@ -90,11 +90,10 @@ stretch_mode = 6
 
 [node name="LabelBig" parent="UI/UIBox/VBoxContainer" index="1" instance=ExtResource( 6 )]
 anchor_right = 0.0
-margin_top = 533.0
+margin_top = 508.0
 margin_right = 984.0
 margin_bottom = 560.0
 text = "A Tearcell Studio Jam Submission"
-align = 1
 
 [node name="BaseBackground" parent="." index="1" instance=ExtResource( 5 )]
 
