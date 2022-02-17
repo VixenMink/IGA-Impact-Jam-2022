@@ -60,6 +60,8 @@ func update_hud():
 
 
 func _on_PredatorSpawn_pressed():
+	if Settings.curGameState == Settings.GAME_STATES.PAUSE:
+		Settings.curGameState = Settings.GAME_STATES.PLAY
 	var cost = 1500
 	if cost <= cashmoney:
 		cashmoney = cashmoney - cost
@@ -69,6 +71,8 @@ func _on_PredatorSpawn_pressed():
 
 
 func _on_PreySpawn_pressed():
+	if Settings.curGameState == Settings.GAME_STATES.PAUSE:
+		Settings.curGameState = Settings.GAME_STATES.PLAY
 	var cost = 750
 	if cost <= cashmoney:
 		cashmoney = cashmoney - cost
@@ -78,6 +82,8 @@ func _on_PreySpawn_pressed():
 
 
 func _on_ResourceSpawn_pressed():
+	if Settings.curGameState == Settings.GAME_STATES.PAUSE:
+		Settings.curGameState = Settings.GAME_STATES.PLAY
 	var cost = 300
 	if cost <= cashmoney:
 		cashmoney = cashmoney - cost
@@ -87,6 +93,8 @@ func _on_ResourceSpawn_pressed():
 
 
 func _on_KillTarget_pressed():
+	if Settings.curGameState == Settings.GAME_STATES.PAUSE:
+		Settings.curGameState = Settings.GAME_STATES.PLAY
 	var weakTarget = weakref(get_parent().player.curTarget)
 	if not weakTarget.get_ref():
 		print('Error on kill')

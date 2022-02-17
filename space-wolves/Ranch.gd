@@ -4,6 +4,7 @@ onready var pathfinding := $Astar
 onready var hud := $HUD
 onready var player := $PlayerShip
 onready var roundTimer := $WorldTimer
+onready var tickTimer := $TickTimer
 onready var spawnControl := $SpawnControl
 
 var roundCount := 1
@@ -24,8 +25,10 @@ func _ready():
 	pathfinding.create_navigation_map($AStarGrid)
 
 	Settings.SpawnLocations = $SpawnPoints.get_children()
-	Settings.curGameState = Settings.GAME_STATES.PLAY
-	
+	Settings.curGameState = Settings.GAME_STATES.PAUSE
+	tickTimer.stop()
+	roundTimer.stop()
+		
 	spawnControl.intialspawn()
 	
 	var _err = hud.connect('spawnPredator', spawnControl, '_on_spawnPredator')
@@ -44,6 +47,9 @@ func next_level():
 
 
 func _process(_delta):
+	if Settings.curGameState == Settings.GAME_STATES.PLAY and tickTimer.is_stopped():
+		tickTimer.start()
+		roundTimer.start()
 	if predCount < 2:
 		hud.WarningBox.show()
 		hud.WarningText.text = "At least 2 Predators are needed for a stable ecosystem!\n Introduce more predators! "

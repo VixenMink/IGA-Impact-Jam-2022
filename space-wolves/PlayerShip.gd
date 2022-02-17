@@ -55,6 +55,8 @@ func get_input():
 func _physics_process(_delta):
 	var direction = get_input()
 	if direction: 
+		if Settings.curGameState == Settings.GAME_STATES.PAUSE:
+			Settings.curGameState = Settings.GAME_STATES.PLAY
 		velocity = lerp(velocity, 128 * direction, .5)
 		sprite.rotation = lerp(sprite.rotation, velocity.angle() + deg2rad(90), 0.1)
 		particles.emitting = true
