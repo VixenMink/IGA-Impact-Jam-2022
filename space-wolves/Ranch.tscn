@@ -149,11 +149,9 @@ volume_db = -20.0
 
 [node name="TickTimer" type="Timer" parent="."]
 wait_time = 6.0
-autostart = true
 
 [node name="WorldTimer" type="Timer" parent="."]
 wait_time = 30.0
-autostart = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
