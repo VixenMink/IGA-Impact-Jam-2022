@@ -46,7 +46,6 @@ var targetPos
 var amDead := false
 var invulnerable := false
 var hungry := false
-var canbeKilled := false
 
 signal died
 

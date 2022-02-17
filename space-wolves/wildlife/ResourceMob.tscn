@@ -25,6 +25,7 @@ animations = [ {
 } ]
 
 [node name="ResourceMob" groups=["Resource"] instance=ExtResource( 1 )]
+scale = Vector2( 1, 1 )
 collision_layer = 32
 collision_mask = 2147483651
 REWARD = 250
@@ -64,11 +65,11 @@ start_state = NodePath("RandomMoveState")
 [node name="RandomMoveState" parent="StateMachine" index="0" instance=ExtResource( 2 )]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="9"]
-position = Vector2( 3.02342, 1.02662 )
-scale = Vector2( 0.05, 0.05 )
+position = Vector2( 3, -7 )
+scale = Vector2( 0.1, 0.1 )
 frames = SubResource( 4 )
 animation = "Kelp"
-frame = 4
+frame = 1
 speed_scale = 0.8
 playing = true
 
