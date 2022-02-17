@@ -46,19 +46,19 @@ func next_level():
 func _process(_delta):
 	if predCount < 2:
 		hud.WarningBox.show()
-		hud.WarningText.text = "Introduce more predators! At least 2 Predators are needed for a stable ecosystem!"
+		hud.WarningText.text = "At least 2 Predators are needed for a stable ecosystem!\n Introduce more predators! "
 		hud.pulseButton('PredatorSpawn')
 	elif preyCount < 3:
 		hud.WarningBox.show()
-		hud.WarningText.text = "Introduce more prey! At least 3 prey are needed for a stable ecosystem!"
+		hud.WarningText.text = "At least 3 prey are needed for a stable ecosystem!\nIntroduce more prey! "
 		hud.pulseButton('PreySpawn')
 	elif resourceCount > 10 and resourceCount > 5 * preyCount:
 		hud.WarningBox.show()
-		hud.WarningText.text = "Hunt flora! The flora will run wild in the system if not culled!"
-		hud.pulseButton('ResourceSpawn')
+		hud.WarningText.text = "The flora will run wild in the system if not culled!\nCull flora!"
+		hud.pulseButton('KillTarget')
 	elif Settings.Player_Cash < roundCount * 500:
 		hud.WarningBox.show()
-		hud.WarningText.text = "Cull populations! You don't have enough money for upkeep!"
+		hud.WarningText.text = "You don't have enough money to upkeep your ranch!\nCull wildlife to earn money!"
 		hud.pulseButton('KillTarget')
 	else:
 		hud.WarningBox.hide()
@@ -96,8 +96,8 @@ func _on_WorldTimer_timeout():
 		print("Game Over! You can't afford to run the reserve any more.")
 		SignalMngr.emit_signal("level_lost")
 	elif roundCount >= 10:
-		hud.Warning.text = "Maintaining ecological balance is a never ending journey! But for now, you've saved NeoTokyo."
-		hud.Warning.modulate = Color.yellowgreen
+		hud.WarningText.text = "Maintaining ecological balance is a never ending journey! But for now, you've saved NeoTokyo."
+		hud.WarningText.modulate = Color.yellowgreen
 		SignalMngr.emit_signal("level_won")
 	else:
 		roundCount = roundCount + 1

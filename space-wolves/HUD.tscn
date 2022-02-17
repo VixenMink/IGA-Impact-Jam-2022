@@ -59,7 +59,7 @@ margin_bottom = 590.0
 
 [node name="TopBox" type="HBoxContainer" parent="MarginContainer/BaseBox"]
 margin_right = 1004.0
-margin_bottom = 144.0
+margin_bottom = 157.0
 size_flags_vertical = 3
 custom_constants/separation = 25
 alignment = 1
@@ -69,7 +69,7 @@ __meta__ = {
 
 [node name="LeftBox" type="VBoxContainer" parent="MarginContainer/BaseBox/TopBox"]
 margin_right = 1004.0
-margin_bottom = 144.0
+margin_bottom = 157.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.3
@@ -80,18 +80,30 @@ __meta__ = {
 
 [node name="ProgressBar" type="ProgressBar" parent="MarginContainer/BaseBox/TopBox/LeftBox"]
 margin_right = 1004.0
-margin_bottom = 19.0
+margin_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource( 2 )
+size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 max_value = 30.0
 step = 1.0
+percent_visible = false
+
+[node name="Label" type="Label" parent="MarginContainer/BaseBox/TopBox/LeftBox/ProgressBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 7 )
+text = "Time until next generation"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Round" type="Label" parent="MarginContainer/BaseBox/TopBox/LeftBox"]
-margin_top = 19.0
+margin_top = 32.0
 margin_right = 86.0
-margin_bottom = 44.0
+margin_bottom = 57.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 7 )
@@ -103,9 +115,9 @@ __meta__ = {
 }
 
 [node name="Cash" type="Label" parent="MarginContainer/BaseBox/TopBox/LeftBox"]
-margin_top = 44.0
+margin_top = 57.0
 margin_right = 94.0
-margin_bottom = 69.0
+margin_bottom = 82.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 7 )
@@ -113,9 +125,9 @@ custom_styles/normal = ExtResource( 8 )
 text = "Cash: $0"
 
 [node name="PredatorPop" type="Label" parent="MarginContainer/BaseBox/TopBox/LeftBox"]
-margin_top = 69.0
+margin_top = 82.0
 margin_right = 169.0
-margin_bottom = 94.0
+margin_bottom = 107.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 3 )
@@ -123,9 +135,9 @@ custom_styles/normal = ExtResource( 8 )
 text = "Predator Pop: 5"
 
 [node name="PreyPop" type="Label" parent="MarginContainer/BaseBox/TopBox/LeftBox"]
-margin_top = 94.0
+margin_top = 107.0
 margin_right = 126.0
-margin_bottom = 119.0
+margin_bottom = 132.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 4 )
@@ -133,9 +145,9 @@ custom_styles/normal = ExtResource( 8 )
 text = "Prey Pop: 5"
 
 [node name="ResoursePop" type="Label" parent="MarginContainer/BaseBox/TopBox/LeftBox"]
-margin_top = 119.0
+margin_top = 132.0
 margin_right = 131.0
-margin_bottom = 144.0
+margin_bottom = 157.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 5 )
@@ -143,42 +155,52 @@ custom_styles/normal = ExtResource( 8 )
 text = "Flora Pop: 5"
 
 [node name="MiddleBox" type="CenterContainer" parent="MarginContainer/BaseBox"]
-margin_top = 160.0
+margin_top = 173.0
 margin_right = 1004.0
-margin_bottom = 483.0
+margin_bottom = 485.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 4.0
 
 [node name="BottomBox" type="MarginContainer" parent="MarginContainer/BaseBox"]
-margin_top = 499.0
+margin_top = 501.0
 margin_right = 1004.0
 margin_bottom = 580.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/margin_right = 200
-custom_constants/margin_left = 200
+custom_constants/margin_right = 175
+custom_constants/margin_left = 175
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="BottomPanel" type="Panel" parent="MarginContainer/BaseBox/BottomBox"]
-margin_left = 200.0
-margin_right = 804.0
-margin_bottom = 81.0
+margin_left = 175.0
+margin_right = 829.0
+margin_bottom = 79.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 6 )
+
+[node name="Label" type="Label" parent="MarginContainer/BaseBox/BottomBox/BottomPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 7 )
+text = "Warning! Fix the issue before current generation ends!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="WarningLabel" type="Label" parent="MarginContainer/BaseBox/BottomBox/BottomPanel"]
 modulate = Color( 0.901961, 0, 0, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
-size_flags_vertical = 3
 theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 7 )
 text = "Warning: Lose Condition imminent!"
 align = 1
-valign = 1
+valign = 2
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false

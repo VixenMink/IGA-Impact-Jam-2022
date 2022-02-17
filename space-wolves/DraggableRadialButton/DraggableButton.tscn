@@ -54,12 +54,12 @@ margin_bottom = -32.0
 mouse_filter = 1
 radial_width = 64
 
-[node name="ResourceSpawn" type="TextureButton" parent="RadialContainer" groups=["controlbuttons"]]
-modulate = Color( 1, 1, 1, 0.643137 )
+[node name="ResourceSpawn" type="Button" parent="RadialContainer" groups=["controlbuttons"]]
+modulate = Color( 1, 1, 1, 0.760784 )
 margin_right = 64.0
 margin_bottom = 64.0
 disabled = true
-expand = true
+action_mode = 0
 
 [node name="Panel" type="Panel" parent="RadialContainer/ResourceSpawn"]
 anchor_right = 1.0
@@ -88,14 +88,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="KillTarget" type="TextureButton" parent="RadialContainer" groups=["controlbuttons"]]
-modulate = Color( 1, 1, 1, 0.9 )
+[node name="KillTarget" type="Button" parent="RadialContainer" groups=["controlbuttons"]]
+modulate = Color( 1, 1, 1, 0.760784 )
 margin_left = 68.0
 margin_top = -32.0
 margin_right = 132.0
 margin_bottom = 32.0
 disabled = true
-expand = true
+action_mode = 0
 
 [node name="Panel" type="Panel" parent="RadialContainer/KillTarget"]
 anchor_right = 1.0
@@ -134,13 +134,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PreySpawn" type="TextureButton" parent="RadialContainer" groups=["controlbuttons"]]
-modulate = Color( 1, 1, 1, 0.643137 )
+[node name="PreySpawn" type="Button" parent="RadialContainer" groups=["controlbuttons"]]
+modulate = Color( 1, 1, 1, 0.760784 )
 margin_right = 64.0
 margin_bottom = 64.0009
-hint_tooltip = "Prey"
 disabled = true
-expand = true
+action_mode = 0
 
 [node name="Panel" type="Panel" parent="RadialContainer/PreySpawn"]
 anchor_right = 1.0
@@ -169,12 +168,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PredatorSpawn" type="TextureButton" parent="RadialContainer" groups=["controlbuttons"]]
-modulate = Color( 1, 1, 1, 0.643137 )
+[node name="PredatorSpawn" type="Button" parent="RadialContainer" groups=["controlbuttons"]]
+modulate = Color( 1, 1, 1, 0.760784 )
 margin_right = 64.0
 margin_bottom = 64.0009
 disabled = true
-expand = true
+action_mode = 0
 
 [node name="Panel" type="Panel" parent="RadialContainer/PredatorSpawn"]
 anchor_right = 1.0
