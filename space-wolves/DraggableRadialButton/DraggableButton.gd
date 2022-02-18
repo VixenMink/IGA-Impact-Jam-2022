@@ -43,8 +43,8 @@ func _on_MenuButton_button_up():
 
 
 func clearHuntButton():
-	$RadialContainer/KillTarget/Panel/icon.texture = null
-	$RadialContainer/KillTarget/Panel/Label.text = str('$0')
+	$RadialContainer/Control2/KillTarget/Panel/icon.texture = null
+	$RadialContainer/Control2/KillTarget/Panel/Label.text = str('$0')
 
 
 func updateHuntButton(target : BaseEntity):
@@ -54,5 +54,5 @@ func updateHuntButton(target : BaseEntity):
 	elif target.MY_TYPE == 2:
 		type = 'predator'
 	var cost = target.REWARD
-	$RadialContainer/KillTarget/Panel/icon.texture = load(str('res://assets/icons/',type,'-icon.png'))
-	$RadialContainer/KillTarget/Panel/Label.text = str('$',cost)
+	$RadialContainer/Control2/KillTarget/Panel/icon.texture = load(str('res://assets/icons/',type,'-icon.png'))
+	$RadialContainer/Control2/KillTarget/Panel/Label.text = str('$',cost)

@@ -34,6 +34,9 @@ func _ready():
 	var _err = hud.connect('spawnPredator', spawnControl, '_on_spawnPredator')
 	_err = hud.connect('spawnPrey', spawnControl, '_on_spawnPrey')
 	_err = hud.connect('spawnResource', spawnControl, '_on_spawnResource')
+	
+	hud.zoomInButton.connect('pressed', player, '_zoom_in_button')
+	hud.zoomOutButton.connect('pressed', player, '_zoom_out_button')
 
 
 func _on_game_started():
@@ -91,17 +94,23 @@ func register_wildlife(wildlifeType : int, change : int):
 func _on_WorldTimer_timeout():
 	if predCount < 2:
 		print("Game Over! Too few predators. Ecological disaster.")
+		hud.NotEnoughMoneyAlert.hide()
 		SignalMngr.emit_signal("level_lost")
 	elif preyCount < 3:
 		print("Game Over! Too few prey. Ecological disaster.")
+		hud.NotEnoughMoneyAlert.hide()
 		SignalMngr.emit_signal("level_lost")
 	elif resourceCount > 10 and resourceCount > 5 * preyCount:
 		print("Game Over! Too few predators. Ecological disaster.")
+		hud.NotEnoughMoneyAlert.hide()
 		SignalMngr.emit_signal("level_lost")
 	elif Settings.Player_Cash < roundCount * 500:
 		print("Game Over! You can't afford to run the reserve any more.")
+		hud.NotEnoughMoneyAlert.hide()
 		SignalMngr.emit_signal("level_lost")
 	elif roundCount >= 10:
+		hud.NotEnoughMoneyAlert.hide()
+		hud.WarningBox.show()
 		hud.WarningText.text = "Maintaining ecological balance is a never ending journey! But for now, you've saved NeoTokyo."
 		hud.WarningText.modulate = Color.yellowgreen
 		SignalMngr.emit_signal("level_won")

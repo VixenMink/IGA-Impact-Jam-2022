@@ -5,25 +5,30 @@ signal spawnPrey
 signal spawnResource
 signal killMob
 
-onready var Cash = $MarginContainer/BaseBox/TopBox/LeftBox/Cash
-onready var PredatorPop = $MarginContainer/BaseBox/TopBox/LeftBox/PredatorPop
-onready var PreyPop = $MarginContainer/BaseBox/TopBox/LeftBox/PreyPop
-onready var ResourcePop = $MarginContainer/BaseBox/TopBox/LeftBox/ResoursePop
 onready var Progress = $MarginContainer/BaseBox/TopBox/LeftBox/ProgressBar
-onready var Round = $MarginContainer/BaseBox/TopBox/LeftBox/Round
+onready var Cash = $MarginContainer/BaseBox/TopBox/LeftBox/HBoxContainer/Cash
+onready var Round = $MarginContainer/BaseBox/TopBox/LeftBox/HBoxContainer/Round
 
-onready var PredatorSpawn = $DraggableButton/RadialContainer/PredatorSpawn
-onready var PreySpawn = $DraggableButton/RadialContainer/PreySpawn
-onready var KillTarget = $DraggableButton/RadialContainer/KillTarget
-onready var ResourceSpawn = $DraggableButton/RadialContainer/ResourceSpawn
+onready var PredatorPop = $MarginContainer/BaseBox/TopBox/LeftBox/GridContainer/PredatorPop
+onready var PreyPop = $MarginContainer/BaseBox/TopBox/LeftBox/GridContainer/PreyPop
+onready var ResourcePop = $MarginContainer/BaseBox/TopBox/LeftBox/GridContainer/ResoursePop
+
+onready var PredatorSpawn = $DraggableButton/RadialContainer/Control4/PredatorSpawn
+onready var PreySpawn = $DraggableButton/RadialContainer/Control3/PreySpawn
+onready var ResourceSpawn = $DraggableButton/RadialContainer/Control/ResourceSpawn
+onready var KillTarget = $DraggableButton/RadialContainer/Control2/KillTarget
 
 onready var WarningText = $MarginContainer/BaseBox/BottomBox/BottomPanel/WarningLabel
 onready var WarningBox = $MarginContainer/BaseBox/BottomBox
 onready var NotEnoughMoneyAlert = $AlertBox
 onready var tween = $CurveTween
 
+onready var zoomInButton := $MarginContainer/BaseBox/MiddleBox/ZoomBox/ZoomButtonBox/ZoomIn
+onready var zoomOutButton := $MarginContainer/BaseBox/MiddleBox/ZoomBox/ZoomButtonBox/ZoomOut
+
 var cashmoney = Settings.Player_Cash
 var focusButton
+
 
 func _ready():
 	cashmoney = 5000
@@ -33,7 +38,6 @@ func _ready():
 	KillTarget.connect("pressed", self, "_on_KillTarget_pressed")
 
 
-
 func _process(_delta):
 	update_hud()
 	Round.text = str('Generation: ' , get_parent().roundCount)
@@ -41,9 +45,9 @@ func _process(_delta):
 
 
 func update_hud():
-	PredatorPop.text = str('Predator Population: ', get_parent().predCount)
-	PreyPop.text = str("Prey Population: ", get_parent().preyCount)
-	ResourcePop.text = str('Flora Population: ', get_parent().resourceCount)
+	PredatorPop.text = str(get_parent().predCount)
+	PreyPop.text = str(get_parent().preyCount)
+	ResourcePop.text = str(get_parent().resourceCount)
 	Cash.text = str('Cash: $' , cashmoney)
 	Settings.Player_Cash = cashmoney
 	
@@ -51,11 +55,11 @@ func update_hud():
 	#print('1:', get_parent().player.curTarget)
 	if not weakTarget.get_ref():
 		#CurrentTarget.text = "No creature below you"
-		$DraggableButton/RadialContainer/KillTarget.disabled = true
+		KillTarget.disabled = true
 		$DraggableButton.clearHuntButton()
 	else:
 		#CurrentTarget.text = str("Targeting: ", weakTarget.get_ref().name)
-		$DraggableButton/RadialContainer/KillTarget.disabled = false
+		KillTarget.disabled = false
 		$DraggableButton.updateHuntButton(weakTarget.get_ref())
 
 
@@ -124,5 +128,4 @@ func pulseButton(buttonName):
 
 
 func _on_CurveTween_curve_tween(saturation):
-	focusButton.modulate = Color(1, saturation, saturation, 1)
 	focusButton.rect_scale = Vector2(saturation, saturation)
