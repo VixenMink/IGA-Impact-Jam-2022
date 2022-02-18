@@ -30,7 +30,7 @@ func place_buttons():
 		#set button's position
 		#>we want to center the element on the circle. 
 		#>to do this we need to offset the calculated x and y respectively by half the height and width
-		btn.rect_position = circle_pos-(btn.get_size()/2)
+		btn.get_child(0).rect_position = circle_pos-(btn.get_child(0).get_size()/2)
 		
 		#Advance to next angle position
 		angle += angle_offset
@@ -43,8 +43,8 @@ func disable_buttons():
 		return
 	
 	for btn in buttons:
-		btn.disabled = true
-		btn.visible = false
+		btn.get_child(0).disabled = true
+		btn.get_child(0).visible = false
 
 func enable_buttons():
 	var buttons = get_children()
@@ -54,8 +54,8 @@ func enable_buttons():
 		return
 	
 	for btn in buttons:
-		btn.disabled = false
-		btn.visible = true
+		btn.get_child(0).disabled = false
+		btn.get_child(0).visible = true
 
 #utility function for adding buttons and recalculating their positions
 #TODO: Should probably just use a signal to run place_button on any tree change

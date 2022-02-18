@@ -1,13 +1,25 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://space-wolves/DraggableRadialButton/DraggableButton.gd" type="Script" id=1]
 [ext_resource path="res://assets/BasicBluePanel.tres" type="StyleBox" id=2]
 [ext_resource path="res://addons/toolbox_project/assets/theme.tres" type="Theme" id=3]
+[ext_resource path="res://space-wolves/DraggableRadialButton/CooldownButton.gd" type="Script" id=4]
 [ext_resource path="res://space-wolves/label-font-override.tres" type="DynamicFont" id=7]
 [ext_resource path="res://assets/icons/flora-icon.png" type="Texture" id=8]
 [ext_resource path="res://assets/icons/predator-icon.png" type="Texture" id=9]
 [ext_resource path="res://space-wolves/DraggableRadialButton/RadialContainer.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/icons/prey-icon.png" type="Texture" id=11]
+
+[sub_resource type="OpenSimplexNoise" id=2]
+seed = 12
+octaves = 5
+
+[sub_resource type="NoiseTexture" id=3]
+width = 64
+height = 64
+as_normalmap = true
+bump_strength = 18.9
+noise = SubResource( 2 )
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.792157, 0.0470588, 0.0470588, 1 )
@@ -35,9 +47,12 @@ menuOpen = true
 [node name="MenuButton" type="TextureButton" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+focus_mode = 0
 mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
+action_mode = 0
+enabled_focus_mode = 0
 expand = true
 __meta__ = {
 "_edit_lock_": true,
@@ -54,14 +69,26 @@ margin_bottom = -32.0
 mouse_filter = 1
 radial_width = 64
 
-[node name="ResourceSpawn" type="Button" parent="RadialContainer" groups=["controlbuttons"]]
+[node name="Control" type="Control" parent="RadialContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="ResourceSpawn" type="Button" parent="RadialContainer/Control" groups=["controlbuttons"]]
 modulate = Color( 1, 1, 1, 0.760784 )
-margin_right = 64.0
-margin_bottom = 64.0
+margin_left = 68.0
+margin_top = -32.0
+margin_right = 132.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 32, 32 )
 disabled = true
 action_mode = 0
+enabled_focus_mode = 0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Panel" type="Panel" parent="RadialContainer/ResourceSpawn"]
+[node name="Panel" type="Panel" parent="RadialContainer/Control/ResourceSpawn"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
@@ -70,12 +97,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="icon" type="Sprite" parent="RadialContainer/ResourceSpawn/Panel"]
+[node name="icon" type="Sprite" parent="RadialContainer/Control/ResourceSpawn/Panel"]
 position = Vector2( 34, 24 )
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 8 )
 
-[node name="Label" type="Label" parent="RadialContainer/ResourceSpawn/Panel"]
+[node name="Label" type="Label" parent="RadialContainer/Control/ResourceSpawn/Panel"]
 margin_left = -12.0
 margin_top = 41.0
 margin_right = 76.0
@@ -88,16 +115,39 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="KillTarget" type="Button" parent="RadialContainer" groups=["controlbuttons"]]
-modulate = Color( 1, 1, 1, 0.760784 )
-margin_left = 68.0
-margin_top = -32.0
-margin_right = 132.0
-margin_bottom = 32.0
-disabled = true
-action_mode = 0
+[node name="Sweep" type="TextureProgress" parent="RadialContainer/Control/ResourceSpawn"]
+modulate = Color( 0.145098, 0.145098, 0.145098, 0.87451 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture_progress = SubResource( 3 )
+fill_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Panel" type="Panel" parent="RadialContainer/KillTarget"]
+[node name="Timer" type="Timer" parent="RadialContainer/Control/ResourceSpawn"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Control2" type="Control" parent="RadialContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="KillTarget" type="Button" parent="RadialContainer/Control2" groups=["controlbuttons"]]
+modulate = Color( 1, 1, 1, 0.760784 )
+margin_left = -32.0
+margin_top = 68.0
+margin_right = 32.0
+margin_bottom = 132.0
+rect_pivot_offset = Vector2( 32, 32 )
+action_mode = 0
+enabled_focus_mode = 0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="RadialContainer/Control2/KillTarget"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
@@ -106,23 +156,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="RadialContainer/KillTarget/Panel"]
-margin_left = 9.0
-margin_top = -18.0
-margin_right = 58.0
-margin_bottom = 9.0
+[node name="HuntLabel" type="Label" parent="RadialContainer/Control2/KillTarget/Panel"]
+margin_left = 7.0
+margin_top = -19.0
+margin_right = 56.0
+margin_bottom = 8.0
 custom_fonts/font = ExtResource( 7 )
 text = "Hunt"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="icon" type="Sprite" parent="RadialContainer/KillTarget/Panel"]
+[node name="icon" type="Sprite" parent="RadialContainer/Control2/KillTarget/Panel"]
 position = Vector2( 34, 24 )
 rotation = 1.5708
 scale = Vector2( 0.08, 0.08 )
 
-[node name="Label" type="Label" parent="RadialContainer/KillTarget/Panel"]
+[node name="Label" type="Label" parent="RadialContainer/Control2/KillTarget/Panel"]
 margin_left = 2.0
 margin_top = 41.0
 margin_right = 51.0
@@ -134,14 +184,40 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PreySpawn" type="Button" parent="RadialContainer" groups=["controlbuttons"]]
+[node name="Sweep" type="TextureProgress" parent="RadialContainer/Control2/KillTarget"]
+modulate = Color( 0.145098, 0.145098, 0.145098, 0.87451 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture_progress = SubResource( 3 )
+fill_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="RadialContainer/Control2/KillTarget"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Control3" type="Control" parent="RadialContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="PreySpawn" type="Button" parent="RadialContainer/Control3" groups=["controlbuttons"]]
 modulate = Color( 1, 1, 1, 0.760784 )
-margin_right = 64.0
-margin_bottom = 64.0009
+margin_left = -132.0
+margin_top = -32.0005
+margin_right = -68.0
+margin_bottom = 32.0004
+rect_pivot_offset = Vector2( 32, 32 )
 disabled = true
 action_mode = 0
+enabled_focus_mode = 0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Panel" type="Panel" parent="RadialContainer/PreySpawn"]
+[node name="Panel" type="Panel" parent="RadialContainer/Control3/PreySpawn"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
@@ -150,13 +226,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="icon" type="Sprite" parent="RadialContainer/PreySpawn/Panel"]
+[node name="icon" type="Sprite" parent="RadialContainer/Control3/PreySpawn/Panel"]
 position = Vector2( 32, 22 )
 rotation = 1.5708
 scale = Vector2( 0.08, 0.1 )
 texture = ExtResource( 11 )
 
-[node name="Label" type="Label" parent="RadialContainer/PreySpawn/Panel"]
+[node name="Label" type="Label" parent="RadialContainer/Control3/PreySpawn/Panel"]
 margin_left = -15.0
 margin_top = 42.0
 margin_right = 73.0
@@ -168,14 +244,42 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PredatorSpawn" type="Button" parent="RadialContainer" groups=["controlbuttons"]]
+[node name="Sweep" type="TextureProgress" parent="RadialContainer/Control3/PreySpawn"]
+modulate = Color( 0.145098, 0.145098, 0.145098, 0.87451 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture_progress = SubResource( 3 )
+fill_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="RadialContainer/Control3/PreySpawn"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Control4" type="Control" parent="RadialContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="PredatorSpawn" type="Button" parent="RadialContainer/Control4" groups=["controlbuttons"]]
 modulate = Color( 1, 1, 1, 0.760784 )
-margin_right = 64.0
-margin_bottom = 64.0009
+margin_left = -32.0
+margin_top = -132.0
+margin_right = 32.0
+margin_bottom = -68.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 32, 32 )
 disabled = true
 action_mode = 0
+enabled_focus_mode = 0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Panel" type="Panel" parent="RadialContainer/PredatorSpawn"]
+[node name="Panel" type="Panel" parent="RadialContainer/Control4/PredatorSpawn"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
@@ -184,13 +288,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="icon" type="Sprite" parent="RadialContainer/PredatorSpawn/Panel"]
+[node name="icon" type="Sprite" parent="RadialContainer/Control4/PredatorSpawn/Panel"]
 position = Vector2( 32, 23 )
 rotation = 1.5708
 scale = Vector2( 0.08, 0.1 )
 texture = ExtResource( 9 )
 
-[node name="Label" type="Label" parent="RadialContainer/PredatorSpawn/Panel"]
+[node name="Label" type="Label" parent="RadialContainer/Control4/PredatorSpawn/Panel"]
 margin_left = -14.0
 margin_top = 42.0
 margin_right = 78.0
@@ -201,6 +305,20 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Sweep" type="TextureProgress" parent="RadialContainer/Control4/PredatorSpawn"]
+modulate = Color( 0.145098, 0.145098, 0.145098, 0.87451 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture_progress = SubResource( 3 )
+fill_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="RadialContainer/Control4/PredatorSpawn"]
+wait_time = 0.5
+one_shot = true
 
 [connection signal="button_down" from="MenuButton" to="." method="_on_MenuButton_button_down"]
 [connection signal="button_up" from="MenuButton" to="." method="_on_MenuButton_button_up"]

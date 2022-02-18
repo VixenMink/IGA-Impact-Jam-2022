@@ -59,7 +59,7 @@ margin_bottom = 590.0
 
 [node name="TopBox" type="HBoxContainer" parent="MarginContainer/BaseBox"]
 margin_right = 1004.0
-margin_bottom = 157.0
+margin_bottom = 128.0
 size_flags_vertical = 3
 custom_constants/separation = 25
 alignment = 1
@@ -69,7 +69,7 @@ __meta__ = {
 
 [node name="LeftBox" type="VBoxContainer" parent="MarginContainer/BaseBox/TopBox"]
 margin_right = 1004.0
-margin_bottom = 157.0
+margin_bottom = 128.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.3
@@ -80,7 +80,7 @@ __meta__ = {
 
 [node name="ProgressBar" type="ProgressBar" parent="MarginContainer/BaseBox/TopBox/LeftBox"]
 margin_right = 1004.0
-margin_bottom = 32.0
+margin_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
@@ -100,11 +100,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Round" type="Label" parent="MarginContainer/BaseBox/TopBox/LeftBox"]
-margin_top = 32.0
-margin_right = 86.0
-margin_bottom = 57.0
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/BaseBox/TopBox/LeftBox"]
+margin_top = 24.0
+margin_right = 1004.0
+margin_bottom = 49.0
+
+[node name="Cash" type="Label" parent="MarginContainer/BaseBox/TopBox/LeftBox/HBoxContainer"]
+margin_right = 94.0
+margin_bottom = 25.0
 size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 7 )
+custom_styles/normal = ExtResource( 8 )
+text = "Cash: $0"
+
+[node name="Round" type="Label" parent="MarginContainer/BaseBox/TopBox/LeftBox/HBoxContainer"]
+margin_left = 918.0
+margin_right = 1004.0
+margin_bottom = 25.0
+size_flags_horizontal = 10
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 7 )
 custom_styles/normal = ExtResource( 8 )
@@ -114,55 +128,126 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Cash" type="Label" parent="MarginContainer/BaseBox/TopBox/LeftBox"]
-margin_top = 57.0
-margin_right = 94.0
-margin_bottom = 82.0
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/BaseBox/TopBox/LeftBox"]
+margin_top = 49.0
+margin_right = 143.0
+margin_bottom = 128.0
 size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_fonts/font = ExtResource( 7 )
-custom_styles/normal = ExtResource( 8 )
-text = "Cash: $0"
+custom_constants/vseparation = 2
+custom_constants/hseparation = 4
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="PredatorPop" type="Label" parent="MarginContainer/BaseBox/TopBox/LeftBox"]
-margin_top = 82.0
-margin_right = 169.0
-margin_bottom = 107.0
-size_flags_horizontal = 0
+[node name="PredatorLabel" type="Label" parent="MarginContainer/BaseBox/TopBox/LeftBox/GridContainer"]
+margin_right = 109.0
+margin_bottom = 25.0
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 3 )
 custom_styles/normal = ExtResource( 8 )
-text = "Predator Pop: 5"
+text = "Predators"
 
-[node name="PreyPop" type="Label" parent="MarginContainer/BaseBox/TopBox/LeftBox"]
-margin_top = 107.0
-margin_right = 126.0
-margin_bottom = 132.0
-size_flags_horizontal = 0
+[node name="PredatorPop" type="Label" parent="MarginContainer/BaseBox/TopBox/LeftBox/GridContainer"]
+margin_left = 113.0
+margin_right = 143.0
+margin_bottom = 25.0
+size_flags_horizontal = 7
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 3 )
+custom_styles/normal = ExtResource( 8 )
+text = "55"
+align = 1
+
+[node name="PreyLabel" type="Label" parent="MarginContainer/BaseBox/TopBox/LeftBox/GridContainer"]
+margin_top = 27.0
+margin_right = 109.0
+margin_bottom = 52.0
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 4 )
 custom_styles/normal = ExtResource( 8 )
-text = "Prey Pop: 5"
+text = "Prey"
 
-[node name="ResoursePop" type="Label" parent="MarginContainer/BaseBox/TopBox/LeftBox"]
-margin_top = 132.0
-margin_right = 131.0
-margin_bottom = 157.0
-size_flags_horizontal = 0
+[node name="PreyPop" type="Label" parent="MarginContainer/BaseBox/TopBox/LeftBox/GridContainer"]
+margin_left = 113.0
+margin_top = 27.0
+margin_right = 143.0
+margin_bottom = 52.0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 4 )
+custom_styles/normal = ExtResource( 8 )
+text = "54"
+align = 1
+
+[node name="ResourseLabel" type="Label" parent="MarginContainer/BaseBox/TopBox/LeftBox/GridContainer"]
+margin_top = 54.0
+margin_right = 109.0
+margin_bottom = 79.0
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 5 )
 custom_styles/normal = ExtResource( 8 )
-text = "Flora Pop: 5"
+text = "Flora"
 
-[node name="MiddleBox" type="CenterContainer" parent="MarginContainer/BaseBox"]
-margin_top = 173.0
+[node name="ResoursePop" type="Label" parent="MarginContainer/BaseBox/TopBox/LeftBox/GridContainer"]
+margin_left = 113.0
+margin_top = 54.0
+margin_right = 143.0
+margin_bottom = 79.0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 5 )
+custom_styles/normal = ExtResource( 8 )
+text = "55"
+align = 1
+
+[node name="MiddleBox" type="HBoxContainer" parent="MarginContainer/BaseBox"]
+margin_top = 144.0
 margin_right = 1004.0
-margin_bottom = 485.0
+margin_bottom = 480.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 4.0
 
+[node name="ZoomBox" type="VBoxContainer" parent="MarginContainer/BaseBox/MiddleBox"]
+margin_right = 57.0
+margin_bottom = 336.0
+custom_constants/separation = -1
+
+[node name="ZoomLabel" type="Label" parent="MarginContainer/BaseBox/MiddleBox/ZoomBox"]
+margin_right = 57.0
+margin_bottom = 27.0
+text = "Zoom"
+
+[node name="ZoomButtonBox" type="HBoxContainer" parent="MarginContainer/BaseBox/MiddleBox/ZoomBox"]
+margin_top = 26.0
+margin_right = 57.0
+margin_bottom = 68.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ZoomIn" type="Button" parent="MarginContainer/BaseBox/MiddleBox/ZoomBox/ZoomButtonBox"]
+margin_right = 28.0
+margin_bottom = 42.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+text = "+"
+
+[node name="ZoomOut" type="Button" parent="MarginContainer/BaseBox/MiddleBox/ZoomBox/ZoomButtonBox"]
+margin_left = 28.0
+margin_right = 57.0
+margin_bottom = 42.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+text = "-"
+
 [node name="BottomBox" type="MarginContainer" parent="MarginContainer/BaseBox"]
-margin_top = 501.0
+margin_top = 496.0
 margin_right = 1004.0
 margin_bottom = 580.0
 size_flags_horizontal = 3
@@ -176,7 +261,7 @@ __meta__ = {
 [node name="BottomPanel" type="Panel" parent="MarginContainer/BaseBox/BottomBox"]
 margin_left = 175.0
 margin_right = 829.0
-margin_bottom = 79.0
+margin_bottom = 84.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 6 )
@@ -185,7 +270,7 @@ custom_styles/panel = SubResource( 6 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = ExtResource( 7 )
-text = "Warning! Fix the issue before current generation ends!"
+text = "Problem detected! Fix it before current generation ends!"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false

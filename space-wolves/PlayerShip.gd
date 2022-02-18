@@ -84,6 +84,14 @@ func _input(event):
 			zooming = false
 
 
+func _zoom_in_button():
+	zoom_factor -= 0.01 * zoom_speed
+	zoom_pos = get_global_mouse_position()
+
+func _zoom_out_button():
+	zoom_factor += 0.01 * zoom_speed
+	zoom_pos = get_global_mouse_position()
+
 func retarget():
 	curTarget = null
 	var overlappingBodies = $CaptureArea.get_overlapping_bodies()
