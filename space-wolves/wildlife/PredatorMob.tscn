@@ -172,7 +172,7 @@ animations = [ {
 [node name="PredatorMob" groups=["Predator"] instance=ExtResource( 6 )]
 scale = Vector2( 1, 1 )
 collision_layer = 8
-collision_mask = 2147483666
+collision_mask = 2147483664
 REWARD = 1000
 MY_TYPE = 2
 SPEED = 65
@@ -235,12 +235,6 @@ collision_mask = 16
 [node name="CollisionShape2D" parent="HitboxPivot/DetectRange" index="0"]
 shape = SubResource( 6 )
 
-[node name="MobLabel" parent="." index="6"]
-margin_left = -32.539
-margin_top = -44.1699
-margin_right = -9.53897
-margin_bottom = -23.1699
-
 [node name="StateMachine" parent="." index="7"]
 kinematic_body = NodePath("..")
 animation_player = NodePath("../AnimationPlayer")
@@ -261,12 +255,13 @@ transitionDelay = 0.5
 
 [node name="RamState" parent="StateMachine" index="5" instance=ExtResource( 3 )]
 
-[node name="NamePlate" parent="." index="9"]
-text = "Predator"
-
-[node name="DeathAnimation" parent="." index="10"]
+[node name="DeathAnimation" parent="." index="9"]
 scale = Vector2( 0.25, 0.25 )
 frames = SubResource( 15 )
+
+[node name="HealthDisplay" parent="." index="10"]
+position = Vector2( -24, -71 )
+scale = Vector2( 0.25, 0.25 )
 
 [editable path="HurtBox"]
 [editable path="HitboxPivot/HitBox"]

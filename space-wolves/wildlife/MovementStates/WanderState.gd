@@ -14,15 +14,18 @@ func _get_input(_event):
 
 
 func _state_logic(_delta):
+	var randoVelocity = selfRef.move_dir.normalized()
 	if movetimer > 0:
 		movetimer -= 1
 	if movetimer == 0 or selfRef.is_on_wall():
 		selfRef.move_dir = random_direction()
-		selfRef.update_facing()
+		
 		movetimer = movetimer_length
+
+	selfRef.sprite.rotation = lerp(selfRef.sprite.rotation, randoVelocity.angle() + deg2rad(90), 0.1)
+	selfRef.pivot.rotation = lerp(selfRef.pivot.rotation, randoVelocity.angle() + deg2rad(90), 0.1)
+	selfRef.hurtbox.rotation = lerp(selfRef.hurtbox.rotation, randoVelocity.angle() + deg2rad(90), 0.1)
 	
-	var randoVelocity = selfRef.move_dir.normalized()
-	selfRef.VELOCITY = randoVelocity
 	
 	var _err = selfRef._apply_momentum(randoVelocity, selfRef.SPEED)
 
@@ -50,12 +53,5 @@ func _on_anim_complete(_anim_name):
 
 func random_direction():
 	randomize()
-	match (randi() % 4):
-		0:
-			return Vector2.LEFT
-		1:
-			return Vector2.RIGHT
-		2:
-			return Vector2.UP
-		3:
-			return Vector2.DOWN
+	return Vector2(rand_range(0, 1), rand_range(0, 1))
+	

@@ -28,7 +28,7 @@ onready var line : Line2D = $Line2D
 onready var collision_shape = $PhysicsBox
 onready var sprite := $Sprite
 onready var stateMachine := $StateMachine
-onready var nameplate := $NamePlate
+onready var healthBar := $HealthDisplay
 
 var origin_pos := Vector2.ZERO
 
@@ -92,14 +92,6 @@ func _physics_process(_delta):
 		hungry = false
 
 
-func _ShowYourName():
-	nameplate.visible = true
-
-
-func _hideYourName():
-	nameplate.visible = false
-
-
 func _draw() -> void:
 	if can_see_target:
 		debug_los_color = Color(1.0, .329, .298)
@@ -130,10 +122,10 @@ func _apply_movement(_delta, _useGravity = false) -> void:
 	var _err = move_and_slide(VELOCITY, GRAVITY_DIR, false, 4, PI/4, false)
 	
 	if VELOCITY != Vector2.ZERO:
-		#$Sprite/Particles2D.emitting = true
+		$Sprite/Particles2D.emitting = true
 		pass
 	else:
-		#$Sprite/Particles2D.emitting = false
+		$Sprite/Particles2D.emitting = false
 		pass
 	
 	# Code for pushing things
@@ -189,12 +181,16 @@ func _take_damage(attackBox : HitBox, entity):
 	health = health - attackBox.DAMAGE
 	entity.health = entity.health + 1.1
 	
+	healthBar.update_healthbar(health)
+	entity.healthBar.update_healthbar(entity.health)
+	
 	if health <= 0:
 		_on_killMob()
 
 
 func _take_hunger_damage():
 	health = health - DECAY_RATE
+	healthBar.update_healthbar(health)
 	
 	if health <= 0:
 		_on_killMob()
