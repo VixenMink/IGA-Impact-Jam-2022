@@ -23,7 +23,8 @@ func _state_logic(delta):
 
 
 func _get_transition(_delta, states_map):
-	if !selfRef.hungry:
+	# Prey will nibble and go home if satisfied
+	if !selfRef.hungry and selfRef.MY_TYPE == 1:
 		return states_map['ReturnState']
 	if selfRef.can_see_target and selfRef.target_in_attack_range and (moveToNextAttackState or transitionDelay == 0.0):
 		var stateName = nextAttackState.get_name(nextAttackState.get_name_count() -1)

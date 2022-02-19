@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/KelpDeath 6.png-e6df632577bf9c92e58c71150bfc7110.stex"
+path="res://.import/barHorizontal_green.png-ce99b97b96e5f36b8074ce3e8741ef98.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/KelpDeath 6.png"
-dest_files=[ "res://.import/KelpDeath 6.png-e6df632577bf9c92e58c71150bfc7110.stex" ]
+source_file="res://assets/tests/barHorizontal_green.png"
+dest_files=[ "res://.import/barHorizontal_green.png-ce99b97b96e5f36b8074ce3e8741ef98.stex" ]
 
 [params]
 

@@ -16,7 +16,8 @@ func _state_logic(delta):
 
 
 func _get_transition(_delta, states_map):
-
+	if selfRef.MY_TYPE == 1:
+		return states_map['WanderState']
 	if selfRef.hungry and selfRef.can_see_target and selfRef.target_in_attack_range:
 		return states_map['AttackState']
 	if selfRef.hungry and selfRef.can_see_target and !selfRef.target_in_attack_range:

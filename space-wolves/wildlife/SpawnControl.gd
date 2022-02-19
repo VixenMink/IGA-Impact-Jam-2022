@@ -11,21 +11,21 @@ func _ready():
 
 
 func _on_spawnPredator():
-	var spawnlocation = get_parent().get_node('PlayerShip').global_position
+	var spawnlocation = get_parent().player.global_position
 	var newMob = predatorRef.instance()
 	newMob.position = spawnlocation
 	get_parent().add_child(newMob)
 
 
 func _on_spawnPrey():
-	var spawnlocation = get_parent().get_node('PlayerShip').global_position
+	var spawnlocation = get_parent().player.global_position
 	var newMob = preyRef.instance()
 	newMob.position = spawnlocation
 	get_parent().add_child(newMob)
 
 
 func _on_spawnResource():
-	var spawnlocation = get_parent().get_node('PlayerShip').global_position
+	var spawnlocation = get_parent().player.global_position
 	var newMob = resourceRef.instance()
 	newMob.position = spawnlocation
 	get_parent().add_child(newMob)
@@ -39,6 +39,7 @@ func _on_breed():
 
 func breedResource():
 	var repeatNumber = randi() % 3
+	
 	while repeatNumber > 0:
 		var spawnlocation = (Settings.SpawnLocations[randi()%Settings.SpawnLocations.size()]).global_position
 		var newMob = resourceRef.instance()
@@ -49,6 +50,7 @@ func breedResource():
 
 func breedPredator(howmany: float):
 	var repeatNumber = howmany + (randi()%5)
+	
 	while repeatNumber > 0:
 		var spawnlocation = (Settings.SpawnLocations[randi()%Settings.SpawnLocations.size()]).global_position
 		var newMob = predatorRef.instance()
@@ -59,6 +61,7 @@ func breedPredator(howmany: float):
 
 func breedPrey(howmany: float):
 	var repeatNumber = howmany + (randi()%3)
+	
 	while repeatNumber > 0:
 		var spawnlocation = (Settings.SpawnLocations[randi()%Settings.SpawnLocations.size()]).global_position
 		var newMob = preyRef.instance()
@@ -73,7 +76,8 @@ func intialspawn():
 
 
 func intialPrey():
-	var repeatNumber = randi()%5 + 1
+	var repeatNumber = randi()%4 + 2
+	
 	while repeatNumber > 0:
 		var spawnlocation = Settings.SpawnLocations[randi()%Settings.SpawnLocations.size()].global_position
 		var newMob = preyRef.instance()

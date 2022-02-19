@@ -1,7 +1,10 @@
-extends Label
+extends Node2D
+
+onready var hp = $HP
+onready var debug = $DEBUG
 
 var textToDisplay = ""
-var thingToTrack = "";
+var aa = "";
 var parentMob
 
 var showHealth = false
@@ -9,9 +12,9 @@ var showHealth = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	parentMob = get_parent()
-	if parentMob.name != "Player":
-		showHealth = true
-		$HP.visible = true
+	#if parentMob.name != "Player":
+	#	showHealth = true
+	#	hp.visible = true
 
 
 func translate_state(state):
@@ -36,9 +39,9 @@ func _process(_delta):
 		if parentMob.target:
 			targetName = parentMob.target.name
 		if parentMob.state is String:
-			text = str(parentMob.state, ':', targetName, ':CS=', bool(parentMob.can_see_target), ':\nAR=', bool(parentMob.target_in_attack_range), ':\nHungry=', bool(parentMob.hungry))
+			debug.text = str(parentMob.state, ':', targetName, ':CS=', bool(parentMob.can_see_target), ':\nAR=', bool(parentMob.target_in_attack_range), ':\nHungry=', bool(parentMob.hungry))
 		else:
-			text = str(translate_state(parentMob.state), ':', targetName)
+			debug.text = str(translate_state(parentMob.state), ':', targetName)
 	if showHealth:
-		$HP.text = str(round(parentMob.health))
+		hp.text = str(round(parentMob.health))
 	

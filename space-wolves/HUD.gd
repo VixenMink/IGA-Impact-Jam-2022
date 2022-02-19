@@ -103,7 +103,8 @@ func _on_KillTarget_pressed():
 	if not weakTarget.get_ref():
 		print('Error on kill')
 	else:
-		cashmoney = cashmoney + weakTarget.get_ref().REWARD
+		var cost = round(weakTarget.get_ref().REWARD * weakTarget.get_ref().getRewardMultiplier())
+		cashmoney = cashmoney + cost
 		weakTarget.get_ref()._on_killMob()
 		yield(get_tree(), "idle_frame")
 		get_parent().player.retarget()

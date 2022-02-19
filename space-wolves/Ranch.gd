@@ -15,20 +15,13 @@ var resourceCount := 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if SignalMngr.connect("game_started", self, "_on_game_started") != OK:
-		D.e("Game", ["Signal game_started is already connected"])
-	if SignalMngr.connect("restart_level", self, "x") != OK:
-		D.e("Game", ["Signal restart_level is already connected"])
-	if SignalMngr.connect("next_level", self, "next_level")!= OK:
-		D.e("Game", ["Signal next_level is already connected"])
-	
 	pathfinding.create_navigation_map($AStarGrid)
 
 	Settings.SpawnLocations = $SpawnPoints.get_children()
 	Settings.curGameState = Settings.GAME_STATES.PAUSE
 	tickTimer.stop()
 	roundTimer.stop()
-		
+	
 	spawnControl.intialspawn()
 	
 	var _err = hud.connect('spawnPredator', spawnControl, '_on_spawnPredator')
@@ -37,16 +30,6 @@ func _ready():
 	
 	hud.zoomInButton.connect('pressed', player, '_zoom_in_button')
 	hud.zoomOutButton.connect('pressed', player, '_zoom_out_button')
-
-
-func _on_game_started():
-	pass
-
-func restart_level():
-	pass
-	
-func next_level():
-	pass
 
 
 func _process(_delta):
