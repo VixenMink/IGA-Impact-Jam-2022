@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://space-wolves/wildlife/BasicStates/SeekState.tscn" type="PackedScene" id=1]
 [ext_resource path="res://space-wolves/wildlife/BasicStates/ReturnState.tscn" type="PackedScene" id=2]
@@ -8,6 +8,14 @@
 [ext_resource path="res://space-wolves/wildlife/BaseEntity.tscn" type="PackedScene" id=6]
 [ext_resource path="res://space-wolves/wildlife/BasicStates/ChaseState.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/SpaceWolfAnimationSpaceWolf.png" type="Texture" id=8]
+[ext_resource path="res://assets/PredatorDeath1.png" type="Texture" id=9]
+[ext_resource path="res://assets/PredatorDeath 2.png" type="Texture" id=10]
+[ext_resource path="res://assets/PredatorDeath 7.png" type="Texture" id=11]
+[ext_resource path="res://assets/PredatorDeath 8.png" type="Texture" id=12]
+[ext_resource path="res://assets/PredatorDeath 6.png" type="Texture" id=13]
+[ext_resource path="res://assets/PredatorDeath 5.png" type="Texture" id=14]
+[ext_resource path="res://assets/PredatorDeath 4.png" type="Texture" id=15]
+[ext_resource path="res://assets/PredatorDeath 3.png" type="Texture" id=16]
 
 [sub_resource type="CircleShape2D" id=12]
 radius = 16.0
@@ -144,14 +152,22 @@ tracks/0/keys = {
 extents = Vector2( 40, 20 )
 
 [sub_resource type="CapsuleShape2D" id=11]
-radius = 36.0
+radius = 73.0
 height = 83.4144
 
 [sub_resource type="CircleShape2D" id=5]
-radius = 38.4187
+radius = 245.284
 
 [sub_resource type="CircleShape2D" id=6]
 radius = 500.0
+
+[sub_resource type="SpriteFrames" id=15]
+animations = [ {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 16 ), ExtResource( 15 ), ExtResource( 14 ), ExtResource( 13 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"loop": false,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="PredatorMob" groups=["Predator"] instance=ExtResource( 6 )]
 scale = Vector2( 1, 1 )
@@ -198,7 +214,6 @@ position = Vector2( 4.66711, -1.02845 )
 shape = SubResource( 4 )
 
 [node name="HitboxPivot" parent="." index="5"]
-visible = false
 rotation = 1.5708
 
 [node name="HitBox" parent="HitboxPivot" index="0"]
@@ -215,7 +230,6 @@ collision_mask = 16
 shape = SubResource( 5 )
 
 [node name="DetectRange" parent="HitboxPivot" index="2"]
-visible = false
 collision_mask = 16
 
 [node name="CollisionShape2D" parent="HitboxPivot/DetectRange" index="0"]
@@ -249,6 +263,10 @@ transitionDelay = 0.5
 
 [node name="NamePlate" parent="." index="9"]
 text = "Predator"
+
+[node name="DeathAnimation" parent="." index="10"]
+scale = Vector2( 0.25, 0.25 )
+frames = SubResource( 15 )
 
 [editable path="HurtBox"]
 [editable path="HitboxPivot/HitBox"]

@@ -28,7 +28,7 @@ func _ready():
 	Settings.curGameState = Settings.GAME_STATES.PAUSE
 	tickTimer.stop()
 	roundTimer.stop()
-		
+	
 	spawnControl.intialspawn()
 	
 	var _err = hud.connect('spawnPredator', spawnControl, '_on_spawnPredator')

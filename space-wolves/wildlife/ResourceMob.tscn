@@ -1,7 +1,11 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://space-wolves/wildlife/BaseEntity.tscn" type="PackedScene" id=1]
 [ext_resource path="res://space-wolves/wildlife/MovementStates/RandomMoveState.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/KelpDeath2.png" type="Texture" id=3]
+[ext_resource path="res://assets/KelpDeath1.png" type="Texture" id=4]
+[ext_resource path="res://assets/KelpDeath3.png" type="Texture" id=5]
+[ext_resource path="res://assets/KelpDeath6.png" type="Texture" id=6]
 [ext_resource path="res://assets/Kelp01.png" type="Texture" id=7]
 [ext_resource path="res://assets/Kelp02.png" type="Texture" id=8]
 [ext_resource path="res://assets/Kelp03.png" type="Texture" id=9]
@@ -9,18 +13,34 @@
 [ext_resource path="res://assets/Kelp05.png" type="Texture" id=11]
 [ext_resource path="res://assets/Kelp06.png" type="Texture" id=12]
 [ext_resource path="res://assets/Kelp07.png" type="Texture" id=13]
-
-[sub_resource type="CircleShape2D" id=5]
-radius = 18.2563
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 15, 15 )
+[ext_resource path="res://assets/KelpDeath4.png" type="Texture" id=14]
+[ext_resource path="res://assets/KelpDeath7.png" type="Texture" id=15]
+[ext_resource path="res://assets/KelpDeath8.png" type="Texture" id=16]
+[ext_resource path="res://assets/KelpDeath.png" type="Texture" id=17]
+[ext_resource path="res://assets/KelpDeath5.png" type="Texture" id=18]
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
 "frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
 "loop": true,
 "name": "Kelp",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 18.2563
+
+[sub_resource type="Animation" id=7]
+resource_name = "default"
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 15, 15 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 17 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 14 ), ExtResource( 18 ), ExtResource( 6 ), ExtResource( 15 ), ExtResource( 16 ) ],
+"loop": false,
+"name": "default",
 "speed": 5.0
 } ]
 
@@ -44,8 +64,20 @@ explosiveness = 0.5
 randomness = 0.6
 local_coords = false
 
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Sprite" index="1"]
+position = Vector2( 3, -7 )
+scale = Vector2( 0.1, 0.1 )
+frames = SubResource( 4 )
+animation = "Kelp"
+frame = 2
+speed_scale = 0.8
+playing = true
+
 [node name="PhysicsBox" parent="." index="1"]
 shape = SubResource( 5 )
+
+[node name="AnimationPlayer" parent="." index="2"]
+anims/default = SubResource( 7 )
 
 [node name="HurtBox" parent="." index="4"]
 collision_layer = 512
@@ -64,17 +96,12 @@ start_state = NodePath("RandomMoveState")
 
 [node name="RandomMoveState" parent="StateMachine" index="0" instance=ExtResource( 2 )]
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="9"]
-position = Vector2( 3, -7 )
-scale = Vector2( 0.1, 0.1 )
-frames = SubResource( 4 )
-animation = "Kelp"
-frame = 1
-speed_scale = 0.8
-playing = true
-
-[node name="NamePlate" parent="." index="10"]
+[node name="NamePlate" parent="." index="9"]
 text = "Resource"
+
+[node name="DeathAnimation" parent="." index="10"]
+scale = Vector2( 0.12, 0.12 )
+frames = SubResource( 6 )
 
 [editable path="HurtBox"]
 [editable path="HitboxPivot/HitBox"]

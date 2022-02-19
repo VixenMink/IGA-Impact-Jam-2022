@@ -82,11 +82,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="DeathAnimation" type="AnimatedSprite" parent="."]
+visible = false
+
 [connection signal="body_entered" from="HitboxPivot/AttackRange" to="." method="_on_AttackRange_body_entered"]
 [connection signal="body_exited" from="HitboxPivot/AttackRange" to="." method="_on_AttackRange_body_exited"]
 [connection signal="body_entered" from="HitboxPivot/DetectRange" to="." method="_on_DetectRange_body_entered"]
 [connection signal="body_exited" from="HitboxPivot/DetectRange" to="." method="_on_DetectRange_body_exited"]
 [connection signal="state_changed" from="StateMachine" to="." method="_on_StateMachine_state_changed"]
+[connection signal="animation_finished" from="DeathAnimation" to="." method="_on_DeathAnimation_animation_finished"]
 
 [editable path="HurtBox"]
 [editable path="HitboxPivot/HitBox"]

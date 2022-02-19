@@ -53,6 +53,7 @@ func updateHuntButton(target : BaseEntity):
 		type = 'prey'
 	elif target.MY_TYPE == 2:
 		type = 'predator'
-	var cost = target.REWARD
+	
+	var cost = round(target.REWARD * target.getRewardMultiplier())
 	$RadialContainer/Control2/KillTarget/Panel/icon.texture = load(str('res://assets/icons/',type,'-icon.png'))
 	$RadialContainer/Control2/KillTarget/Panel/Label.text = str('$',cost)

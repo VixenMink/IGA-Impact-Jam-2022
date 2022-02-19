@@ -3,7 +3,7 @@ extends KinematicBody2D
 class_name BaseEntity
 
 export (int) var REWARD := 0
-export (int) var MY_TYPE := 0
+export (int, "Error", "Prey", "Predator", "Resource") var MY_TYPE := 0
 export (int) var SPEED := 0
 export (float) var MAX_HEALTH := 10.0
 export (float) var DECAY_RATE := 1.0
@@ -186,31 +186,40 @@ func _on_hurtbox_entered(attackBox : HitBox):
 
 
 func _take_damage(attackBox : HitBox, entity):
-	
 	health = health - attackBox.DAMAGE
 	entity.health = entity.health + 1.1
 	
 	if health <= 0:
-		amDead = true
-		get_parent().register_wildlife(MY_TYPE, -1)
-		emit_signal("died", self)
-		queue_free()
-
-
-func _on_killMob():
-	get_parent().register_wildlife(MY_TYPE, -1)
-	queue_free()
+		_on_killMob()
 
 
 func _take_hunger_damage():
 	health = health - DECAY_RATE
-		
+	
 	if health <= 0:
-		amDead = true
-		get_parent().register_wildlife(MY_TYPE, -1)
-		emit_signal("died", self)
-		queue_free()
+		_on_killMob()
 
+
+func _on_killMob():
+	amDead = true
+	get_parent().register_wildlife(MY_TYPE, -1)
+	emit_signal("died", self)
+	$Sprite.hide()
+	$DeathAnimation.show()
+	$DeathAnimation.play('default')
+
+
+func getRewardMultiplier() -> float:
+	var retVal = 1.0
+	
+	if health > MAX_HEALTH:
+		retVal = min(health / MAX_HEALTH, 1.25)
+	elif health <= MAX_HEALTH and health > 0:
+		retVal = health / MAX_HEALTH
+	else:
+		retVal = 0.0
+	
+	return retVal
 
 func navigate():
 	if path.size() > 1:
@@ -237,16 +246,21 @@ func update_facing():
 func _check_target_line_of_sight() -> bool:
 	# Snapshot of the physics state at this moment
 	var space_state = get_world_2d().direct_space_state
+	var closestTargetDistance = 999999
 	
 	for curTarget in detectableEntities:
 		var visionMask = 56
-
+		
 		var result = space_state.intersect_ray(global_position, curTarget.global_position, [self], visionMask)
 		
 		if result:
-			if !(result.collider is KinematicBody2D) :
+			
+			var distanceToTarget = global_position.distance_to(curTarget.global_position)
+			
+			if !(result.collider is KinematicBody2D) or distanceToTarget > closestTargetDistance:
 				continue
 			else:
+				closestTargetDistance = distanceToTarget
 				target = curTarget
 				target_last_known_position = curTarget.global_position
 				return true
@@ -322,3 +336,7 @@ func _on_AttackRange_body_exited(body):
 func _on_StateMachine_state_changed(current_state):
 	if Settings.ENEMY_DEBUG:
 		state = str(current_state.nameLabel)
+
+
+func _on_DeathAnimation_animation_finished():
+	queue_free()
